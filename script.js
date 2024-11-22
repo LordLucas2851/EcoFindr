@@ -1,25 +1,60 @@
-// Forum functionality
-document.querySelector('#forum-submit')?.addEventListener('click', () => {
-    const input = document.querySelector('#forum-input').value.trim();
-    if (input) {
-        const post = document.createElement('p');
-        post.textContent = input;
-        document.querySelector('#forum-posts').appendChild(post);
-        document.querySelector('#forum-input').value = '';
+// Function to show error messages
+function showError(element, message) {
+    element.textContent = message;
+    setTimeout(() => {
+        element.textContent = '';
+    }, 3000);
+}
+
+// Signup functionality
+const signupForm = document.querySelector('#signup-form');
+signupForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const username = document.querySelector('#signup-username').value.trim();
+    const password = document.querySelector('#signup-password').value.trim();
+    const signupError = document.querySelector('#signup-error');
+
+    if (!username || !password) {
+        showError(signupError, 'Both fields are required.');
+        return;
     }
+
+    // Check if the user already exists
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || {};
+    if (existingUsers[username]) {
+        showError(signupError, 'Username already exists.');
+        return;
+    }
+
+    // Save the new user to LocalStorage
+    existingUsers[username] = password;
+    localStorage.setItem('users', JSON.stringify(existingUsers));
+
+    alert('Signup successful! You can now log in.');
+    signupForm.reset();
 });
 
-// Recommendations functionality
-document.querySelector('#recommendation-form')?.addEventListener('submit', (e) => {
+// Login functionality
+const loginForm = document.querySelector('#login-form');
+loginForm?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const interest = document.querySelector('#interest').value.trim();
-    const results = document.querySelector('#recommendation-results');
-    if (interest) {
-        results.innerHTML = `<p>Recommendations for <strong>${interest}</strong>:</p>
-        <ul>
-            <li><a href="https://www.ecosia.org" target="_blank">Ecosia</a></li>
-            <li><a href="https://www.thredup.com" target="_blank">ThredUp</a></li>
-            <li><a href="https://www.patagonia.com" target="_blank">Patagonia</a></li>
-        </ul>`;
+
+    const username = document.querySelector('#login-username').value.trim();
+    const password = document.querySelector('#login-password').value.trim();
+    const loginError = document.querySelector('#login-error');
+
+    if (!username || !password) {
+        showError(loginError, 'Both fields are required.');
+        return;
+    }
+
+    // Check if the user exists and the password matches
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || {};
+    if (existingUsers[username] && existingUsers[username] === password) {
+        alert('Login successful!');
+        loginForm.reset();
+    } else {
+        showError(loginError, 'Invalid username or password.');
     }
 });
