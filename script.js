@@ -1,40 +1,25 @@
-const creditCardForm = document.querySelector('#credit-card-form');
-const processBtn = document.querySelector('#process-btn');
-const cardNumberInput = document.querySelector('#card-number');
-const expirationDateInput = document.querySelector('#expiration-date');
-const cvvInput = document.querySelector('#cvv');const cardholderNameInput = document.querySelector('#cardholder-name');
-const cardNumberError = document.querySelector('#card-number-error');
-const expirationDateError = document.querySelector('#expiration-date-error');
-const cvvError = document.querySelector('#cvv-error');
-const cardholderNameError = document.querySelector('#cardholder-name-error');
-processBtn.addEventListener('click', (e) => {
+// Forum functionality
+document.querySelector('#forum-submit')?.addEventListener('click', () => {
+    const input = document.querySelector('#forum-input').value.trim();
+    if (input) {
+        const post = document.createElement('p');
+        post.textContent = input;
+        document.querySelector('#forum-posts').appendChild(post);
+        document.querySelector('#forum-input').value = '';
+    }
+});
+
+// Recommendations functionality
+document.querySelector('#recommendation-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const cardNumber = cardNumberInput.value.trim();
-    const expirationDate = expirationDateInput.value.trim();
-    const cvv = cvvInput.value.trim();
-    const cardholderName = cardholderNameInput.value.trim();
-    if (!cardNumber){
-        cardNumberError.textContent = 'Please enter your card number.';
-    } else {
-        cardNumberError.textContent = '';
-    }
-    if (!expirationDate) {
-        expirationDateError.textContent = 'Please enter your expiration date.';
-    } else {
-        expirationDateError.textContent = '';
-    }
-    if (!cvv) {
-        cvvError.textContent = 'Please enter your CVV.';
-    } else {
-        cvvError.textContent = '';
-    }
-    if (!cardholderName) {
-        cardholderNameError.textContent = 'Please enter your cardholder name.';
-    } else {
-        cardholderNameError.textContent = '';
-    }
-    if (cardNumber && expirationDate && cvv && cardholderName) {
-        alert('Payment processed successfully!');
-        creditCardForm.reset();
+    const interest = document.querySelector('#interest').value.trim();
+    const results = document.querySelector('#recommendation-results');
+    if (interest) {
+        results.innerHTML = `<p>Recommendations for <strong>${interest}</strong>:</p>
+        <ul>
+            <li><a href="https://www.ecosia.org" target="_blank">Ecosia</a></li>
+            <li><a href="https://www.thredup.com" target="_blank">ThredUp</a></li>
+            <li><a href="https://www.patagonia.com" target="_blank">Patagonia</a></li>
+        </ul>`;
     }
 });
