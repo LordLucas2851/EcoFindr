@@ -19,8 +19,9 @@ header {
 }
 
 header img {
-    height: 40px;
+    height: 50px; /* Adjusted height for the logo */
     margin-right: 20px;
+    object-fit: contain;
 }
 
 header input[type="search"] {
@@ -50,46 +51,13 @@ main {
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 h1, h2 {
     font-size: 1.8em;
     color: #232F3E;
     margin-bottom: 20px;
-}
-
-form {
-    margin-bottom: 30px;
-}
-
-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-form button {
-    background-color: #FF9900;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    width: 100%;
-}
-
-form button:hover {
-    background-color: #E68500;
 }
 
 footer {
