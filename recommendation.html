@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoFindr - Recommendations</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1>Eco-Friendly Recommendations</h1>
+        <h1>EcoFindr Recommendations</h1>
         <form id="recommendationForm">
-            <input type="text" id="userInput" placeholder="What are you looking for?" required>
+            <label for="userInput">What are you looking for? (e.g., clothes, food, cleaning):</label>
+            <input type="text" id="userInput" placeholder="Enter a category or keyword" required>
             <button type="submit">Get Recommendations</button>
         </form>
         <div id="recommendations"></div>
-        <a href="forum.html">Visit the Forum</a>
     </div>
-    <script src="script.js" type="module"></script>
 </body>
 </html>
