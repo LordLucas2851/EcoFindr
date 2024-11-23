@@ -3,123 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFindr - Login/Signup</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f4f6;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-        }
-        h1 {
-            color: #4CAF50;
-        }
-        form {
-            margin: 20px 0;
-        }
-        input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #45a049;
-        }
-    </style>
+    <title>EcoFindr - Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>EcoFindr</h1>
-        <h2>Login</h2>
+        <h1>EcoFindr Login</h1>
         <form id="loginForm">
-            <input type="email" id="loginEmail" placeholder="Email" required><br>
-            <input type="password" id="loginPassword" placeholder="Password" required><br>
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
-
-        <h2>Sign Up</h2>
-        <form id="signupForm">
-            <input type="email" id="signupEmail" placeholder="Email" required><br>
-            <input type="password" id="signupPassword" placeholder="Password" required><br>
-            <button type="submit">Sign Up</button>
-        </form>
+        <a href="signup.html">Don't have an account? Sign Up</a>
     </div>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
-            authDomain: "ecofindr-be091.firebaseapp.com",
-            projectId: "ecofindr-be091",
-            storageBucket: "ecofindr-be091.firebasestorage.app",
-            messagingSenderId: "960864865608",
-            appId: "1:960864865608:web:4994220d1cdf9c6d2b777d",
-            measurementId: "G-577X5TWXTT"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        // Sign Up Functionality
-        const signupForm = document.getElementById('signupForm');
-        signupForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-
-            try {
-                await createUserWithEmailAndPassword(auth, email, password);
-                alert('Account created successfully!');
-                window.location.href = 'recommendation.html'; // Redirect after signup
-            } catch (error) {
-                alert(`Error: ${error.message}`);
-            }
-        });
-
-        // Login Functionality
-        const loginForm = document.getElementById('loginForm');
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-                alert('Login successful!');
-                window.location.href = 'recommendation.html'; // Redirect after login
-            } catch (error) {
-                alert(`Error: ${error.message}`);
-            }
-        });
-    </script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
