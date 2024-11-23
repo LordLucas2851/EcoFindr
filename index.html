@@ -3,17 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFindr</title>
+    <title>EcoFindr - Your Eco-friendly Marketplace</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <img src="Outlook-A-logo-of.jpg" alt="EcoFindr Logo" class="logo">
-        <h1>Welcome to EcoFindr</h1>
+        <div class="logo-container">
+            <img src="Outlook-A-logo-of.jpg" alt="EcoFindr Logo" class="logo">
+        </div>
+        <nav class="navbar">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="login.html" class="nav-link">Login</a>
+            <a href="signup.html" class="nav-link">Sign Up</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="forum.html" class="nav-link">Forum</a>
+        </nav>
     </header>
-    <nav>
-        <a href="login.html">Login</a>
-        <a href="signup.html">Sign Up</a>
-    </nav>
+
+    <main>
+        <div class="hero-section">
+            <h1>Find the Best Eco-friendly Brands</h1>
+            <p>Discover sustainable products and services that help the planet</p>
+            <a href="dashboard.html" class="cta-button">Get Recommendations</a>
+        </div>
+        <section class="featured-products">
+            <h2>Featured Eco-friendly Brands</h2>
+            <div class="product-cards">
+                <!-- Add product cards here -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Brand 1">
+                    <h3>Brand Name 1</h3>
+                    <p>Eco-friendly products for a sustainable life.</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Brand 2">
+                    <h3>Brand Name 2</h3>
+                    <p>Eco-friendly products for a sustainable life.</p>
+                </div>
+                <!-- Repeat for more products -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
+    </footer>
 </body>
 </html>
