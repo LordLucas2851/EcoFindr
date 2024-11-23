@@ -1,20 +1,15 @@
-// Import necessary Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
 
-// Your Firebase project configuration (use your actual Firebase config here)
 const firebaseConfig = {
     apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
     authDomain: "ecofindr-be091.firebaseapp.com",
     projectId: "ecofindr-be091",
-    storageBucket: "ecofindr-be091.firebasestorage.app",
+    storageBucket: "ecofindr-be091.appspot.com",
     messagingSenderId: "960864865608",
     appId: "1:960864865608:web:4994220d1cdf9c6d2b777d",
     measurementId: "G-577X5TWXTT"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase Authentication
-const auth = getAuth(app);
+export const app = initializeApp(firebaseConfig);
+export const analytics = getAnalytics(app);
