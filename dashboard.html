@@ -3,42 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | EcoFindr</title>
+    <title>Dashboard - EcoFindr</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <img src="Outlook-A-logo-of.jpg" alt="EcoFindr Logo" class="logo">
-        <h1>EcoFindr Recommendations</h1>
-    </header>
-    <div id="recommendation-container">
-        <form id="recommendation-form">
-            <label for="input-category">What are you looking for?</label>
-            <input type="text" id="input-category" placeholder="E.g., Eco-friendly clothing" required>
-            <button type="submit">Get Recommendations</button>
-        </form>
-        <div id="recommendations">
-            <!-- Recommendations will be displayed here -->
+        <div class="logo-container">
+            <img src="Outlook-A-logo-of.jpg" alt="EcoFindr Logo" class="logo">
         </div>
-    </div>
+        <nav class="navbar">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="login.html" class="nav-link">Login</a>
+            <a href="signup.html" class="nav-link">Sign Up</a>
+            <a href="forum.html" class="nav-link">Forum</a>
+        </nav>
+    </header>
 
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-    <script>
-        const db = firebase.firestore();
+    <main>
+        <section class="dashboard">
+            <h2>Welcome Back!</h2>
+            <p>Enter your preferences below to get eco-friendly brand recommendations.</p>
+            <form action="#" method="post" class="recommendation-form">
+                <input type="text" name="preferences" placeholder="Enter your preferences (e.g., eco-friendly clothing, sustainable beauty)" required>
+                <button type="submit" class="cta-button">Get Recommendations</button>
+            </form>
+            <div class="recommendations">
+                <h3>Your Top Recommendations</h3>
+                <!-- Dynamically added recommendations will go here -->
+            </div>
+        </section>
+    </main>
 
-        document.getElementById("recommendation-form").addEventListener("submit", function (e) {
-            e.preventDefault();
-            const category = document.getElementById("input-category").value;
-
-            // Fetch data from Firestore
-            db.collection("eco-brands").where("category", "==", category).limit(5).get()
-                .then((querySnapshot) => {
-                    const recommendations = querySnapshot.docs.map(doc => doc.data().name);
-                    document.getElementById("recommendations").innerHTML = recommendations.join("<br>");
-                })
-                .catch(error => alert(error.message));
-        });
-    </script>
+    <footer>
+        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
+    </footer>
 </body>
 </html>
