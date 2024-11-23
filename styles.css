@@ -1,14 +1,19 @@
-/* Basic Styles */
-body {
-    font-family: Arial, sans-serif;
+/* General reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
 }
 
+/* Header styling */
 header {
-    background-color: #00b140; /* Green color for EcoFindr */
+    background-color: #00b140; /* Green */
     padding: 20px;
     text-align: center;
 }
@@ -29,7 +34,8 @@ main {
     align-items: center;
 }
 
-.auth-container {
+/* Auth Container */
+.auth-container, .recommendation-container {
     background-color: white;
     border-radius: 10px;
     padding: 20px;
@@ -37,12 +43,12 @@ main {
     width: 300px;
 }
 
-.auth-container form {
+.auth-container form, .recommendation-container form {
     display: flex;
     flex-direction: column;
 }
 
-.auth-container input {
+.auth-container input, .recommendation-container input {
     margin-bottom: 15px;
     padding: 10px;
     font-size: 16px;
@@ -50,7 +56,7 @@ main {
     border-radius: 5px;
 }
 
-.auth-container button {
+.auth-container button, .recommendation-container button {
     padding: 10px;
     font-size: 16px;
     background-color: #00b140;
@@ -60,7 +66,7 @@ main {
     cursor: pointer;
 }
 
-.auth-container button:hover {
+.auth-container button:hover, .recommendation-container button:hover {
     background-color: #008c2d;
 }
 
@@ -70,6 +76,7 @@ main {
     color: red;
 }
 
-p {
-    text-align: center;
+#recommendationsList p {
+    font-size: 16px;
+    color: #333;
 }
