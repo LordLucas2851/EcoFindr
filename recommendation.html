@@ -7,21 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="assets/logo.jpg" alt="EcoFindr Logo">
+    <div class="container">
         <h1>Eco-Friendly Recommendations</h1>
-    </header>
-    <div class="form-container">
-        <h2>Tell us what you're looking for:</h2>
         <form id="recommendationForm">
-            <input type="text" id="userInput" placeholder="Enter a product type, category, etc." required>
-            <button type="submit" class="button">Get Recommendations</button>
+            <input type="text" id="userInput" placeholder="What are you looking for?" required>
+            <button type="submit">Get Recommendations</button>
         </form>
         <div id="recommendations"></div>
+        <a href="forum.html">Visit the Forum</a>
     </div>
-    <footer>
-        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
