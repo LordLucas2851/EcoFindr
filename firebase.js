@@ -1,8 +1,8 @@
-// Import the necessary Firebase functions
+// Import necessary Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-// Your Firebase project configuration
+// Your Firebase project configuration (use your actual Firebase config here)
 const firebaseConfig = {
     apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
     authDomain: "ecofindr-be091.firebaseapp.com",
@@ -16,5 +16,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase Auth
+// Initialize Firebase Authentication
 const auth = getAuth(app);
