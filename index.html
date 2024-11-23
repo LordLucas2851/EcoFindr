@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFindr</title>
+    <title>EcoFindr - Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <img src="assets/Outlook-A logo of.jpg" alt="EcoFindr Logo">
+        <img src="assets/logo.jpg" alt="EcoFindr Logo">
         <h1>Welcome to EcoFindr</h1>
-        <p>Discover eco-friendly brands and websites based on your preferences.</p>
     </header>
-    
-    <div class="intro-content">
-        <a href="login.html" class="button">Login</a>
-        <a href="signup.html" class="button">Sign Up</a>
+    <div class="form-container">
+        <form id="loginForm">
+            <input type="text" id="username" name="username" placeholder="Username" required><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+            <button type="submit" class="button">Login</button>
+        </form>
+        <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
     </div>
-
     <footer>
         <p>&copy; 2024 EcoFindr. All rights reserved.</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
