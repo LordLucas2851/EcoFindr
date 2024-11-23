@@ -5,32 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoFindr</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo-img">
-        </div>
+        <img src="Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo">
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="recommendations.html">Recommendations</a></li>
-                <li><a href="forum.html">Forum</a></li>
-                <li><a href="login.html">Sign Up / Login</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#signup">Signup</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+                <li><a href="#forum">Forum</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <h1>Welcome to EcoFindr</h1>
-        <p>Your go-to platform for eco-friendly brands and products</p>
-        <button class="cta-button" onclick="window.location.href='recommendations.html'">Get Recommendations</button>
+        <section id="home">
+            <h1>Welcome to EcoFindr</h1>
+            <p>Your one-stop solution for eco-friendly recommendations and community discussions.</p>
+            <div class="cta">
+                <a href="#login" class="btn">Login</a>
+                <a href="#signup" class="btn">Sign Up</a>
+            </div>
+        </section>
+
+        <section id="login">
+            <h2>Login</h2>
+            <form action="login.html" method="POST">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+
+        <section id="signup">
+            <h2>Sign Up</h2>
+            <form action="signup.html" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </section>
+
+        <section id="recommendations">
+            <h2>Recommendations</h2>
+            <form id="recommendation-form">
+                <label for="query">Enter your eco-friendly interest:</label>
+                <input type="text" id="query" name="query" required>
+                <button type="submit">Get Recommendations</button>
+            </form>
+            <div id="results">
+                <!-- Recommended eco-friendly brands will be displayed here -->
+            </div>
+        </section>
+
+        <section id="forum">
+            <h2>Community Forum</h2>
+            <div id="forum-posts">
+                <!-- Posts from users will be displayed here -->
+            </div>
+            <form id="forum-form">
+                <label for="forum-post">Ask a question:</label>
+                <textarea id="forum-post" name="forum-post" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
     </main>
 
     <footer>
-        <p>© 2024 EcoFindr | Powered by Firebase</p>
+        <p>© 2024 EcoFindr. All rights reserved.</p>
     </footer>
 </body>
 </html>
