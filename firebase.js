@@ -1,4 +1,4 @@
-// Import Firebase and initialize
+// Firebase initialization
 const firebaseConfig = {
   apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
   authDomain: "ecofindr-be091.firebaseapp.com",
