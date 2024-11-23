@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum - EcoFindr</title>
+    <title>EcoFindr - Forum</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>EcoFindr</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="login.html">Login/Signup</a>
-            <a href="recommendations.html">Recommendations</a>
-        </nav>
+        <img src="assets/logo.jpg" alt="EcoFindr Logo">
+        <h1>EcoFindr Forum</h1>
     </header>
-    <main>
-        <h2>Community Forum</h2>
-        <div id="forum">
-            <div id="forum-posts">
-                <p>No posts yet. Be the first to ask a question!</p>
-            </div>
-            <textarea id="forum-input" placeholder="Ask a question or share a tip..."></textarea>
-            <button id="forum-submit">Post</button>
+    <div class="form-container">
+        <h2>Ask a Question</h2>
+        <form id="forumForm">
+            <textarea id="question" placeholder="Type your question here..." required></textarea>
+            <button type="submit" class="button">Submit</button>
+        </form>
+        <div id="forumQuestions">
+            <h3>Questions:</h3>
+            <ul id="questionsList"></ul>
         </div>
-    </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
