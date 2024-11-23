@@ -1,6 +1,8 @@
+// Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
+// Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
     authDomain: "ecofindr-be091.firebaseapp.com",
@@ -11,6 +13,7 @@ const firebaseConfig = {
     measurementId: "G-577X5TWXTT"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
