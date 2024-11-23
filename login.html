@@ -3,37 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - EcoFindr</title>
-    <link rel="stylesheet" href="style.css">
+    <title>EcoFindr - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #42a5f5;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #42a5f5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2196f3;
+        }
+        a {
+            text-decoration: none;
+            color: #42a5f5;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <img src="assets/Outlook-A logo of.jpg" alt="EcoFindr Logo">
-        <h1>Login to EcoFindr</h1>
-    </header>
-
-    <div class="form-container">
+    <div class="container">
+        <h1>EcoFindr Login</h1>
         <form id="loginForm">
-            <input type="text" id="username" name="username" placeholder="Username" required><br>
-            <input type="password" id="password" name="password" placeholder="Password" required><br>
-            <button type="submit" class="button">Login</button>
+            <input type="email" id="loginEmail" placeholder="Email" required><br>
+            <input type="password" id="loginPassword" placeholder="Password" required><br>
+            <button type="submit">Login</button>
         </form>
-        <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+        <a href="signup.html">Don't have an account? Sign Up</a>
     </div>
 
-    <footer>
-        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
-    </footer>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function(e) {
+        const firebaseConfig = {
+            apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
+            authDomain: "ecofindr-be091.firebaseapp.com",
+            projectId: "ecofindr-be091",
+            storageBucket: "ecofindr-be091.firebasestorage.app",
+            messagingSenderId: "960864865608",
+            appId: "1:960864865608:web:4994220d1cdf9c6d2b777d",
+            measurementId: "G-577X5TWXTT"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            // Fake login validation
-            const username = document.getElementById("username").value;
 
-            alert(`Welcome back, ${username}!`);
-            // Redirect to the recommendation page
-            window.location.href = "recommendation.html";
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                alert('Login successful!');
+                window.location.href = 'recommendation.html'; // Redirect to the next page
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
         });
     </script>
 </body>
