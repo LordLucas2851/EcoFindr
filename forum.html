@@ -23,15 +23,18 @@
         </div>
     </main>
     <script>
+        // Handle question submission
         document.getElementById("questionForm").addEventListener("submit", function(e) {
             e.preventDefault();
             const question = document.getElementById("questionText").value;
             postQuestion(question);
         });
 
+        // Function to post a question
         function postQuestion(question) {
             const questionElement = `<div class="question"><p>${question}</p></div>`;
             document.getElementById("questions").innerHTML += questionElement;
+            document.getElementById("questionText").value = ""; // Clear input
         }
     </script>
 </body>
