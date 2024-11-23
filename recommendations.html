@@ -3,42 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFindr Recommendations</title>
+    <title>EcoFindr - Recommendations</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <img src="images/Outlook-A logo of.jpg" alt="EcoFindr Logo">
-        <h1>EcoFindr Recommendations</h1>
-        <button onclick="logOut()">Log Out</button>
+        <h1>Eco-Friendly Recommendations</h1>
     </header>
     <main>
-        <h2>What's your eco-friendly interest?</h2>
-        <form id="userInputForm">
-            <input type="text" id="userInput" placeholder="Enter your interests..." required>
-            <button type="submit">Get Recommendations</button>
-        </form>
-        <div id="recommendations"></div>
+        <div class="recommendation-container">
+            <h2>Find Eco-Friendly Brands</h2>
+            <form id="recommendationForm">
+                <input type="text" id="inputField" placeholder="Enter a category (e.g. clothing, food, etc.)" required>
+                <button type="submit">Get Recommendations</button>
+            </form>
+            <div id="recommendationsList">
+                <!-- Recommendations will be listed here -->
+            </div>
+        </div>
     </main>
     <script src="firebase.js"></script>
     <script>
-        // Handle recommendation submission
-        document.getElementById("userInputForm").addEventListener("submit", function(e) {
+        // Handle form submission for recommendations
+        document.getElementById("recommendationForm").addEventListener("submit", function (e) {
             e.preventDefault();
-            const userInput = document.getElementById("userInput").value;
-            getRecommendations(userInput);
+            const inputValue = document.getElementById("inputField").value;
+            getRecommendations(inputValue);
         });
 
-        // Dummy list of eco-friendly brands (100+ can be added here)
-        const ecoBrands = [
-            "Brand 1", "Brand 2", "Brand 3", "Brand 4", "Brand 5", "Brand 6", "Brand 7", "Brand 8", "Brand 9", "Brand 10",
-            // You can continue adding more eco-friendly brands here
-        ];
-
-        // Function to get recommendations based on user input
+        // Simulate fetching eco-friendly brand recommendations
         function getRecommendations(input) {
-            const randomRecommendations = ecoBrands.slice(0, 5).map(brand => `<p>${brand}</p>`).join('');
-            document.getElementById("recommendations").innerHTML = randomRecommendations;
+            // You can replace this with a real API or database query
+            const ecoBrands = {
+                clothing: ["Brand A", "Brand B", "Brand C", "Brand D", "Brand E"],
+                food: ["Eco Food A", "Eco Food B", "Eco Food C", "Eco Food D", "Eco Food E"],
+                tech: ["Eco Tech A", "Eco Tech B", "Eco Tech C", "Eco Tech D", "Eco Tech E"]
+            };
+
+            let recommendations = ecoBrands[input.toLowerCase()] || [];
+            if (recommendations.length === 0) {
+                recommendations = ["No recommendations available for this category."];
+            }
+
+            document.getElementById("recommendationsList").innerHTML = recommendations.map(item => `<p>${item}</p>`).join('');
         }
     </script>
 </body>
