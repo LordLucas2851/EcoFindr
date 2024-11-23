@@ -1,4 +1,4 @@
-// Firebase configuration object (from your provided config)
+// Firebase configuration object
 const firebaseConfig = {
   apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
   authDomain: "ecofindr-be091.firebaseapp.com",
@@ -11,6 +11,3 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-// Optionally, you can enable Firebase analytics if you'd like to track user activity (e.g. for the `measurementId`):
-// firebase.analytics();
