@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFindr - Recommendations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo">
+        <h1>EcoFindr - Get Recommendations</h1>
+    </header>
+
+    <main>
+        <section id="recommendation-section">
+            <h2>Tell us your eco-friendly interest!</h2>
+            <form id="recommendation-form">
+                <input type="text" id="query" name="query" required placeholder="Enter eco-friendly interest" />
+                <button type="submit" class="btn">Get Recommendations</button>
+            </form>
+
+            <div id="recommendations-result">
+                <!-- Recommendations will appear here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 EcoFindr. All rights reserved.</p>
+    </footer>
+
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
