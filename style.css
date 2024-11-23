@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #28a745; /* Green background */
+    background-color: #f4f4f4;
     color: #333;
 }
 
@@ -13,51 +13,53 @@ header {
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 header img {
-    height: 50px; /* Adjusted height for the logo */
+    height: 50px;
     margin-right: 20px;
-    object-fit: contain;
 }
 
-header input[type="search"] {
-    flex: 1;
-    padding: 8px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
+h1 {
+    font-size: 2em;
+    margin: 0;
 }
 
-header a {
+.intro-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.button {
+    background-color: #FF9900;
+    padding: 15px 30px;
     color: white;
     text-decoration: none;
-    margin: 0 10px;
-    font-size: 0.9em;
-}
-
-header a:hover {
-    text-decoration: underline;
-}
-
-main {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 10px;
     text-align: center;
 }
 
-h1, h2 {
-    font-size: 1.8em;
-    color: #232F3E;
-    margin-bottom: 20px;
+.button:hover {
+    background-color: #FF6F00;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 footer {
@@ -66,13 +68,4 @@ footer {
     padding: 20px;
     text-align: center;
     font-size: 0.9em;
-}
-
-footer a {
-    color: #FF9900;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
 }
