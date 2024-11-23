@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFindr Recommendations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="images/Outlook-A logo of.jpg" alt="EcoFindr Logo">
+        <h1>EcoFindr Recommendations</h1>
+        <button onclick="logOut()">Log Out</button>
+    </header>
+    <main>
+        <h2>What's your eco-friendly interest?</h2>
+        <form id="userInputForm">
+            <input type="text" id="userInput" placeholder="Enter your interests..." required>
+            <button type="submit">Get Recommendations</button>
+        </form>
+        <div id="recommendations"></div>
+    </main>
+    <script>
+        document.getElementById("userInputForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const userInput = document.getElementById("userInput").value;
+            getRecommendations(userInput);
+        });
+
+        function getRecommendations(input) {
+            const ecoBrands = [
+                "Brand 1", "Brand 2", "Brand 3", "Brand 4", "Brand 5", "Brand 6", "Brand 7", "Brand 8", "Brand 9", "Brand 10", // Add 100+ eco-friendly brands
+            ];
+
+            // Get 5 random recommendations based on the input
+            const randomRecommendations = ecoBrands.slice(0, 5).map(brand => `<p>${brand}</p>`).join('');
+            document.getElementById("recommendations").innerHTML = randomRecommendations;
+        }
+    </script>
+</body>
+</html>
