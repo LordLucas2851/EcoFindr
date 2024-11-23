@@ -3,45 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum - EcoFindr</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Forum | EcoFindr</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="Outlook-A-logo-of.jpg" alt="EcoFindr Logo" class="logo">
-        </div>
-        <nav class="navbar">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="login.html" class="nav-link">Login</a>
-            <a href="signup.html" class="nav-link">Sign Up</a>
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
-        </nav>
+        <img src="Outlook-A-logo-of.jpg" alt="EcoFindr Logo" class="logo">
+        <h1>Forum</h1>
     </header>
+    <div id="forum-container">
+        <textarea id="question" placeholder="Ask a question..." required></textarea>
+        <button onclick="submitQuestion()">Post Question</button>
+        <div id="questions-list">
+            <!-- List of questions will appear here -->
+        </div>
+    </div>
 
-    <main>
-        <section class="forum-section">
-            <h2>Ask Questions or Start a Discussion</h2>
-            <div class="forum-posts">
-                <!-- Example of a forum post -->
-                <div class="forum-post">
-                    <h3>How to make my website more eco-friendly?</h3>
-                    <p>Anyone have suggestions for improving the sustainability of my website?</p>
-                    <button class="cta-button">Reply</button>
-                </div>
-                <!-- Additional forum posts would go here -->
-            </div>
-            <form action="#" method="post" class="forum-form">
-                <input type="text" name="post-title" placeholder="Enter post title" required>
-                <textarea name="post-content" placeholder="Write your post here" required></textarea>
-                <button type="submit" class="cta-button">Post Question</button>
-            </form>
-        </section>
-    </main>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script>
+        const db = firebase.firestore();
 
-    <footer>
-        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
-    </footer>
+        function submitQuestion() {
+            const question = document.getElementById("question").value;
+            db.collection("questions").add({
+                question: question,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                document.getElementById("question").value = ''; // Clear the textarea
+                loadQuestions();
+            })
+            .catch(error => alert(error.message));
+        }
+
+        function loadQuestions() {
+            db.collection("questions").orderBy("timestamp", "desc").get()
+                .then((querySnapshot) => {
+                    const questions = querySnapshot.docs.map(doc => `<p>${doc.data().question}</p>`).join('');
+                    document.getElementById("questions-list").innerHTML = questions;
+                });
+        }
+
+        loadQuestions();
+    </script>
 </body>
 </html>
