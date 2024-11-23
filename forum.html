@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum - EcoFindr</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="images/Outlook-A logo of.jpg" alt="EcoFindr Logo">
+        <h1>Forum</h1>
+        <button onclick="logOut()">Log Out</button>
+    </header>
+    <main>
+        <h2>Ask questions and discuss eco-friendly options!</h2>
+        <form id="questionForm">
+            <textarea id="questionText" placeholder="Ask your question..." required></textarea>
+            <button type="submit">Post Question</button>
+        </form>
+        <div id="questions">
+            <!-- Display forum questions here -->
+        </div>
+    </main>
+    <script>
+        document.getElementById("questionForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const question = document.getElementById("questionText").value;
+            postQuestion(question);
+        });
+
+        function postQuestion(question) {
+            const questionElement = `<div class="question"><p>${question}</p></div>`;
+            document.getElementById("questions").innerHTML += questionElement;
+        }
+    </script>
+</body>
+</html>
