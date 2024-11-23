@@ -9,7 +9,7 @@ body {
 
 /* Header */
 header {
-    background-color: #007f4f; /* Deep green */
+    background-color: #007f4f;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -17,7 +17,7 @@ header {
 }
 
 header .logo-container img {
-    width: 160px; /* Adjust logo size */
+    width: 160px;
     height: auto;
     margin-bottom: 10px;
 }
@@ -33,123 +33,4 @@ header .logo-container img {
     color: white;
     text-decoration: none;
     font-weight: 500;
-    font-size: 16px;
-    letter-spacing: 1px;
-}
-
-.nav-link:hover {
-    text-decoration: underline;
-    color: #f1f1f1;
-}
-
-/* Hero Section */
-.hero-section {
-    background-image: url('https://via.placeholder.com/1200x600/4CAF50/ffffff?text=Eco-friendly+Marketplace'); /* Background image with green tint */
-    background-size: cover;
-    background-position: center;
-    padding: 100px 20px;
-    text-align: center;
-    color: white;
-    position: relative;
-}
-
-.hero-content {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
-    padding: 50px;
-    display: inline-block;
-}
-
-.hero-section h1 {
-    font-size: 3.5rem;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-}
-
-.hero-section p {
-    font-size: 1.25rem;
-    margin: 20px 0;
-    font-weight: 300;
-}
-
-.cta-button {
-    background-color: #ffcb00; /* Bright accent color */
-    color: #007f4f;
-    padding: 15px 30px;
-    font-size: 1.25rem;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: background-color 0.3s;
-}
-
-.cta-button:hover {
-    background-color: #ffb300; /* Darker yellow */
-}
-
-/* Featured Products Section */
-.featured-products {
-    padding: 50px 10%;
-    text-align: center;
-    background-color: #ffffff;
-}
-
-.featured-products h2 {
-    font-size: 2.5rem;
-    font-family: 'Roboto', sans-serif;
-    margin-bottom: 40px;
-    color: #007f4f;
-}
-
-.product-cards {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.product-card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    width: 280px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.product-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.product-card p {
-    font-size: 1rem;
-    color: #555;
-}
-
-.product-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Footer */
-footer {
-    background-color: #007f4f;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 14px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
+    font
