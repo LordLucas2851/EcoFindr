@@ -3,35 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recommendations - EcoFindr</title>
+    <title>EcoFindr - Recommendations</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <img src="assets/Outlook-A logo of.jpg" alt="EcoFindr Logo">
-        <h1>Get Your Eco-Friendly Recommendations</h1>
+        <img src="assets/logo.jpg" alt="EcoFindr Logo">
+        <h1>Eco-Friendly Recommendations</h1>
     </header>
-
-    <div class="recommendation-form">
-        <form id="eco-recommendation-form">
-            <label for="preferences">What are you looking for? (e.g., sustainable products, green brands):</label>
-            <input type="text" id="preferences" name="preferences" placeholder="Enter your preferences" required><br>
-
+    <div class="form-container">
+        <h2>Tell us what you're looking for:</h2>
+        <form id="recommendationForm">
+            <input type="text" id="userInput" placeholder="Enter a product type, category, etc." required>
             <button type="submit" class="button">Get Recommendations</button>
         </form>
-
-        <div id="recommendations" style="display:none;">
-            <h2>Our Recommendations for You:</h2>
-            <ul id="recommendations-list">
-                <!-- Recommendations will appear here -->
-            </ul>
-        </div>
+        <div id="recommendations"></div>
     </div>
-
     <footer>
         <p>&copy; 2024 EcoFindr. All rights reserved.</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
