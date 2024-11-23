@@ -9,78 +9,34 @@
 <body>
     <header>
         <img src="Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo">
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#login">Login</a></li>
-                <li><a href="#signup">Signup</a></li>
-                <li><a href="#recommendations">Recommendations</a></li>
-                <li><a href="#forum">Forum</a></li>
-            </ul>
-        </nav>
+        <h1>Welcome to EcoFindr</h1>
     </header>
 
     <main>
-        <section id="home">
-            <h1>Welcome to EcoFindr</h1>
-            <p>Your one-stop solution for eco-friendly recommendations and community discussions.</p>
-            <div class="cta">
-                <a href="#login" class="btn">Login</a>
-                <a href="#signup" class="btn">Sign Up</a>
+        <section id="auth-section">
+            <h2>Please Log In or Sign Up</h2>
+            <div class="auth-buttons">
+                <button class="btn" id="loginBtn">Log In</button>
+                <button class="btn" id="signupBtn">Sign Up</button>
             </div>
-        </section>
 
-        <section id="login">
-            <h2>Login</h2>
-            <form action="login.html" method="POST">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Login</button>
-            </form>
-        </section>
-
-        <section id="signup">
-            <h2>Sign Up</h2>
-            <form action="signup.html" method="POST">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Sign Up</button>
-            </form>
-        </section>
-
-        <section id="recommendations">
-            <h2>Recommendations</h2>
-            <form id="recommendation-form">
-                <label for="query">Enter your eco-friendly interest:</label>
-                <input type="text" id="query" name="query" required>
-                <button type="submit">Get Recommendations</button>
-            </form>
-            <div id="results">
-                <!-- Recommended eco-friendly brands will be displayed here -->
+            <div id="authForm" class="form-container">
+                <form id="auth-form">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    <button type="submit" id="submitAuthBtn">Submit</button>
+                </form>
             </div>
-        </section>
-
-        <section id="forum">
-            <h2>Community Forum</h2>
-            <div id="forum-posts">
-                <!-- Posts from users will be displayed here -->
-            </div>
-            <form id="forum-form">
-                <label for="forum-post">Ask a question:</label>
-                <textarea id="forum-post" name="forum-post" required></textarea>
-                <button type="submit">Submit</button>
-            </form>
         </section>
     </main>
 
     <footer>
         <p>© 2024 EcoFindr. All rights reserved.</p>
     </footer>
+
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
