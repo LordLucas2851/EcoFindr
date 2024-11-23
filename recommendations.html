@@ -20,19 +20,23 @@
         </form>
         <div id="recommendations"></div>
     </main>
+    <script src="firebase.js"></script>
     <script>
+        // Handle recommendation submission
         document.getElementById("userInputForm").addEventListener("submit", function(e) {
             e.preventDefault();
             const userInput = document.getElementById("userInput").value;
             getRecommendations(userInput);
         });
 
-        function getRecommendations(input) {
-            const ecoBrands = [
-                "Brand 1", "Brand 2", "Brand 3", "Brand 4", "Brand 5", "Brand 6", "Brand 7", "Brand 8", "Brand 9", "Brand 10", // Add 100+ eco-friendly brands
-            ];
+        // Dummy list of eco-friendly brands (100+ can be added here)
+        const ecoBrands = [
+            "Brand 1", "Brand 2", "Brand 3", "Brand 4", "Brand 5", "Brand 6", "Brand 7", "Brand 8", "Brand 9", "Brand 10",
+            // You can continue adding more eco-friendly brands here
+        ];
 
-            // Get 5 random recommendations based on the input
+        // Function to get recommendations based on user input
+        function getRecommendations(input) {
             const randomRecommendations = ecoBrands.slice(0, 5).map(brand => `<p>${brand}</p>`).join('');
             document.getElementById("recommendations").innerHTML = randomRecommendations;
         }
