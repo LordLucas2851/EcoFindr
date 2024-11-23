@@ -7,24 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="assets/logo.jpg" alt="EcoFindr Logo">
+    <div class="container">
         <h1>EcoFindr Forum</h1>
-    </header>
-    <div class="form-container">
-        <h2>Ask a Question</h2>
         <form id="forumForm">
-            <textarea id="question" placeholder="Type your question here..." required></textarea>
-            <button type="submit" class="button">Submit</button>
+            <input type="text" id="forumQuestion" placeholder="Ask a question..." required>
+            <button type="submit">Post Question</button>
         </form>
-        <div id="forumQuestions">
-            <h3>Questions:</h3>
-            <ul id="questionsList"></ul>
-        </div>
+        <div id="forumQuestions"></div>
     </div>
-    <footer>
-        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
