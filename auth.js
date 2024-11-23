@@ -1,33 +1,26 @@
-// Signup functionality
-const signupForm = document.getElementById('signupForm');
-signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        alert('Signup successful!');
-        window.location.href = 'index.html'; // Redirect to the login page after signup
-    } catch (error) {
-        console.error(error);
-        alert('Error signing up: ' + error.message);
-    }
-});
-
 // Login functionality
 const loginForm = document.getElementById('loginForm');
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    if (!email || !password) {
+        alert("Please fill in both email and password.");
+        return;
+    }
+
     try {
+        // Firebase sign-in method
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         alert('Login successful!');
-        window.location.href = 'input.html'; // Redirect to the input page after login
+        
+        // Redirect to another page after login (like the dashboard or input page)
+        window.location.href = 'input.html'; // Modify this to your desired page
+
     } catch (error) {
-        console.error(error);
-        alert('Error logging in: ' + error.message);
+        console.error("Error logging in:", error);
+        alert('Login failed: ' + error.message); // Provide feedback on the error
     }
 });
