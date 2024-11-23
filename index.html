@@ -3,50 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFindr - Your Eco-friendly Marketplace</title>
+    <title>EcoFindr</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="Outlook-A-logo-of.jpg" alt="EcoFindr Logo" class="logo">
+        <div class="logo">
+            <img src="Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo-img">
         </div>
-        <nav class="navbar">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="login.html" class="nav-link">Login</a>
-            <a href="signup.html" class="nav-link">Sign Up</a>
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
-            <a href="forum.html" class="nav-link">Forum</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recommendations.html">Recommendations</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="login.html">Sign Up / Login</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
-        <div class="hero-section">
-            <h1>Find the Best Eco-friendly Brands</h1>
-            <p>Discover sustainable products and services that help the planet</p>
-            <a href="dashboard.html" class="cta-button">Get Recommendations</a>
-        </div>
-        <section class="featured-products">
-            <h2>Featured Eco-friendly Brands</h2>
-            <div class="product-cards">
-                <!-- Add product cards here -->
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Brand 1">
-                    <h3>Brand Name 1</h3>
-                    <p>Eco-friendly products for a sustainable life.</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Brand 2">
-                    <h3>Brand Name 2</h3>
-                    <p>Eco-friendly products for a sustainable life.</p>
-                </div>
-                <!-- Repeat for more products -->
-            </div>
-        </section>
+        <h1>Welcome to EcoFindr</h1>
+        <p>Your go-to platform for eco-friendly brands and products</p>
+        <button class="cta-button" onclick="window.location.href='recommendations.html'">Get Recommendations</button>
     </main>
 
     <footer>
-        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
+        <p>© 2024 EcoFindr | Powered by Firebase</p>
     </footer>
 </body>
 </html>
