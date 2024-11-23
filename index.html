@@ -3,20 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFindr</title>
+    <title>EcoFindr - Login/Signup</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <img src="images/Outlook-A logo of.jpg" alt="EcoFindr Logo">
         <h1>Welcome to EcoFindr</h1>
-        <div class="auth-container">
-            <a href="login.html" class="auth-btn">Login</a>
-            <a href="signup.html" class="auth-btn">Sign Up</a>
-        </div>
     </header>
     <main>
-        <h2>Find eco-friendly websites and brands that align with your values!</h2>
+        <div class="auth-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Log In</button>
+            </form>
+            <h2>Sign Up</h2>
+            <form id="signUpForm">
+                <input type="email" id="signUpEmail" placeholder="Email" required>
+                <input type="password" id="signUpPassword" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p id="errorMessage"></p>
+        </div>
     </main>
-</body>
-</html>
+    <script src="firebase.js"></script>
+    <script>
+        // Handle Sign-Up form submission
+        document.getElementById("signUpForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("signUpEmail").value;
+            const password = document.getElementById("signUpPassword").value;
+
+            signUp(email, password);
+        });
+
+        // Handle Login form submission
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("loginEmail").val
