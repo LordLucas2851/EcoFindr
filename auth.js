@@ -1,35 +1,33 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-
-const auth = getAuth();
-
-// Signup Logic
-document.getElementById('signupForm')?.addEventListener('submit', function (e) {
+// Signup functionality
+const signupForm = document.getElementById('signupForm');
+signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    createUserWithEmailAndPassword(auth, email, password)
-        .then(userCredential => {
-            alert("Account created successfully!");
-            window.location.href = "input.html";
-        })
-        .catch(error => {
-            alert(error.message);
-        });
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        alert('Signup successful!');
+        window.location.href = 'index.html'; // Redirect to the login page after signup
+    } catch (error) {
+        console.error(error);
+        alert('Error signing up: ' + error.message);
+    }
 });
 
-// Login Logic
-document.getElementById('loginForm')?.addEventListener('submit', function (e) {
+// Login functionality
+const loginForm = document.getElementById('loginForm');
+loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    signInWithEmailAndPassword(auth, email, password)
-        .then(userCredential => {
-            alert("Welcome back!");
-            window.location.href = "input.html";
-        })
-        .catch(error => {
-            alert(error.message);
-        });
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        alert('Login successful!');
+        window.location.href = 'input.html'; // Redirect to the input page after login
+    } catch (error) {
+        console.error(error);
+        alert('Error logging in: ' + error.message);
+    }
 });
