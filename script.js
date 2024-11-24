@@ -57,20 +57,23 @@ const ecoFriendlyBrands = [
 ];
 
 function showRecommendations() {
-    const input = document.getElementById("search-bar").value.toLowerCase();
+    const input = document.getElementById("search-bar").value.trim().toLowerCase();
     const recommendations = document.getElementById("recommendations");
-    recommendations.innerHTML = "";
+    recommendations.innerHTML = "";  // Clear previous recommendations
 
     if (input) {
-        // Match input with brand names and include recommendations for the first 3 matching brands
-        const filteredBrands = ecoFriendlyBrands.filter(brand => brand.toLowerCase().includes(input));
+        // Match input with brand names (case-insensitive) and include recommendations for the first 3 matching brands
+        const filteredBrands = ecoFriendlyBrands.filter(brand => {
+            return brand.toLowerCase().includes(input);  // Case insensitive match
+        });
+
         if (filteredBrands.length > 0) {
             const results = filteredBrands.slice(0, 3).map(brand => {
                 return `<p><a href="${brand.split(": ")[1]}" target="_blank">${brand.split(": ")[0]}</a></p>`;
             }).join("");
             recommendations.innerHTML = results;
         } else {
-            recommendations.innerHTML = "<p>No recommendations found. Please try again.</p>";
+            recommendations.innerHTML = "<p>No recommendations found. Please try again with a different term.</p>";
         }
     } else {
         recommendations.innerHTML = "<p>Please enter a search term.</p>";
