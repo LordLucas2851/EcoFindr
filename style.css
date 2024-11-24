@@ -23,14 +23,22 @@ h1 {
   margin-bottom: 10px;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
 input[type="text"] {
   padding: 12px;
-  width: 70%;
+  width: 50%;
   max-width: 600px;
-  margin-bottom: 20px;
+  margin-right: 10px;
   border: 2px solid #2c6b4f;
   border-radius: 5px;
   font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 button {
@@ -42,6 +50,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
@@ -54,8 +63,7 @@ section#recommendations {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 800px;
-  margin: 0 auto;
-  margin-top: 40px;
+  margin: 40px auto;
 }
 
 h2 {
@@ -71,6 +79,8 @@ ul {
 
 li {
   margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
 a {
@@ -87,4 +97,19 @@ p {
   font-size: 1.2em;
   color: #888;
   text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  input[type="text"] {
+    width: 80%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  section#recommendations {
+    padding: 15px;
+  }
 }
