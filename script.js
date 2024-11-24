@@ -54,10 +54,12 @@ function searchProducts() {
 
   // Check each category for relevant keywords
   for (const [category, keywords] of Object.entries(ecoKeywords)) {
-    // Split the search query into individual words and check if any of them partially match any of the keywords
-    if (keywords.some(keyword => searchQuery.split(' ').some(term => term.includes(keyword.toLowerCase())))) {
-      results.push(...ecoFriendlyWebsites);
-      break;
+    // Check if any keyword partially matches the search query (case-insensitive)
+    for (const keyword of keywords) {
+      if (searchQuery.includes(keyword.toLowerCase())) {
+        results.push(...ecoFriendlyWebsites);
+        break;  // Break if at least one keyword matches
+      }
     }
   }
 
