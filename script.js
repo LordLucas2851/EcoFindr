@@ -37,7 +37,9 @@ const ecoKeywords = {
     'herbal', 'raw', 'free-range', 'eco-friendly', 'nutritious', 'freshly grown', 'gluten-free', 'sustainable farming', 'non-GMO', 'locally sourced',
     'gmo-free', 'low-carbon', 'holistic foods', 'food security', 'high-protein', 'whole grains', 'clean label', 'nutrient-dense', 'eco-conscious', 'ethical food',
     'farm-to-table', 'seasonal', 'regenerative', 'ethical sourcing', 'fair trade food', 'food sustainability', 'agroecology', 'sustainable nutrition',
-    'wholesome', 'balanced', 'organic', 'homemade', 'simple', 'local produce', 'fresh-picked', 'energy-boosting', 'nutritious', 'all-natural'
+    'wholesome', 'balanced', 'organic', 'homemade', 'simple', 'local produce', 'fresh-picked', 'energy-boosting', 'nutritious', 'all-natural',
+    'cheese', 'meat', 'vegetarian', 'berries', 'nuts', 'spices', 'herbs', 'juices', 'smoothies', 'cereals', 'tofu', 'tempeh', 'pasta', 'chips', 'kale', 'wheat',
+    'coconut', 'avocado', 'almonds', 'supergreens', 'lentils'
   ],
   accessories: [
     'sustainable bags', 'eco-friendly wallets', 'recycled jewelry', 'vegan shoes', 'solar-powered gadgets', 'eco-friendly watches',
@@ -48,7 +50,9 @@ const ecoKeywords = {
     'upcycled', 'solar gadgets', 'recycled', 'sustainable', 'plastic-free', 'conscious products', 'fairtrade', 'reusable', 'eco tech', 'green fashion',
     'renewable', 'energy-efficient', 'upcycled fashion', 'cruelty-free', 'natural materials', 'biodegradable items', 'sustainable materials', 'minimalistic',
     'reclaimed', 'regenerative', 'green accessories', 'ethical sourcing', 'low-impact', 'lightweight', 'responsible production', 'ethically crafted', 'long-lasting',
-    'innovative', 'durable', 'functional', 'multifunctional', 'handcrafted', 'fair-trade', 'luxury', 'modern', 'smart', 'classic'
+    'innovative', 'durable', 'functional', 'multifunctional', 'handcrafted', 'fair-trade', 'luxury', 'modern', 'smart', 'classic',
+    'backpacks', 'earrings', 'necklaces', 'bracelets', 'rings', 'scarves', 'hats', 'sunglasses', 'gloves', 'belts', 'phone cases', 'keychains', 'hairpins',
+    'wallets', 'umbrellas', 'purses', 'tote bags', 'luggage', 'socks', 'bandanas', 'clutches', 'makeup bags', 'belt bags'
   ]
 };
 
@@ -67,7 +71,8 @@ function saveNewKeyword(newKeyword) {
 }
 
 function getCategoryForKeyword(keyword) {
-  for (const category in ecoKeywords) {
+  const allCategories = Object.keys(ecoKeywords);
+  for (let category of allCategories) {
     if (ecoKeywords[category].includes(keyword)) {
       return category;
     }
@@ -87,9 +92,9 @@ function searchProducts() {
     }
   }
 
-  if (!results.length) {
-    const newKeywordCategory = getCategoryForKeyword(searchQuery);
-    if (newKeywordCategory && !ecoKeywords[newKeywordCategory].includes(searchQuery)) {
+  if (!results.length && !newKeywordAdded) {
+    const category = getCategoryForKeyword(searchQuery);
+    if (category) {
       saveNewKeyword(searchQuery);
       newKeywordAdded = true;
     }
