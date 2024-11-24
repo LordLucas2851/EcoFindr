@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFindr</title>
+    <script src="Home-Page.js" defer></script>
+    <script src="Login-System.js" defer></script>
+    <script src="Forum-Code.js" defer></script>
+    <script src="Credit_Card_Process.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to EcoFindr</h1>
+        <nav>
+            <a href="#login">Login</a> |
+            <a href="#forum">Forum</a> |
+            <a href="#home">Home</a>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Home</h2>
+            <p>Discover eco-friendly services and reduce your carbon footprint.</p>
+        </section>
+        <section id="login">
+            <h2>Login</h2>
+            <button id="login-btn">Login</button>
+            <button id="sign-up-btn">Sign Up</button>
+        </section>
+        <section id="forum">
+            <h2>Forum</h2>
+            <form class="post-form">
+                <input type="text" id="username" placeholder="Your Name" required>
+                <textarea id="question" placeholder="Your Question" required></textarea>
+                <button type="submit" id="post-btn">Post</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 EcoFindr</p>
+    </footer>
+</body>
+</html>
