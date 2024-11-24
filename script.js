@@ -1,82 +1,85 @@
-// Updated list of product categories and their corresponding keywords
-const productKeywords = {
-  clothing: [
-    // More specific clothing-related keywords
-    "pants", "shoes", "shirts", "t-shirts", "sweaters", "dresses", "skirts", "jackets", "jeans", "shorts", "suits", 
-    "blouses", "hoodies", "cardigans", "activewear", "sportswear", "leggings", "winter", "scarves", "socks", 
-    "sweatshirts", "flannels", "tops", "button-up", "tank", "bikinis", "swimsuits", "pajamas", "outerwear", 
-    "raincoats", "overalls", "rompers", "jumpsuits", "belts", "hats", "eco", "sustainable", "organic", "vegan", 
-    "recycled", "upcycled", "fair-trade", "slow", "ethical", "custom", "fashion", "vegan-leather", "bamboo", 
-    "natural-fiber", "minimalist", "conscious", "earth", "green", "environment", "handmade", "vintage", "comfortable",
-    "eco-friendly", "sustainable-fashion", "zero-waste", "eco-conscious", "reusables", 
-
-    // Generic keywords
-    "clothing", "fashion", "garments", "apparel", "outfits", "wearables", "textiles", "wardrobe", "attire", 
-    "streetwear", "footwear", "sportswear", "activewear", "outdoor", "luxury", "casual", "formal", "workwear", "seasonal", 
-    "modern", "classic", "fashion-forward", "comfort", "athleisure", "stylish", "eco-conscious", "natural", "boho", "avant-garde", 
-    "street-style", "minimalistic", "preppy", "hippie", "chic", "green", "sustainable-fashion", "recycled-fabrics", 
-    "eco-friendly-clothing", "climate-positive", "earth-friendly-clothes", "reusable-clothing", "carbon-neutral", "upcycled-fashion", 
-    "slow-fashion", "conscious-fashion"
-  ],
-  food: [
-    // More specific food-related keywords
-    "organic", "vegan", "vegetarian", "gluten-free", "local", "sustainable", "natural", "clean", "non-GMO", "fair-trade",
-    "biodynamic", "healthy", "fresh", "non-toxic", "raw", "plant-based", "wholefoods", "pesticide-free", "unprocessed", 
-    "artisan", "superfoods", "nut-free", "sugar-free", "dairy-free", "low-carb", "ethical", "free-range", "grass-fed",
-    "hormone-free", "eco", "green", "cruelty-free", "zero-waste", "ethical-food", "plastic-free", "eco-packaging", 
-    "compostable", "bottled", "canned", "gmo-free", "fair-trade", "bulk", "natural-sweeteners", "organic-veggies", 
-    "clean-label", "raw-foods", "slow-food", "low-impact", "seasonal", "sustainable-farming", "food-waste", "plant-based",
-
-    // Generic keywords
-    "food", "snacks", "ingredients", "meals", "produce", "kitchen", "cooking", "grocery", "recipes", "beverages", 
-    "healthy-eating", "superfoods", "fresh-foods", "plant-based-meals", "organic-food", "farm-to-table", "locally-sourced", 
-    "ethically-sourced", "nutrient-rich", "wholesome", "real-food", "clean-eating", "sustainable-food", "eco-food", 
-    "sustainable-eating", "natural-food", "fresh-produce", "ethically-grown", "fairtrade-food", "green-food", 
-    "low-impact-food", "ethical-meals", "organic-snacks", "plastic-free-food", "conscious-eating", "low-carbon-food", 
-    "sustainable-ingredients", "eco-friendly-food", "regenerative-agriculture", "biodynamic-food", "vegan-foods"
-  ],
-  homeGoods: [
-    // More specific home-related keywords
-    "home", "eco", "sustainable", "green", "organic", "upcycled", "recycled", "plastic-free", "non-toxic", "biodegradable", 
-    "energy-efficient", "solar", "reusable", "natural", "bamboo", "wood", "ceramic", "stone", "eco-friendly", "minimalist", 
-    "reclaimed", "fair-trade", "handmade", "organic-cotton", "sustainable-decor", "green-energy", "low-impact", "chemical-free", 
-    "zero-waste", "eco-home", "renewable", "conservation", "reusable-bottles", "sustainable-furnishings", "green-cleaning", 
-    "environmental", "upcycled-furniture", "eco-cooking", "earth-friendly", "smart-home", "natural-lights", "sustainable-wood", 
-    "eco-friendly-furniture", "organic-textiles", "greener-living", "sustainable-kitchen", "non-toxic-cleaners", "bio-based", 
-    "recycled-plastics", "natural-fabrics", "plant-based", "water-saving", "green-energy-home", "eco-conscious",
-
-    // Generic keywords
-    "homegoods", "houseware", "decor", "furniture", "kitchenware", "lighting", "appliances", "interior", "living", 
-    "bedroom", "bathroom", "office", "living-room", "eco-home-furnishings", "handcrafted", "handmade-furniture", "organic-cotton", 
-    "natural-wood", "eco-friendly-decor", "recycled-furniture", "furnishings", "cushions", "pillows", "bedding", 
-    "home-decor", "sustainable-living", "climate-neutral", "eco-cleaning", "zero-waste-home", "non-toxic-home", "green-living", 
-    "smart-home-devices", "natural-lighting", "green-appliances", "sustainable-home-products", "energy-efficient-home", 
-    "conscious-living", "low-carbon-living", "minimalist-furnishings", "reclaimed-wood", "organic-home", "green-living-products"
-  ]
-};
-
-// Store eco-friendly website recommendations
+// Store eco-friendly website recommendations with descriptions
 const recommendations = {
   clothing: [
-    { name: "Patagonia", link: "https://www.patagonia.com" },
-    { name: "Everlane", link: "https://www.everlane.com" },
-    { name: "Reformation", link: "https://www.thereformation.com" },
-    { name: "Pact", link: "https://wearpact.com" },
-    { name: "Allbirds", link: "https://www.allbirds.com" }
+    { 
+      name: "Patagonia", 
+      link: "https://www.patagonia.com", 
+      description: "Patagonia is committed to using sustainable materials and ethical manufacturing practices. They prioritize environmental responsibility and provide high-quality outdoor apparel." 
+    },
+    { 
+      name: "Everlane", 
+      link: "https://www.everlane.com", 
+      description: "Everlane offers modern essentials and operates with full transparency, focusing on ethical sourcing, sustainable materials, and fair wages." 
+    },
+    { 
+      name: "Reformation", 
+      link: "https://www.thereformation.com", 
+      description: "Reformation is a fashion brand that creates eco-friendly clothing using sustainable materials and practices. Their designs are stylish, yet environmentally conscious." 
+    },
+    { 
+      name: "Pact", 
+      link: "https://wearpact.com", 
+      description: "Pact creates organic, Fair Trade certified clothing. Their collections include basics made from sustainable materials that are gentle on the planet." 
+    },
+    { 
+      name: "Allbirds", 
+      link: "https://www.allbirds.com", 
+      description: "Allbirds makes shoes and apparel from natural materials like merino wool and eucalyptus tree fibers, aiming to create products with a minimal environmental footprint." 
+    }
   ],
   food: [
-    { name: "Thrive Market", link: "https://www.thrivemarket.com" },
-    { name: "Imperfect Foods", link: "https://www.imperfectfoods.com" },
-    { name: "Farm Fresh To You", link: "https://www.farmfreshtoyou.com" },
-    { name: "Green Chef", link: "https://www.greenchef.com" },
-    { name: "Sun Basket", link: "https://www.sunbasket.com" }
+    { 
+      name: "Thrive Market", 
+      link: "https://www.thrivemarket.com", 
+      description: "Thrive Market is an online marketplace offering organic, non-GMO foods at affordable prices. They focus on sustainability and ethical sourcing." 
+    },
+    { 
+      name: "Imperfect Foods", 
+      link: "https://www.imperfectfoods.com", 
+      description: "Imperfect Foods helps reduce food waste by delivering surplus groceries directly to consumers, offering organic and sustainably sourced options." 
+    },
+    { 
+      name: "Farm Fresh To You", 
+      link: "https://www.farmfreshtoyou.com", 
+      description: "Farm Fresh To You delivers organic produce straight from family farms to your door, ensuring both freshness and sustainability." 
+    },
+    { 
+      name: "Green Chef", 
+      link: "https://www.greenchef.com", 
+      description: "Green Chef offers organic meal kits with sustainable ingredients, providing health-conscious meals while supporting sustainable farming practices." 
+    },
+    { 
+      name: "Sun Basket", 
+      link: "https://www.sunbasket.com", 
+      description: "Sun Basket provides organic and clean ingredients for meal kits, focusing on sustainable sourcing and offering a variety of dietary options." 
+    }
   ],
   homeGoods: [
-    { name: "The Citizenry", link: "https://www.the-citizenry.com" },
-    { name: "Avocado Green Mattress", link: "https://www.avocadogreenmattress.com" },
-    { name: "Parachute", link: "https://www.parachutehome.com" },
-    { name: "Brooklinen", link: "https://www.brooklinen.com" },
-    { name: "Sustainable Furnishings Council", link: "https://www.sustainablefurnishings.org" }
+    { 
+      name: "The Citizenry", 
+      link: "https://www.the-citizenry.com", 
+      description: "The Citizenry offers globally sourced, handmade home goods that are ethically produced, with a focus on craftsmanship and sustainability." 
+    },
+    { 
+      name: "Avocado Green Mattress", 
+      link: "https://www.avocadogreenmattress.com", 
+      description: "Avocado Green Mattress creates eco-friendly mattresses using organic, non-toxic materials. They focus on sustainability and environmental impact." 
+    },
+    { 
+      name: "Parachute", 
+      link: "https://www.parachutehome.com", 
+      description: "Parachute offers high-quality, ethically made bedding and home goods using natural materials, ensuring comfort and sustainability." 
+    },
+    { 
+      name: "Brooklinen", 
+      link: "https://www.brooklinen.com", 
+      description: "Brooklinen offers luxury home essentials made from sustainable materials, focusing on comfort and ethical manufacturing practices." 
+    },
+    { 
+      name: "Sustainable Furnishings Council", 
+      link: "https://www.sustainablefurnishings.org", 
+      description: "The Sustainable Furnishings Council advocates for eco-friendly home furnishings by promoting responsible sourcing and reducing environmental impacts." 
+    }
   ]
 };
 
@@ -102,7 +105,7 @@ function searchProducts() {
     const categoryRecommendations = recommendations[categoryMatch];
     categoryRecommendations.slice(0, 3).forEach(rec => {
       const listItem = document.createElement("li");
-      listItem.innerHTML = `<a href="${rec.link}" target="_blank">${rec.name}</a>`;
+      listItem.innerHTML = `<strong><a href="${rec.link}" target="_blank">${rec.name}</a></strong>: ${rec.description}`;
       resultContainer.appendChild(listItem);
     });
   } else {
