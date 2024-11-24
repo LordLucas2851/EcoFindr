@@ -3,26 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoFriendlyHub</title>
+  <title>EcoFindr</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
+    <h1>EcoFindr</h1>
     <nav>
-      <h1>EcoFriendlyHub</h1>
-      <ul>
-        <li><a href="#" id="login-link">Login</a></li>
-        <li><a href="#" id="signup-link">Signup</a></li>
-      </ul>
+      <button id="loginBtn">Login</button>
+      <button id="signupBtn">Signup</button>
     </nav>
   </header>
-  <main id="app">
-    <!-- Dynamic content will be injected here -->
+  <main>
+    <h2>Welcome to EcoFindr</h2>
+    <p>Find eco-friendly brands for your needs!</p>
   </main>
-  <footer>
-    <p>&copy; 2024 EcoFriendlyHub. All rights reserved.</p>
-  </footer>
-  <script src="firebase.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+  <script type="module">
+    // Import Firebase using your provided CDN
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
+      authDomain: "ecofindr-be091.firebaseapp.com",
+      projectId: "ecofindr-be091",
+      storageBucket: "ecofindr-be091.firebasestorage.app",
+      messagingSenderId: "960864865608",
+      appId: "1
