@@ -83,6 +83,13 @@ const recommendations = {
   ]
 };
 
+// Product keywords for search matching
+const productKeywords = {
+  clothing: ["pants", "shirts", "shoes", "t-shirts", "sweaters", "dresses", "jackets", "swimwear", "apparel", "fashion", "outwear", "clothing", "jeans", "activewear"],
+  food: ["organic", "vegan", "sustainable", "local", "plant-based", "fair trade", "non-GMO", "health food", "eco-friendly food", "natural food", "sustainable food", "organic food", "fresh produce"],
+  homeGoods: ["furniture", "home decor", "organic bedding", "mattresses", "home accessories", "handmade goods", "eco-friendly furniture", "sustainable home goods", "natural materials", "bedding", "green home", "sustainable furniture"]
+};
+
 // Function to search for products
 function searchProducts() {
   const query = document.getElementById("searchInput").value.toLowerCase();
