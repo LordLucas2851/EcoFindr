@@ -88,3 +88,10 @@ p {
   color: #888;
   text-align: center;
 }
+
+.description {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 5px;
+  text-align: center;
+}
