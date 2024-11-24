@@ -8,23 +8,17 @@
 </head>
 <body>
   <header>
-    <h1>EcoFindr: Find Eco-Friendly Products</h1>
+    <h1>EcoFindr - Discover Eco-Friendly Brands</h1>
+    <input type="text" id="searchInput" placeholder="Search for eco-friendly products...">
+    <button onclick="searchProducts()">Search</button>
   </header>
 
-  <section class="search-container">
-    <h2>What are you looking for?</h2>
-    <input type="text" id="searchInput" placeholder="Search for eco-friendly products (e.g., vegan shoes, organic vegetables)">
-    <button onclick="searchProducts()">Search</button>
-  </section>
-
   <section id="recommendations">
-    <h3>Recommended Websites</h3>
-    <ul></ul>
+    <h2>Eco-Friendly Recommendations</h2>
+    <ul>
+      <!-- Recommendations will be listed here -->
+    </ul>
   </section>
-
-  <footer>
-    <p>&copy; 2024 EcoFindr. All rights reserved.</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
