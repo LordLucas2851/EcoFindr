@@ -13,7 +13,7 @@
     </div>
     <nav>
       <a href="#about">About</a>
-      <a href="#recommendations">Recommendations</a>
+      <a href="#search">Search</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -22,42 +22,26 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-text">
-        <h2>Find Eco-Friendly Brands</h2>
-        <p>Your go-to guide for sustainable shopping. Explore brands that care about the environment!</p>
+        <h2>Find Eco-Friendly Products</h2>
+        <p>Looking for sustainable products? Let us help you find the best eco-friendly options!</p>
       </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
       <h2>About Us</h2>
-      <p>EcoFindr helps you find the most eco-friendly websites and brands for clothing, food, and more! We want to make it easy for you to live sustainably.</p>
+      <p>EcoFindr is your guide to discovering the best eco-friendly brands for clothing, food, and more! We aim to help you live sustainably by recommending brands that prioritize the environment.</p>
     </section>
 
-    <!-- Recommendations Section -->
-    <section id="recommendations" class="recommendations">
-      <h2>Top Eco-Friendly Recommendations</h2>
-      <div class="recommendation-list">
-        <div class="recommendation-item">
-          <h3>Brand 1</h3>
-          <p>Eco-friendly clothing made from sustainable materials.</p>
-        </div>
-        <div class="recommendation-item">
-          <h3>Brand 2</h3>
-          <p>Organic food with a focus on sustainable farming practices.</p>
-        </div>
-        <div class="recommendation-item">
-          <h3>Brand 3</h3>
-          <p>Zero-waste products for an eco-conscious lifestyle.</p>
-        </div>
-        <div class="recommendation-item">
-          <h3>Brand 4</h3>
-          <p>Reusable items and eco-friendly alternatives to daily products.</p>
-        </div>
-        <div class="recommendation-item">
-          <h3>Brand 5</h3>
-          <p>Environmentally friendly fashion with a focus on fair labor practices.</p>
-        </div>
-      </div>
+    <!-- Search Section -->
+    <section id="search" class="search">
+      <h2>What Are You Looking For?</h2>
+      <form id="searchForm">
+        <input type="text" id="searchQuery" placeholder="Enter a product or category (e.g., clothing, food)" required>
+        <button type="submit">Search</button>
+      </form>
+
+      <div id="recommendations" class="recommendations"></div>
     </section>
 
     <!-- Contact Section -->
