@@ -1,150 +1,69 @@
-/* General Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-}
-
 body {
-  background-color: #f4f4f4;
-  color: #333;
-}
-
-a {
-  color: #2c6b2f;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-  background-color: #2c6b2f;
-  color: white;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background-color: #2D6A4F;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 
-header .logo h1 {
-  font-size: 2rem;
+header h1 {
+    margin: 0;
+    font-size: 3rem;
 }
 
-nav a {
-  margin: 0 15px;
-  font-size: 1rem;
-  text-transform: uppercase;
+header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
 }
 
-.hero {
-  background: url('eco-friendly-hero.jpg') no-repeat center center/cover;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
+main {
+    padding: 20px;
+    text-align: center;
 }
 
-.hero-text h2 {
-  font-size: 3rem;
-  margin-bottom: 15px;
+.search-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.hero-text p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto;
+.search-section input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-section {
-  padding: 2rem;
-  margin: 1rem 0;
+.search-section button {
+    padding: 10px 20px;
+    background-color: #2D6A4F;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.about, .contact, .search {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.about h2, .search h2, .contact h2 {
-  font-size: 2rem;
-  color: #2c6b2f;
-}
-
-.search form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.search form input {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  flex: 1;
-}
-
-.search form button {
-  background-color: #2c6b2f;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.search form button:hover {
-  background-color: #238b28;
-}
-
-.recommendation-item {
-  background-color: #e9f7e5;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.recommendation-item h3 {
-  font-size: 1.5rem;
-  color: #2c6b2f;
-}
-
-.contact form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact form input, .contact form textarea {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.contact form button {
-  background-color: #2c6b2f;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.contact form button:hover {
-  background-color: #238b28;
+.search-section button:hover {
+    background-color: #1F4D3D;
 }
 
 footer {
-  background-color: #2c6b2f;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  font-size: 1rem;
+    background-color: #2D6A4F;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
