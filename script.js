@@ -76,3 +76,6 @@ function showRecommendations() {
         recommendations.innerHTML = "<p>Please enter a search term.</p>";
     }
 }
+
+// Event listener for the search button
+document.getElementById("search-btn").addEventListener("click", showRecommendations);
