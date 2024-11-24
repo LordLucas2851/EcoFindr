@@ -18,15 +18,15 @@ const ecoFriendlyWebsites = [
   // Add more eco-friendly websites as needed...
 ];
 
-// List of keywords for product categories
+// List of keywords for product categories (including all your terms)
 const ecoKeywords = {
   clothing: [
     'shirts', 'pants', 't-shirts', 'sweaters', 'jeans', 'dresses', 'jackets', 'shorts', 'socks', 'outerwear', 'suits', 'leggings',
     'blouses', 'skirts', 'hats', 'gloves', 'scarves', 'activewear', 'sweatshirts', 'hoodies', 'workwear', 'tote bags', 'belts', 'underwear',
     'swimwear', 'pajamas', 'vests', 'shoes', 'boots', 'sandals', 'slippers', 'clothing', 'fashion', 'eco-friendly clothing', 'sustainable fashion',
     'garments', 'jackets', 'coats', 'apparel', 'vests', 'blazers', 'suits', 'fabrics', 'outerwear', 'boots', 'footwear', 'fashionable', 'trendy', 'eco',
-    'green', 'natural', 'organic', 'fairtrade', 'minimal', 'conscious', 'clothes', 'wearable', 'textiles', 'outerwear', 'eco-conscious', 'durable', 'recycled',
-    'vintage', 'boho', 'athletic', 'streetwear', 'sustainable', 'recycled materials', 'fairtrade clothing', 'organic cotton', 'upcycled', 'recycled fashion', 'greenwear', 'eco-wear', 'ethical fashion'
+    'green', 'natural', 'organic', 'fairtrade', 'minimal', 'conscious', 'clothes', 'wearable', 'textiles', 'outerwear', 'eco-conscious', 'durable', 'recycled', 
+    'fabrics', 'cotton', 'wool', 'linen', 'recycled fibers', 'sustainable materials', 'handmade', 'recyclable', 'biodegradable', 'ethical', 'fairtrade', 'green fashion', 'non-toxic', 'environmentally friendly', 'eco fabric', 'clothing brand'
   ],
   food: [
     'organic food', 'local food', 'vegan', 'plant-based', 'fair trade', 'gluten-free', 'vegetables', 'fruits', 'sustainable food', 'snacks',
@@ -34,16 +34,17 @@ const ecoKeywords = {
     'natural food', 'clean food', 'whole foods', 'organic snacks', 'sustainable eating', 'plant-based food', 'vegan snacks', 'superfoods', 'meatless',
     'veggie', 'wildcrafted', 'local', 'farm-fresh', 'natural', 'health-conscious', 'preservative-free', 'holistic', 'fresh', 'ethically grown',
     'green', 'nutritious', 'whole', 'plant', 'fairtrade', 'sustainably grown', 'organic', 'food waste', 'environmentally friendly', 'earth-friendly',
-    'herbal', 'raw', 'free-range', 'eco-friendly', 'nutritious', 'freshly grown', 'organic produce', 'slow food', 'clean eating', 'healthier'
+    'herbal', 'raw', 'free-range', 'eco-friendly', 'nutritious', 'freshly grown', 'gmo-free', 'meat', 'meat-free', 'sustainable meat', 'vegan food', 'plant-based protein', 'gluten-free food', 'bio', 'paleo'
   ],
   accessories: [
     'sustainable bags', 'eco-friendly wallets', 'recycled jewelry', 'vegan shoes', 'solar-powered gadgets', 'eco-friendly watches',
     'upcycled furniture', 'bamboo toothbrushes', 'biodegradable products', 'compostable bags', 'reusable straws', 'water bottles', 
-    'reusable bags', 'wooden watches', 'eco bags', 'sustainable accessories', 'eco jewelry', 'green products', 'organic accessories', 
-    'upcycled products', 'sustainable tech', 'recycled accessories', 'green gadgets', 'eco-conscious items', 'natural products', 
-    'bamboo products', 'plastic-free', 'handmade', 'vintage accessories', 'eco-friendly decor', 'upcycled clothing', 'recyclable goods', 
-    'fairtrade accessories', 'natural fibers', 'organic cotton', 'renewable materials', 'non-toxic', 'zero-waste', 'environmentally-friendly', 
-    'eco-conscious fashion', 'ethical goods', 'handmade jewelry', 'green accessories', 'organic materials', 'vegan accessories', 'eco-pouches', 'clutches'
+    'reusable bags', 'wooden watches', 'eco bags', 'sustainable accessories', 'recyclable bags', 'earrings', 'bracelets', 'necklaces',
+    'scarf', 'hats', 'belts', 'sunglasses', 'bags', 'backpacks', 'fanny packs', 'earrings', 'watches', 'fashion accessories', 'handmade jewelry',
+    'eco fashion', 'natural materials', 'recycled material', 'sustainable jewelry', 'sustainable bags', 'recycled backpacks', 'bamboo products', 'zero waste', 
+    'biodegradable', 'solar accessories', 'bamboo bags', 'recycled fashion', 'eco accessories', 'upcycled jewelry', 'reusable goods', 'eco-friendly phone cases',
+    'vintage', 'non-toxic', 'handmade bags', 'eco wallets', 'minimalist accessories', 'fashionable', 'trendy', 'stylish', 'green accessories', 'fairtrade',
+    'handmade', 'recycled', 'conscious', 'reclaimed', 'ethical', 'eco-conscious'
   ]
 };
 
@@ -52,11 +53,15 @@ function searchProducts() {
   const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
   const results = [];
 
+  // Split the search query into individual words
+  const queryWords = searchQuery.split(' ');
+
   // Check each category for relevant keywords
   for (const [category, keywords] of Object.entries(ecoKeywords)) {
-    // Check if any keyword partially matches the search query (case-insensitive)
+    // For each keyword, check if any of the words in the search query match or partially match
     for (const keyword of keywords) {
-      if (searchQuery.includes(keyword.toLowerCase())) {
+      // Check if any of the query words match the keyword (partial match)
+      if (queryWords.some(queryWord => queryWord.includes(keyword.toLowerCase()))) {
         results.push(...ecoFriendlyWebsites);
         break;  // Break if at least one keyword matches
       }
