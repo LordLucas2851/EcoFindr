@@ -1,121 +1,83 @@
-// Store eco-friendly website recommendations with descriptions
-const recommendations = {
+// List of eco-friendly websites with descriptions
+const ecoFriendlyWebsites = [
+  { name: 'Patagonia', url: 'https://www.patagonia.com', description: 'Sustainable outdoor gear and apparel.' },
+  { name: 'Etsy', url: 'https://www.etsy.com', description: 'Marketplace for handmade, vintage, and eco-friendly products.' },
+  { name: 'Everlane', url: 'https://www.everlane.com', description: 'Transparent and sustainable clothing and accessories.' },
+  { name: 'Reformation', url: 'https://www.thereformation.com', description: 'Eco-friendly fashion with a focus on sustainability.' },
+  { name: 'Allbirds', url: 'https://www.allbirds.com', description: 'Footwear made from renewable materials like merino wool.' },
+  { name: 'Toms', url: 'https://www.toms.com', description: 'Shoe company that gives back with every purchase.' },
+  { name: 'Pact', url: 'https://www.wearpact.com', description: 'Organic cotton apparel with fair trade certification.' },
+  { name: 'Tentree', url: 'https://www.tentree.com', description: 'Sustainable clothing with a focus on planting trees.' },
+  { name: 'ThredUp', url: 'https://www.thredup.com', description: 'Secondhand clothing with a mission to reduce waste.' },
+  { name: 'Seventh Generation', url: 'https://www.seventhgeneration.com', description: 'Eco-friendly household cleaning products.' },
+  { name: 'The Honest Company', url: 'https://www.honest.com', description: 'Non-toxic household and personal care products.' },
+  { name: 'Hydro Flask', url: 'https://www.hydroflask.com', description: 'Eco-friendly water bottles and accessories.' },
+  { name: 'Dr. Bronner’s', url: 'https://www.drbronner.com', description: 'Certified organic and fair trade personal care products.' },
+  { name: 'Fairphone', url: 'https://www.fairphone.com', description: 'Sustainable smartphones with ethically sourced materials.' },
+  { name: 'Bumblebee', url: 'https://www.bumblebee.com', description: 'Sustainable seafood from a company committed to environmental responsibility.' },
+  // Add more eco-friendly websites as needed
+];
+
+// List of keywords for product categories (including all your terms)
+const ecoKeywords = {
   clothing: [
-    { 
-      name: "Patagonia", 
-      link: "https://www.patagonia.com", 
-      description: "Patagonia is committed to using sustainable materials and ethical manufacturing practices. They prioritize environmental responsibility and provide high-quality outdoor apparel." 
-    },
-    { 
-      name: "Everlane", 
-      link: "https://www.everlane.com", 
-      description: "Everlane offers modern essentials and operates with full transparency, focusing on ethical sourcing, sustainable materials, and fair wages." 
-    },
-    { 
-      name: "Reformation", 
-      link: "https://www.thereformation.com", 
-      description: "Reformation is a fashion brand that creates eco-friendly clothing using sustainable materials and practices. Their designs are stylish, yet environmentally conscious." 
-    },
-    { 
-      name: "Pact", 
-      link: "https://wearpact.com", 
-      description: "Pact creates organic, Fair Trade certified clothing. Their collections include basics made from sustainable materials that are gentle on the planet." 
-    },
-    { 
-      name: "Allbirds", 
-      link: "https://www.allbirds.com", 
-      description: "Allbirds makes shoes and apparel from natural materials like merino wool and eucalyptus tree fibers, aiming to create products with a minimal environmental footprint." 
-    }
+    'shirts', 'pants', 't-shirts', 'sweaters', 'jeans', 'dresses', 'jackets', 'shorts', 'socks', 'outerwear', 'suits', 'leggings',
+    'blouses', 'skirts', 'hats', 'gloves', 'scarves', 'activewear', 'sweatshirts', 'hoodies', 'workwear', 'tote bags', 'belts', 'underwear',
+    'swimwear', 'pajamas', 'vests', 'shoes', 'boots', 'sandals', 'slippers', 'clothing', 'fashion', 'eco-friendly clothing', 'sustainable fashion',
+    'apparel', 'outerwear', 'footwear', 'activewear', 'organic', 'vintage', 'eco', 'ethical', 'fair trade', 'recycled'
   ],
   food: [
-    { 
-      name: "Thrive Market", 
-      link: "https://www.thrivemarket.com", 
-      description: "Thrive Market is an online marketplace offering organic, non-GMO foods at affordable prices. They focus on sustainability and ethical sourcing." 
-    },
-    { 
-      name: "Imperfect Foods", 
-      link: "https://www.imperfectfoods.com", 
-      description: "Imperfect Foods helps reduce food waste by delivering surplus groceries directly to consumers, offering organic and sustainably sourced options." 
-    },
-    { 
-      name: "Farm Fresh To You", 
-      link: "https://www.farmfreshtoyou.com", 
-      description: "Farm Fresh To You delivers organic produce straight from family farms to your door, ensuring both freshness and sustainability." 
-    },
-    { 
-      name: "Green Chef", 
-      link: "https://www.greenchef.com", 
-      description: "Green Chef offers organic meal kits with sustainable ingredients, providing health-conscious meals while supporting sustainable farming practices." 
-    },
-    { 
-      name: "Sun Basket", 
-      link: "https://www.sunbasket.com", 
-      description: "Sun Basket provides organic and clean ingredients for meal kits, focusing on sustainable sourcing and offering a variety of dietary options." 
-    }
+    'organic food', 'local food', 'vegan', 'plant-based', 'fair trade', 'gluten-free', 'vegetables', 'fruits', 'sustainable food', 'snacks',
+    'grains', 'dairy-free', 'non-GMO', 'ethically sourced', 'eco-friendly food', 'zero waste food', 'health foods', 'green food', 'raw foods',
+    'natural food', 'clean food', 'whole foods', 'organic snacks', 'sustainable eating', 'plant-based food', 'vegan snacks', 'superfoods',
+    'herbs', 'tea', 'eco snacks', 'plant-based', 'organic produce', 'ethically sourced food', 'sustainable agriculture', 'clean eating'
   ],
-  homeGoods: [
-    { 
-      name: "The Citizenry", 
-      link: "https://www.the-citizenry.com", 
-      description: "The Citizenry offers globally sourced, handmade home goods that are ethically produced, with a focus on craftsmanship and sustainability." 
-    },
-    { 
-      name: "Avocado Green Mattress", 
-      link: "https://www.avocadogreenmattress.com", 
-      description: "Avocado Green Mattress creates eco-friendly mattresses using organic, non-toxic materials. They focus on sustainability and environmental impact." 
-    },
-    { 
-      name: "Parachute", 
-      link: "https://www.parachutehome.com", 
-      description: "Parachute offers high-quality, ethically made bedding and home goods using natural materials, ensuring comfort and sustainability." 
-    },
-    { 
-      name: "Brooklinen", 
-      link: "https://www.brooklinen.com", 
-      description: "Brooklinen offers luxury home essentials made from sustainable materials, focusing on comfort and ethical manufacturing practices." 
-    },
-    { 
-      name: "Sustainable Furnishings Council", 
-      link: "https://www.sustainablefurnishings.org", 
-      description: "The Sustainable Furnishings Council advocates for eco-friendly home furnishings by promoting responsible sourcing and reducing environmental impacts." 
-    }
+  accessories: [
+    'sustainable bags', 'eco-friendly wallets', 'recycled jewelry', 'vegan shoes', 'solar-powered gadgets', 'eco-friendly watches',
+    'upcycled furniture', 'bamboo toothbrushes', 'biodegradable products', 'compostable bags', 'reusable straws', 'water bottles', 
+    'reusable bags', 'wooden watches', 'eco bags', 'sustainable accessories', 'eco jewelry', 'green products', 'organic accessories', 
+    'upcycled products', 'sustainable tech', 'recycled accessories', 'green gadgets', 'eco-conscious items', 'ethical tech', 'biodegradable'
   ]
 };
 
-// Product keywords for search matching
-const productKeywords = {
-  clothing: ["pants", "shirts", "shoes", "t-shirts", "sweaters", "dresses", "jackets", "swimwear", "apparel", "fashion", "outwear", "clothing", "jeans", "activewear"],
-  food: ["organic", "vegan", "sustainable", "local", "plant-based", "fair trade", "non-GMO", "health food", "eco-friendly food", "natural food", "sustainable food", "organic food", "fresh produce"],
-  homeGoods: ["furniture", "home decor", "organic bedding", "mattresses", "home accessories", "handmade goods", "eco-friendly furniture", "sustainable home goods", "natural materials", "bedding", "green home", "sustainable furniture"]
-};
-
-// Function to search for products
+// Function to perform the search
 function searchProducts() {
-  const query = document.getElementById("searchInput").value.toLowerCase();
-  let categoryMatch = null;
+  const searchInput = document.getElementById('searchInput').value.toLowerCase();
+  const recList = document.getElementById('recList');
+  recList.innerHTML = '';  // Clear previous recommendations
 
-  // Determine which category the search falls under
-  for (const category in productKeywords) {
-    const keywords = productKeywords[category];
-    if (keywords.some(keyword => query.includes(keyword))) {
-      categoryMatch = category;
-      break;
-    }
+  // Check if input matches any category keywords
+  let matchedKeywords = [];
+
+  for (const category in ecoKeywords) {
+    ecoKeywords[category].forEach(keyword => {
+      if (searchInput.includes(keyword)) {
+        matchedKeywords.push(category);
+      }
+    });
   }
 
-  // Display recommendations based on category match
-  const resultContainer = document.getElementById("recommendations").querySelector("ul");
-  resultContainer.innerHTML = "";
-
-  if (categoryMatch) {
-    const categoryRecommendations = recommendations[categoryMatch];
-    categoryRecommendations.slice(0, 3).forEach(rec => {
-      const listItem = document.createElement("li");
-      listItem.innerHTML = `<strong><a href="${rec.link}" target="_blank">${rec.name}</a></strong>: ${rec.description}`;
-      resultContainer.appendChild(listItem);
+  if (matchedKeywords.length > 0) {
+    // Get 3 random eco-friendly websites
+    const randomWebsites = getRandomWebsites(3);
+    randomWebsites.forEach(website => {
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `
+        <a href="${website.url}" target="_blank">${website.name}</a>
+        <p class="description">${website.description}</p>
+      `;
+      recList.appendChild(listItem);
     });
   } else {
-    resultContainer.innerHTML = "<p>No recommendations found for your search. Try searching for something else!</p>";
+    // Show message if no match found
+    const noMatchMessage = document.createElement('p');
+    noMatchMessage.innerText = 'No recommendations found for your search.';
+    recList.appendChild(noMatchMessage);
   }
+}
+
+// Function to get random websites
+function getRandomWebsites(num) {
+  const shuffled = ecoFriendlyWebsites.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, num);
 }
