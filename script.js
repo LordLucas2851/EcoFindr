@@ -18,33 +18,28 @@ const ecoFriendlyWebsites = [
   // Add more eco-friendly websites as needed...
 ];
 
-// List of keywords for product categories (including all your terms)
+// List of generic one-word keywords for product categories
 const ecoKeywords = {
   clothing: [
-    'shirts', 'pants', 't-shirts', 'sweaters', 'jeans', 'dresses', 'jackets', 'shorts', 'socks', 'outerwear', 'suits', 'leggings',
-    'blouses', 'skirts', 'hats', 'gloves', 'scarves', 'activewear', 'sweatshirts', 'hoodies', 'workwear', 'tote bags', 'belts', 'underwear',
-    'swimwear', 'pajamas', 'vests', 'shoes', 'boots', 'sandals', 'slippers', 'clothing', 'fashion', 'eco-friendly clothing', 'sustainable fashion',
-    'garments', 'jackets', 'coats', 'apparel', 'vests', 'blazers', 'suits', 'fabrics', 'outerwear', 'boots', 'footwear', 'fashionable', 'trendy', 'eco',
-    'green', 'natural', 'organic', 'fairtrade', 'minimal', 'conscious', 'clothes', 'wearable', 'textiles', 'outerwear', 'eco-conscious', 'durable', 'recycled', 
-    'fabrics', 'cotton', 'wool', 'linen', 'recycled fibers', 'sustainable materials', 'handmade', 'recyclable', 'biodegradable', 'ethical', 'fairtrade', 'green fashion', 'non-toxic', 'environmentally friendly', 'eco fabric', 'clothing brand'
+    'shirts', 'pants', 't-shirts', 'sweaters', 'jeans', 'dresses', 'jackets', 'shorts', 'socks', 'outerwear', 'leggings',
+    'blouses', 'skirts', 'hats', 'gloves', 'scarves', 'activewear', 'sweatshirts', 'hoodies', 'workwear', 'underwear', 
+    'swimwear', 'pajamas', 'vests', 'shoes', 'boots', 'sandals', 'slippers', 'tote', 'belts', 'blazers', 'coats', 'garments', 
+    'fabrics', 'jackets', 'clothing', 'fashion', 'green', 'eco', 'minimal', 'conscious', 'natural', 'organic', 'sustainable', 
+    'handmade', 'recycled', 'durable', 'recyclable', 'biodegradable', 'ethical', 'fairtrade', 'non-toxic'
   ],
   food: [
-    'organic food', 'local food', 'vegan', 'plant-based', 'fair trade', 'gluten-free', 'vegetables', 'fruits', 'sustainable food', 'snacks',
-    'grains', 'dairy-free', 'non-GMO', 'ethically sourced', 'eco-friendly food', 'zero waste food', 'health foods', 'green food', 'raw foods',
-    'natural food', 'clean food', 'whole foods', 'organic snacks', 'sustainable eating', 'plant-based food', 'vegan snacks', 'superfoods', 'meatless',
-    'veggie', 'wildcrafted', 'local', 'farm-fresh', 'natural', 'health-conscious', 'preservative-free', 'holistic', 'fresh', 'ethically grown',
-    'green', 'nutritious', 'whole', 'plant', 'fairtrade', 'sustainably grown', 'organic', 'food waste', 'environmentally friendly', 'earth-friendly',
-    'herbal', 'raw', 'free-range', 'eco-friendly', 'nutritious', 'freshly grown', 'gmo-free', 'meat', 'meat-free', 'sustainable meat', 'vegan food', 'plant-based protein', 'gluten-free food', 'bio', 'paleo'
+    'organic', 'vegan', 'vegetables', 'fruits', 'snacks', 'grains', 'dairy-free', 'gluten-free', 'non-GMO', 'health', 
+    'green', 'raw', 'whole', 'superfoods', 'meatless', 'fresh', 'local', 'natural', 'clean', 'sustainable', 
+    'eco-friendly', 'earth-friendly', 'herbal', 'free-range', 'nutritious', 'gmo-free', 'bio', 'paleo', 'plant-based', 
+    'holistic', 'freshly', 'fairtrade', 'ethically', 'balanced', 'nutrient', 'holistic', 'farm-fresh', 'seasonal', 
+    'local', 'preservative-free', 'food', 'green', 'plant', 'herbal', 'non-toxic', 'wholesome', 'pure'
   ],
   accessories: [
-    'sustainable bags', 'eco-friendly wallets', 'recycled jewelry', 'vegan shoes', 'solar-powered gadgets', 'eco-friendly watches',
-    'upcycled furniture', 'bamboo toothbrushes', 'biodegradable products', 'compostable bags', 'reusable straws', 'water bottles', 
-    'reusable bags', 'wooden watches', 'eco bags', 'sustainable accessories', 'recyclable bags', 'earrings', 'bracelets', 'necklaces',
-    'scarf', 'hats', 'belts', 'sunglasses', 'bags', 'backpacks', 'fanny packs', 'earrings', 'watches', 'fashion accessories', 'handmade jewelry',
-    'eco fashion', 'natural materials', 'recycled material', 'sustainable jewelry', 'sustainable bags', 'recycled backpacks', 'bamboo products', 'zero waste', 
-    'biodegradable', 'solar accessories', 'bamboo bags', 'recycled fashion', 'eco accessories', 'upcycled jewelry', 'reusable goods', 'eco-friendly phone cases',
-    'vintage', 'non-toxic', 'handmade bags', 'eco wallets', 'minimalist accessories', 'fashionable', 'trendy', 'stylish', 'green accessories', 'fairtrade',
-    'handmade', 'recycled', 'conscious', 'reclaimed', 'ethical', 'eco-conscious'
+    'bags', 'wallets', 'shoes', 'watches', 'jewelry', 'scarves', 'hats', 'belts', 'sunglasses', 'necklaces', 
+    'bracelets', 'fanny', 'earrings', 'phone', 'cases', 'clutches', 'pins', 'tote', 'backpacks', 'purses', 
+    'bags', 'earrings', 'accessories', 'reusable', 'fashion', 'eco', 'natural', 'bamboo', 'recycled', 'solar', 
+    'biodegradable', 'minimalist', 'vintage', 'handmade', 'upcycled', 'wooden', 'sustainable', 'recyclable', 
+    'plastic-free', 'non-toxic', 'green', 'ethical', 'conscious', 'stylish', 'trendy', 'durable', 'fairtrade'
   ]
 };
 
@@ -58,10 +53,10 @@ function searchProducts() {
 
   // Check each category for relevant keywords
   for (const [category, keywords] of Object.entries(ecoKeywords)) {
-    // For each keyword, check if any of the words in the search query match exactly
+    // For each keyword, check if any of the words in the search query match or partially match
     for (const keyword of keywords) {
-      // Check for exact match
-      if (queryWords.some(queryWord => queryWord === keyword.toLowerCase())) {
+      // Check if any of the query words match the keyword (partial match)
+      if (queryWords.some(queryWord => queryWord.includes(keyword.toLowerCase()))) {
         results.push(...ecoFriendlyWebsites);
         break;  // Break if at least one keyword matches
       }
