@@ -23,7 +23,7 @@
   <div class="container">
     <div class="intro-section">
       <h2>Find Eco-Friendly Products</h2>
-      <p>Looking for sustainable, eco-friendly options for clothing, food, or more? Enter your search below, and we'll recommend brands that fit your needs!</p>
+      <p>Enter what you're looking for (e.g., "eco-friendly clothing," "sustainable food") and we'll give you the best recommendations!</p>
     </div>
 
     <!-- Search Section -->
@@ -45,32 +45,54 @@
 
   <!-- Script -->
   <script type="module">
-    // List of Eco-friendly websites/brands
-    const ecoWebsites = [
-      { name: "Patagonia", url: "https://www.patagonia.com" },
-      { name: "Etsy", url: "https://www.etsy.com" },
-      { name: "EarthHero", url: "https://earthhero.com" },
-      { name: "Allbirds", url: "https://www.allbirds.com" },
-      { name: "Thrive Market", url: "https://www.thrivemarket.com" },
-      { name: "Bumblebee", url: "https://www.bumblebeepower.com" },
-      { name: "Reformation", url: "https://www.thereformation.com" },
-      { name: "Honest Company", url: "https://www.honest.com" },
-      { name: "Pela", url: "https://www.pelacase.com" },
-      { name: "Seventh Generation", url: "https://www.seventhgeneration.com" },
-      // Add more as needed, total of 100
-    ];
+    // Categorized Eco-friendly websites/brands based on product types
+    const ecoWebsites = {
+      clothing: [
+        { name: "Patagonia", url: "https://www.patagonia.com" },
+        { name: "Reformation", url: "https://www.thereformation.com" },
+        { name: "Allbirds", url: "https://www.allbirds.com" },
+        { name: "Pela", url: "https://www.pelacase.com" },
+        { name: "Everlane", url: "https://www.everlane.com" },
+        // Add more clothing-related eco-friendly sites
+      ],
+      food: [
+        { name: "Thrive Market", url: "https://www.thrivemarket.com" },
+        { name: "Green Chef", url: "https://www.greenchef.com" },
+        { name: "Imperfect Foods", url: "https://www.imperfectfoods.com" },
+        { name: "Farmbox Direct", url: "https://www.farmboxdirect.com" },
+        { name: "Sun Basket", url: "https://www.sunbasket.com" },
+        // Add more food-related eco-friendly sites
+      ],
+      homeGoods: [
+        { name: "EarthHero", url: "https://earthhero.com" },
+        { name: "The Honest Company", url: "https://www.honest.com" },
+        { name: "Seventh Generation", url: "https://www.seventhgeneration.com" },
+        { name: "Blueland", url: "https://www.blueland.com" },
+        { name: "Grove Collaborative", url: "https://www.grove.co" },
+        // Add more home goods-related eco-friendly sites
+      ],
+      // Add other categories like "beauty," "tech," etc.
+    };
 
-    // Search function
+    // Function to search and filter results based on input
     document.getElementById("search-btn").addEventListener("click", function() {
       const query = document.getElementById("search-input").value.toLowerCase();
-      const filteredResults = ecoWebsites.filter(website =>
-        website.name.toLowerCase().includes(query) || website.url.toLowerCase().includes(query)
-      );
+      let results = [];
 
-      displayResults(filteredResults);
+      // Search through categories and match user input
+      Object.keys(ecoWebsites).forEach(category => {
+        ecoWebsites[category].forEach(website => {
+          if (website.name.toLowerCase().includes(query) || website.url.toLowerCase().includes(query)) {
+            results.push(website);
+          }
+        });
+      });
+
+      // Display the top 3 recommendations based on the user's input
+      displayResults(results.slice(0, 3)); // Show only the first 3 matches
     });
 
-    // Display search results
+    // Display the search results
     function displayResults(results) {
       const resultsContainer = document.getElementById("results");
       resultsContainer.innerHTML = ""; // Clear previous results
@@ -78,7 +100,7 @@
       if (results.length === 0) {
         resultsContainer.innerHTML = "<p>No recommendations found. Please try again.</p>";
       } else {
-        results.slice(0, 3).forEach(result => {
+        results.forEach(result => {
           const resultItem = document.createElement("div");
           resultItem.classList.add("result-item");
           resultItem.innerHTML = `<a href="${result.url}" target="_blank">${result.name}</a>`;
