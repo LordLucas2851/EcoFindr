@@ -19,18 +19,22 @@
     <p>Find eco-friendly brands for your needs!</p>
   </main>
   <script type="module">
+    // Import Firebase SDK
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
+    // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "your-api-key",
-      authDomain: "your-auth-domain",
-      projectId: "your-project-id",
-      storageBucket: "your-storage-bucket",
-      messagingSenderId: "your-messaging-sender-id",
-      appId: "your-app-id",
+      apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
+      authDomain: "ecofindr-be091.firebaseapp.com",
+      projectId: "ecofindr-be091",
+      storageBucket: "ecofindr-be091.firebasestorage.app",
+      messagingSenderId: "960864865608",
+      appId: "1:960864865608:web:4994220d1cdf9c6d2b777d",
+      measurementId: "G-577X5TWXTT"
     };
 
+    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
@@ -40,6 +44,7 @@
       document.getElementById("signupBtn").addEventListener("click", showSignupForm);
     });
 
+    // Show Login Form
     function showLoginForm() {
       document.querySelector("main").innerHTML = `
         <h2>Login</h2>
@@ -52,6 +57,7 @@
       document.getElementById("loginForm").addEventListener("submit", loginUser);
     }
 
+    // Show Signup Form
     function showSignupForm() {
       document.querySelector("main").innerHTML = `
         <h2>Signup</h2>
@@ -64,6 +70,7 @@
       document.getElementById("signupForm").addEventListener("submit", signupUser);
     }
 
+    // Handle User Login
     async function loginUser(event) {
       event.preventDefault();
       const email = document.getElementById("loginEmail").value;
@@ -77,6 +84,7 @@
       }
     }
 
+    // Handle User Signup
     async function signupUser(event) {
       event.preventDefault();
       const email = document.getElementById("signupEmail").value;
