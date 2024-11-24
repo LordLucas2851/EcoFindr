@@ -3,112 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>EcoFindr - Eco-Friendly Products</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Linking to the external CSS -->
+  <title>EcoFindr</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <h1>EcoFindr</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
+    <h1>EcoFindr: Find Eco-Friendly Products</h1>
   </header>
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="intro-section">
-      <h2>Find Eco-Friendly Products</h2>
-      <p>Enter what you're looking for (e.g., "eco-friendly clothing," "sustainable food") and we'll give you the best recommendations!</p>
-    </div>
+  <section class="search-container">
+    <h2>What are you looking for?</h2>
+    <input type="text" id="searchInput" placeholder="Search for eco-friendly products (e.g., vegan shoes, organic vegetables)">
+    <button onclick="searchProducts()">Search</button>
+  </section>
 
-    <!-- Search Section -->
-    <div id="search-container">
-      <input type="text" id="search-input" placeholder="What are you looking for?" />
-      <button id="search-btn">Search</button>
-    </div>
+  <section id="recommendations">
+    <h3>Recommended Websites</h3>
+    <ul></ul>
+  </section>
 
-    <!-- Results Section -->
-    <div id="results">
-      <!-- Recommendations will be shown here -->
-    </div>
-  </div>
-
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2024 EcoFindr | <a href="#">Privacy Policy</a></p>
+    <p>&copy; 2024 EcoFindr. All rights reserved.</p>
   </footer>
 
-  <!-- Script -->
-  <script type="module">
-    // Categorized Eco-friendly websites/brands based on product types
-    const ecoWebsites = {
-      clothing: [
-        { name: "Patagonia", url: "https://www.patagonia.com" },
-        { name: "Reformation", url: "https://www.thereformation.com" },
-        { name: "Allbirds", url: "https://www.allbirds.com" },
-        { name: "Pela", url: "https://www.pelacase.com" },
-        { name: "Everlane", url: "https://www.everlane.com" },
-        // Add more clothing-related eco-friendly sites
-      ],
-      food: [
-        { name: "Thrive Market", url: "https://www.thrivemarket.com" },
-        { name: "Green Chef", url: "https://www.greenchef.com" },
-        { name: "Imperfect Foods", url: "https://www.imperfectfoods.com" },
-        { name: "Farmbox Direct", url: "https://www.farmboxdirect.com" },
-        { name: "Sun Basket", url: "https://www.sunbasket.com" },
-        // Add more food-related eco-friendly sites
-      ],
-      homeGoods: [
-        { name: "EarthHero", url: "https://earthhero.com" },
-        { name: "The Honest Company", url: "https://www.honest.com" },
-        { name: "Seventh Generation", url: "https://www.seventhgeneration.com" },
-        { name: "Blueland", url: "https://www.blueland.com" },
-        { name: "Grove Collaborative", url: "https://www.grove.co" },
-        // Add more home goods-related eco-friendly sites
-      ],
-      // Add other categories like "beauty," "tech," etc.
-    };
-
-    // Function to search and filter results based on input
-    document.getElementById("search-btn").addEventListener("click", function() {
-      const query = document.getElementById("search-input").value.toLowerCase();
-      let results = [];
-
-      // Search through categories and match user input
-      Object.keys(ecoWebsites).forEach(category => {
-        ecoWebsites[category].forEach(website => {
-          if (website.name.toLowerCase().includes(query) || website.url.toLowerCase().includes(query)) {
-            results.push(website);
-          }
-        });
-      });
-
-      // Display the top 3 recommendations based on the user's input
-      displayResults(results.slice(0, 3)); // Show only the first 3 matches
-    });
-
-    // Display the search results
-    function displayResults(results) {
-      const resultsContainer = document.getElementById("results");
-      resultsContainer.innerHTML = ""; // Clear previous results
-
-      if (results.length === 0) {
-        resultsContainer.innerHTML = "<p>No recommendations found. Please try again.</p>";
-      } else {
-        results.forEach(result => {
-          const resultItem = document.createElement("div");
-          resultItem.classList.add("result-item");
-          resultItem.innerHTML = `<a href="${result.url}" target="_blank">${result.name}</a>`;
-          resultsContainer.appendChild(resultItem);
-        });
-      }
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
