@@ -19,32 +19,29 @@
     <p>Find eco-friendly brands for your needs!</p>
   </main>
   <script type="module">
-    // Import Firebase using your provided CDN
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-    // Your Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyBq9shDTSKIE7lfO8ydnuThm_JxOHMBSfc",
-      authDomain: "ecofindr-be091.firebaseapp.com",
-      projectId: "ecofindr-be091",
-      storageBucket: "ecofindr-be091.firebasestorage.app",
-      messagingSenderId: "960864865608",
-      appId: "1:960864865608:web:4994220d1cdf9c6d2b777d",
-      measurementId: "G-577X5TWXTT"
+      apiKey: "your-api-key",
+      authDomain: "your-auth-domain",
+      projectId: "your-project-id",
+      storageBucket: "your-storage-bucket",
+      messagingSenderId: "your-messaging-sender-id",
+      appId: "your-app-id",
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Event listeners for login and signup
-    document.getElementById('loginBtn').addEventListener('click', showLoginForm);
-    document.getElementById('signupBtn').addEventListener('click', showSignupForm);
+    // Wait for DOM to load
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("loginBtn").addEventListener("click", showLoginForm);
+      document.getElementById("signupBtn").addEventListener("click", showSignupForm);
+    });
 
-    // Functions to show forms dynamically
     function showLoginForm() {
-      document.querySelector('main').innerHTML = `
+      document.querySelector("main").innerHTML = `
         <h2>Login</h2>
         <form id="loginForm">
           <input type="email" id="loginEmail" placeholder="Email" required>
@@ -52,11 +49,11 @@
           <button type="submit">Login</button>
         </form>
       `;
-      document.getElementById('loginForm').addEventListener('submit', loginUser);
+      document.getElementById("loginForm").addEventListener("submit", loginUser);
     }
 
     function showSignupForm() {
-      document.querySelector('main').innerHTML = `
+      document.querySelector("main").innerHTML = `
         <h2>Signup</h2>
         <form id="signupForm">
           <input type="email" id="signupEmail" placeholder="Email" required>
@@ -64,18 +61,17 @@
           <button type="submit">Signup</button>
         </form>
       `;
-      document.getElementById('signupForm').addEventListener('submit', signupUser);
+      document.getElementById("signupForm").addEventListener("submit", signupUser);
     }
 
     async function loginUser(event) {
       event.preventDefault();
-      const email = document.getElementById('loginEmail').value;
-      const password = document.getElementById('loginPassword').value;
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
 
       try {
         await signInWithEmailAndPassword(auth, email, password);
-        alert('Login successful!');
-        showRecommendationsPage();
+        alert("Login successful!");
       } catch (error) {
         alert(`Login failed: ${error.message}`);
       }
@@ -83,55 +79,15 @@
 
     async function signupUser(event) {
       event.preventDefault();
-      const email = document.getElementById('signupEmail').value;
-      const password = document.getElementById('signupPassword').value;
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
 
       try {
         await createUserWithEmailAndPassword(auth, email, password);
-        alert('Signup successful!');
-        showRecommendationsPage();
+        alert("Signup successful!");
       } catch (error) {
         alert(`Signup failed: ${error.message}`);
       }
-    }
-
-    function showRecommendationsPage() {
-      document.querySelector('main').innerHTML = `
-        <h2>Recommendations</h2>
-        <label for="category">Choose a category:</label>
-        <select id="category">
-          <option value="clothing">Clothing</option>
-          <option value="food">Food</option>
-        </select>
-        <button id="getRecommendations">Get Recommendations</button>
-        <div id="recommendations"></div>
-      `;
-      document.getElementById('getRecommendations').addEventListener('click', showRecommendations);
-    }
-
-    function showRecommendations() {
-      const category = document.getElementById('category').value;
-      const recommendations = {
-        clothing: [
-          "Patagonia",
-          "Everlane",
-          "Eileen Fisher",
-          "Reformation",
-          "Outerknown"
-        ],
-        food: [
-          "Whole Foods Market",
-          "Thrive Market",
-          "Farmbox Direct",
-          "Misfits Market",
-          "Imperfect Foods"
-        ]
-      };
-      document.getElementById('recommendations').innerHTML = `
-        <ul>
-          ${recommendations[category].map(item => `<li>${item}</li>`).join('')}
-        </ul>
-      `;
     }
   </script>
 </body>
