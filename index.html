@@ -3,138 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoFindr | Eco-Friendly Product Recommendations</title>
-  <style>
-    /* Global Styles */
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-
-    h1, h2 {
-      font-family: 'Roboto', sans-serif;
-      color: #4CAF50;
-    }
-
-    h3 {
-      color: #333;
-      font-size: 18px;
-      margin-top: 10px;
-    }
-
-    a {
-      color: #4CAF50;
-      text-decoration: none;
-    }
-
-    /* Header and Navigation */
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 15px 0;
-      text-align: center;
-    }
-
-    header nav {
-      margin-top: 20px;
-    }
-
-    header nav a {
-      margin: 0 15px;
-      font-size: 18px;
-    }
-
-    header nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* Main content */
-    .container {
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .intro-section {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .intro-section h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
-
-    .intro-section p {
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 20px;
-    }
-
-    #search-container {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    input[type="text"] {
-      width: 300px;
-      padding: 10px;
-      font-size: 16px;
-      margin-right: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-
-    /* Results Section */
-    #results {
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .result-item {
-      margin: 10px;
-    }
-
-    .result-item a {
-      font-size: 18px;
-      color: #4CAF50;
-      text-decoration: none;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: white;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EcoFindr - Eco-Friendly Products</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -142,80 +13,78 @@
   <header>
     <h1>EcoFindr</h1>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#search">Search</a>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
     </nav>
   </header>
 
   <!-- Main Content -->
   <div class="container">
-    <!-- Introduction Section -->
-    <div id="home" class="intro-section">
-      <h2>Welcome to EcoFindr!</h2>
-      <p>Discover eco-friendly products and brands that align with your values. Whether you're looking for sustainable fashion, organic food, or green gadgets, EcoFindr helps you find the best eco-conscious products.</p>
-      <p>Just enter a keyword below, and we'll provide a list of eco-friendly options from trusted brands.</p>
+    <div class="intro-section">
+      <h2>Find Eco-Friendly Products</h2>
+      <p>Looking for sustainable, eco-friendly options for clothing, food, or more? Enter your search below, and we'll recommend brands that fit your needs!</p>
     </div>
 
     <!-- Search Section -->
-    <div id="search">
-      <h2>Search for Eco-Friendly Products</h2>
-      <div id="search-container">
-        <input type="text" id="search-input" placeholder="Enter product (e.g., eco-friendly clothing)">
-        <button id="search-button">Search</button>
-      </div>
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="What are you looking for?" />
+      <button id="search-btn">Search</button>
+    </div>
 
-      <!-- Results Section -->
-      <div id="results"></div>
+    <!-- Results Section -->
+    <div id="results">
+      <!-- Recommendations will be shown here -->
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>Made with ❤️ for a sustainable future</p>
-    <p><a href="#about">Learn More About Us</a></p>
+    <p>&copy; 2024 EcoFindr | <a href="#">Privacy Policy</a></p>
   </footer>
 
-  <!-- JavaScript -->
-  <script>
-    const searchButton = document.getElementById('search-button');
-    const searchInput = document.getElementById('search-input');
-    const resultsContainer = document.getElementById('results');
+  <!-- Script -->
+  <script type="module">
+    // List of Eco-friendly websites/brands
+    const ecoWebsites = [
+      { name: "Patagonia", url: "https://www.patagonia.com" },
+      { name: "Etsy", url: "https://www.etsy.com" },
+      { name: "EarthHero", url: "https://earthhero.com" },
+      { name: "Allbirds", url: "https://www.allbirds.com" },
+      { name: "Thrive Market", url: "https://www.thrivemarket.com" },
+      { name: "Bumblebee", url: "https://www.bumblebeepower.com" },
+      { name: "Reformation", url: "https://www.thereformation.com" },
+      { name: "Honest Company", url: "https://www.honest.com" },
+      { name: "Pela", url: "https://www.pelacase.com" },
+      { name: "Seventh Generation", url: "https://www.seventhgeneration.com" },
+      // Add more as needed, total of 100
+    ];
 
-    const apiKey = 'YOUR_ETSY_API_KEY'; // Replace with your actual Etsy API key
+    // Search function
+    document.getElementById("search-btn").addEventListener("click", function() {
+      const query = document.getElementById("search-input").value.toLowerCase();
+      const filteredResults = ecoWebsites.filter(website =>
+        website.name.toLowerCase().includes(query) || website.url.toLowerCase().includes(query)
+      );
 
-    searchButton.addEventListener('click', () => {
-      const query = searchInput.value.trim();
-      if (query) {
-        fetchEtsyProducts(query);
-      }
+      displayResults(filteredResults);
     });
 
-    async function fetchEtsyProducts(query) {
-      try {
-        const url = `https://api.etsy.com/v2/listings/active?keywords=${encodeURIComponent(query)}&api_key=${apiKey}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        
-        if (data.results.length === 0) {
-          resultsContainer.innerHTML = `<p>No eco-friendly products found for "${query}".</p>`;
-        } else {
-          displayResults(data.results);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        resultsContainer.innerHTML = `<p>There was an error fetching the recommendations. Please try again later.</p>`;
-      }
-    }
-
+    // Display search results
     function displayResults(results) {
-      resultsContainer.innerHTML = ''; // Clear previous results
-      results.slice(0, 5).forEach(result => {
-        const resultItem = document.createElement('div');
-        resultItem.classList.add('result-item');
-        resultItem.innerHTML = `<a href="${result.url}" target="_blank">${result.title}</a>`;
-        resultsContainer.appendChild(resultItem);
-      });
+      const resultsContainer = document.getElementById("results");
+      resultsContainer.innerHTML = ""; // Clear previous results
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = "<p>No recommendations found. Please try again.</p>";
+      } else {
+        results.slice(0, 3).forEach(result => {
+          const resultItem = document.createElement("div");
+          resultItem.classList.add("result-item");
+          resultItem.innerHTML = `<a href="${result.url}" target="_blank">${result.name}</a>`;
+          resultsContainer.appendChild(resultItem);
+        });
+      }
     }
   </script>
 
