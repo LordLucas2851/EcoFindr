@@ -1,52 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFindr</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body> 
-    <header>
-        
-    </header>
-    
-    <main>
-        <section id="home" class="hero">
-            <img src="assets/images/Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo-image">
-            <h1>Welcome to EcoFindr</h1>
-            <p>Discover eco-friendly brands, food options, clothing, and sustainable household items!</p>
-        </section>
-        <section id="search" class="search">
-            <h2>Find Eco-Friendly Options</h2>
-            <p>Enter a keyword or category to find sustainable brands and products.</p>
-            <input type="text" id="search-input" placeholder="e.g., organic food, reusable bags, etc.">
-            <button id="search-button">Search</button>
-        </section>
-        <section id="forum" class="forum">
-            <h2>Have a Question?</h2>
-            <p>If you have any questions about EcoFindr, feel free to ask in our forum!</p>
-            <button onclick="window.location.href='forum.html'">Go to Forum</button>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
-    </footer>
-    <script src="assets/js/script.js"></script>
-</body>
-</html> body {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f9f0;
     color: #333;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
     text-align: center;
 }
 
 header {
     background-color: #3c6e47;  
     height: 50px; 
+    width: 100%;
 }
 
 .hero {
@@ -54,6 +23,7 @@ header {
     padding: 2rem;
     background: #228B22;
     color: #fff;
+    width: 100%;
 }
 
 .logo-image {
@@ -66,6 +36,9 @@ header {
 .search, .about, .contact, .forum-section {
     padding: 2rem;
     text-align: center;
+    width: 100%;
+    max-width: 800px; /* Maximum width for each section */
+    margin: 0 auto; /* Centers the content */
 }
 
 .search input {
@@ -135,9 +108,9 @@ header {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
-    width: 100%; 
-    max-width: 800px;
-    margin: 0 auto; 
+    width: 100%;
+    max-width: 800px; /* Ensures forum is centered and doesn't stretch too much */
+    margin: 0 auto;
 }
 
 .question-form textarea {
@@ -174,4 +147,5 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem;
+    width: 100%;
 }
