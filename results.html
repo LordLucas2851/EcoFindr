@@ -1,33 +1,345 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFindr - Search Results</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body>
-    <header>
-        
-    </header>
-    
-    <main>
-        <section id="home" class="hero">
-            <img src="assets/images/Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo-image">
-            <h1>Search Results</h1>
-            <p>Here are eco-friendly recommendations for your search.</p>
-        </section>
-        <section id="search" class="search">
-            <h2>Results for: <span id="search-query"></span></h2>
-            <div id="results" class="results"></div>
-        </section>
-        <section id="go-back">
-            <button id="go-back-button">Go Back to Home</button>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
-    </footer>
-    <script src="assets/js/results.js"></script>
-</body>
-</html>
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('query');
+    const searchQueryElement = document.getElementById('search-query');
+    const resultsDiv = document.getElementById('results');
+
+    searchQueryElement.textContent = query;
+
+    const ecoRecommendations = {
+        food: [
+            { 
+                name: 'Whole Foods Market', 
+                category: 'organic food', 
+                link: 'https://www.wholefoodsmarket.com',
+                description: 'Whole Foods Market offers a wide selection of organic, healthy foods, and eco-friendly products.'
+            },
+            { 
+                name: 'Thrive Market', 
+                category: 'organic food', 
+                link: 'https://www.thrivemarket.com', 
+                description: 'Thrive Market is an online marketplace offering organic, non-GMO, and sustainable food options at wholesale prices.'
+            },
+            { 
+                name: 'Farm Fresh to You', 
+                category: 'organic food delivery', 
+                link: 'https://www.farmfreshtoyou.com', 
+                description: 'Farm Fresh to You delivers fresh, organic produce directly to your door from local farms.'
+            }
+        ],
+        clothing: [
+            { 
+                name: 'Allbirds', 
+                category: 'sustainable clothing', 
+                link: 'https://www.allbirds.com', 
+                description: 'Allbirds creates comfortable, eco-friendly footwear and apparel made from renewable materials like merino wool and eucalyptus fiber.'
+            },
+            { 
+                name: 'Patagonia', 
+                category: 'outdoor clothing', 
+                link: 'https://www.patagonia.com', 
+                description: 'Patagonia is a leading brand for outdoor clothing made from recycled materials and committed to environmental activism.'
+            },
+            { 
+                name: 'Reformation', 
+                category: 'eco-friendly fashion', 
+                link: 'https://www.thereformation.com', 
+                description: 'Reformation creates sustainable fashion with a focus on minimizing waste and reducing environmental impact.'
+            }
+        ],
+        home_appliances: [
+            { 
+                name: 'EcoLife Appliances', 
+                category: 'energy-efficient appliances', 
+                link: 'https://www.ecolifeappliances.com', 
+                description: 'EcoLife Appliances offers a wide range of energy-efficient and environmentally-friendly home appliances.'
+            },
+            { 
+                name: 'Green Living Appliance Store', 
+                category: 'sustainable home appliances', 
+                link: 'https://www.greenlivingappliances.com', 
+                description: 'Green Living offers sustainable, eco-friendly home appliances designed to reduce energy consumption and environmental impact.'
+            },
+            { 
+                name: 'Energy Star', 
+                category: 'energy-saving appliances', 
+                link: 'https://www.energystar.gov', 
+                description: 'Energy Star provides a range of energy-saving home appliances certified to meet environmental and efficiency standards.'
+            }
+        ],
+    };
+
+    const keywordCategories = {
+        bacon: 'food',
+        sausage: 'food',
+        turkey: 'food',
+        beef: 'food',
+        chicken: 'food',
+        pork: 'food',
+        lamb: 'food',
+        duck: 'food',
+        veal: 'food',
+        shrimp: 'food',
+        fish: 'food',
+        salmon: 'food',
+        tuna: 'food',
+        cod: 'food',
+        mutton: 'food',
+        chickenwings: 'food',
+        hamburger: 'food',
+        hotdog: 'food',
+        sandwich: 'food',
+        steak: 'food',
+        ribs: 'food',
+        spaghetti: 'food',
+        pancakes: 'food',
+        waffles: 'food',
+        eggs: 'food',
+        baconandeggs: 'food',
+        oatmeal: 'food',
+        cereal: 'food',
+        toast: 'food',
+        bagel: 'food',
+        croissant: 'food',
+        muffin: 'food',
+        doughnut: 'food',
+        yogurt: 'food',
+        smoothies: 'food',
+        granola: 'food',
+        fruitsalad: 'food',
+        vegetable: 'food',
+        stirfry: 'food',
+        rice: 'food',
+        pasta: 'food',
+        lasagna: 'food',
+        pizza: 'food',
+        burrito: 'food',
+        tacos: 'food',
+        nachos: 'food',
+        quesadilla: 'food',
+        soup: 'food',
+        salad: 'food',
+        chili: 'food',
+        stew: 'food',
+        friedrice: 'food',
+        hummus: 'food',
+        falafel: 'food',
+        wrap: 'food',
+        sandwichwrap: 'food',
+        icecream: 'food',
+        cupcake: 'food',
+        cookie: 'food',
+        cake: 'food',
+        pie: 'food',
+        brownies: 'food',
+        pudding: 'food',
+        jelly: 'food',
+        candy: 'food',
+        chocolate: 'food',
+        chips: 'food',
+        fries: 'food',
+        popcorn: 'food',
+        fruitpunch: 'food',
+        lemonade: 'food',
+        coffee: 'food',
+        tea: 'food',
+        milkshake: 'food',
+        smoothie: 'food',
+        juice: 'food',
+        applejuice: 'food',
+        orangejuice: 'food',
+        lemonade: 'food',
+        tshirts: 'clothing',
+        pants: 'clothing',
+        socks: 'clothing',
+        shoes: 'clothing',
+        hats: 'clothing',
+        jackets: 'clothing',
+        shorts: 'clothing',
+        gloves: 'clothing',
+        sweaters: 'clothing',
+        scarves: 'clothing',
+        boots: 'clothing',
+        dresses: 'clothing',
+        skirts: 'clothing',
+        pajamas: 'clothing',
+        mittens: 'clothing',
+        boots: 'clothing',
+        slippers: 'clothing',
+        shirts: 'clothing',
+        coats: 'clothing',
+        leggings: 'clothing',
+        jeans: 'clothing',
+        overalls: 'clothing',
+        robes: 'clothing',
+        rompers: 'clothing',
+        tights: 'clothing',
+        vests: 'clothing',
+        uniforms: 'clothing',
+        hoodies: 'clothing',
+        uniforms: 'clothing',
+        sandals: 'clothing',
+        slippers: 'clothing',
+        sandals: 'clothing',
+        dresses: 'clothing',
+        shoes: 'clothing',
+        sneakers: 'clothing',
+        comfy: 'clothing',
+        babyclothes: 'clothing',
+        toddlerclothes: 'clothing',
+        raincoats: 'clothing',
+        sweatshirts: 'clothing',
+        leggings: 'clothing',
+        undershirts: 'clothing',
+        sweatpants: 'clothing',
+        warmers: 'clothing',
+        onesies: 'clothing',
+        outfits: 'clothing',
+        sleepwear: 'clothing',
+        jackets: 'clothing',
+        cardigans: 'clothing',
+        thermals: 'clothing',
+        blouses: 'clothing',
+        tunics: 'clothing',
+        pullovers: 'clothing',
+        socks: 'clothing',
+        flipflops: 'clothing',
+        tees: 'clothing',
+        jumpsuits: 'clothing',
+        belts: 'clothing',
+        backpacks: 'clothing',
+        earmuffs: 'clothing',
+        slippers: 'clothing',
+        handwarmers: 'clothing',
+        ponchos: 'clothing',
+        wraps: 'clothing',
+        rainboots: 'clothing',
+        beanies: 'clothing',
+        slippers: 'clothing',
+        sundresses: 'clothing',
+        blouses: 'clothing',
+        chinos: 'clothing',
+        swimwear: 'clothing',
+        visors: 'clothing',
+        pajamas: 'clothing',
+        coats: 'clothing',
+        dresses: 'clothing',
+        coveralls: 'clothing',
+        tunics: 'clothing',
+        tracksuits: 'clothing',
+        bloomers: 'clothing',
+        rompers: 'clothing',
+        fridge: 'home_appliances',
+        microwave: 'home_appliances',
+        oven: 'home_appliances',
+        blender: 'home_appliances',
+        toaster: 'home_appliances',
+        kettle: 'home_appliances',
+        vacuum: 'home_appliances',
+        fan: 'home_appliances',
+        heater: 'home_appliances',
+        cooler: 'home_appliances',
+        light: 'home_appliances',
+        lamp: 'home_appliances',
+        fridge: 'home_appliances',
+        washingmachine: 'home_appliances',
+        dryer: 'home_appliances',
+        dishwasher: 'home_appliances',
+        coffee: 'home_appliances',
+        grinder: 'home_appliances',
+        juicer: 'home_appliances',
+        steamers: 'home_appliances',
+        iron: 'home_appliances',
+        humidifier: 'home_appliances',
+        dehumidifier: 'home_appliances',
+        blender: 'home_appliances',
+        mixer: 'home_appliances',
+        electricfan: 'home_appliances',
+        fridgefreezer: 'home_appliances',
+        ovenstove: 'home_appliances',
+        ricecooker: 'home_appliances',
+        airconditioner: 'home_appliances',
+        airpurifier: 'home_appliances',
+        ricecooker: 'home_appliances',
+        babybottlewarmer: 'home_appliances',
+        microwaveoven: 'home_appliances',
+        fryers: 'home_appliances',
+        thermos: 'home_appliances',
+        refrigerator: 'home_appliances',
+        solarwaterheater: 'home_appliances',
+        incubator: 'home_appliances'
+    };
+
+    // Function to save the keyword to Firebase
+    async function saveKeywordToFirebase(keyword) {
+        try {
+            const keywordRef = collection(db, 'keywords');
+            
+            // Check if keyword already exists in Firestore
+            const q = query(keywordRef, where("keyword", "==", keyword));
+            const querySnapshot = await getDocs(q);
+
+            if (querySnapshot.empty) {
+                // If the keyword doesn't exist, save it to Firestore
+                await addDoc(keywordRef, {
+                    keyword: keyword,
+                    createdAt: new Date()  // Store the time when the keyword was saved
+                });
+                console.log('Keyword saved to Firebase:', keyword);
+            } else {
+                console.log('Keyword already exists in Firebase.');
+            }
+        } catch (e) {
+            console.error('Error saving keyword to Firebase:', e);
+        }
+    }
+
+    // Function to display the search results
+    function displaySearchResults(query) {
+        let foundMatch = false;
+
+        // Iterate over categories and check if the query matches
+        for (const [category, items] of Object.entries(ecoRecommendations)) {
+            // Check if the query matches the category
+            if (keywordCategories[query.toLowerCase()] === category) {
+                foundMatch = true;
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                resultsDiv.appendChild(categoryTitle);
+                
+                items.forEach(item => {
+                    const link = document.createElement('a');
+                    link.href = item.link;
+                    link.textContent = item.name;
+                    link.target = '_blank';
+
+                    const description = document.createElement('p');
+                    description.textContent = item.description;
+
+                    const listItem = document.createElement('div');
+                    listItem.appendChild(link);
+                    listItem.appendChild(description);
+                    resultsDiv.appendChild(listItem);
+                });
+                break;  // Stop searching once we find the match
+            }
+        }
+
+        // If no match is found, display a message and save the keyword
+        if (!foundMatch) {
+            const noMatchMessage = document.createElement('p');
+            noMatchMessage.textContent = `No eco-friendly recommendations found for "${query}".`;
+            resultsDiv.appendChild(noMatchMessage);
+
+            // Save the non-matching keyword to Firebase
+            saveKeywordToFirebase(query);
+        }
+    }
+
+    // Display the search results for the given query
+    if (query) {
+        displaySearchResults(query);
+    } else {
+        resultsDiv.textContent = 'No search query provided.';
+    }
+});
