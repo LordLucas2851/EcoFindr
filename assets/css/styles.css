@@ -4,18 +4,12 @@ body {
     padding: 0;
     background-color: #f0f9f0;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
-    text-align: center;
+    text-align: center; /* Center the text in the main sections */
 }
 
 header {
     background-color: #3c6e47;  
     height: 50px; 
-    width: 100%;
 }
 
 .hero {
@@ -23,7 +17,6 @@ header {
     padding: 2rem;
     background: #228B22;
     color: #fff;
-    width: 100%;
 }
 
 .logo-image {
@@ -33,12 +26,9 @@ header {
     margin-bottom: 1rem;
 }
 
-.search, .about, .contact, .forum-section {
+.search {
     padding: 2rem;
     text-align: center;
-    width: 100%;
-    max-width: 800px; /* Maximum width for each section */
-    margin: 0 auto; /* Centers the content */
 }
 
 .search input {
@@ -104,13 +94,18 @@ header {
     background-color: #004d00;
 }
 
-.forum-section {
+.forum-container {
+    display: flex;
+    justify-content: center; /* Centers the forum section */
+    padding: 2rem;
+}
+
+.forum {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
     width: 100%;
-    max-width: 800px; /* Ensures forum is centered and doesn't stretch too much */
-    margin: 0 auto;
+    max-width: 800px;
 }
 
 .question-form textarea {
@@ -147,5 +142,4 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem;
-    width: 100%;
 }
