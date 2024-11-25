@@ -75,6 +75,25 @@ header .logo {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+#new-search {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#new-search-button {
+    padding: 10px 20px;
+    background-color: #006400;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#new-search-button:hover {
+    background-color: #004d00;
+}
+
 /* Footer */
 footer {
     background-color: #004d00;
