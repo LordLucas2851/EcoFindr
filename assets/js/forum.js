@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-import emailjs from 'https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js';
+import { sendEmail } from './emailFunctions.js'; // Importing the email function
 
 // Firebase configuration
 const firebaseConfig = {
@@ -22,27 +22,6 @@ const questionInput = document.getElementById("question-input");
 const emailInput = document.getElementById("email-input");  // Assuming there's an input for the email
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
-
-// EmailJS configuration
-const emailJSServiceID = "service_8bwgvkk"; // Replace with your EmailJS service ID
-const emailJSTemplateID = "template_fy5gkdz"; // Replace with your EmailJS template ID
-const emailJSUserID = "euggqJf1pklcQY6Uo"; // Replace with your EmailJS user ID
-
-// Function to send an email
-const sendEmail = async (toEmail, fromName, message) => {
-    try {
-        const templateParams = {
-            to_name: toEmail,
-            from_name: fromName,
-            message: message,
-        };
-
-        await emailjs.send(emailJSServiceID, emailJSTemplateID, templateParams, emailJSUserID);
-        console.log('Email sent successfully');
-    } catch (error) {
-        console.error('Error sending email:', error);
-    }
-};
 
 // Fetch existing questions from Firestore and display them
 async function fetchQuestions() {
