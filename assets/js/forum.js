@@ -1,93 +1,101 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp, doc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
+// Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
-  authDomain: "ecofindr-4fffd.firebaseapp.com",
-  projectId: "ecofindr-4fffd",
-  storageBucket: "ecofindr-4fffd.firebasestorage.app",
-  messagingSenderId: "64553820107",
-  appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
-  measurementId: "G-TG958E6F56"
+    apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
+    authDomain: "ecofindr-4fffd.firebaseapp.com",
+    projectId: "ecofindr-4fffd",
+    storageBucket: "ecofindr-4fffd.firebasestorage.app",
+    messagingSenderId: "64553820107",
+    appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
+    measurementId: "G-TG958E6F56"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Get DOM elements
 const questionInput = document.getElementById("question-input");
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
 
-submitButton.addEventListener("click", async function() {
+// Fetch existing questions from Firestore and display them
+async function fetchQuestions() {
+    try {
+        const q = query(collection(db, "questions"), orderBy("timestamp"));
+        const querySnapshot = await getDocs(q);
+
+        faqContainer.innerHTML = ''; // Clear the existing content before displaying new data
+
+        querySnapshot.forEach((doc) => {
+            const questionData = doc.data();
+            const newFaqItem = document.createElement("div");
+            newFaqItem.classList.add("faq-item");
+            newFaqItem.innerHTML = `
+                <strong>Q: ${questionData.question}</strong>
+                <p>A: <i>Waiting for an answer...</i></p>
+                <button class="answer-button" data-id="${doc.id}">Answer</button>
+            `;
+            faqContainer.appendChild(newFaqItem);
+        });
+
+        // Add event listeners to answer buttons
+        const answerButtons = document.querySelectorAll('.answer-button');
+        answerButtons.forEach(button => {
+            button.addEventListener('click', answerQuestion);
+        });
+
+    } catch (e) {
+        console.error("Error fetching questions: ", e);
+    }
+}
+
+// Submit new question to Firestore
+submitButton.addEventListener("click", async () => {
     const questionText = questionInput.value.trim();
-    console.log("Submit button clicked, question:", questionText); // Log the question text
 
     if (questionText) {
         try {
-            const docRef = await addDoc(collection(db, "questions"), {
+            // Save question to Firestore
+            await addDoc(collection(db, "questions"), {
                 question: questionText,
-                answers: [],
-                timestamp: serverTimestamp(),
+                timestamp: new Date(),
             });
 
-            console.log("Question added with ID: ", docRef.id);
-
+            // Clear input field after submission
             questionInput.value = "";
-            loadQuestions();
+
+            // Reload the questions from Firestore to reflect the new one
+            fetchQuestions();
         } catch (e) {
-            console.error("Error adding document: ", e);
+            console.error("Error adding question: ", e);
         }
     } else {
         alert("Please enter a question before submitting.");
     }
 });
 
-async function loadQuestions() {
-    const q = query(collection(db, "questions"), orderBy("timestamp", "desc"));
-    
-    const querySnapshot = await getDocs(q);
-    
-    faqContainer.innerHTML = "";
-    
-    querySnapshot.forEach((doc) => {
-        const questionData = doc.data();
-        
-        const newFaqItem = document.createElement("div");
-        newFaqItem.classList.add("faq-item");
-
-        newFaqItem.innerHTML = `
-            <strong>Q: ${questionData.question}</strong>
-            <p>A: ${questionData.answers.length > 0 ? questionData.answers.join("<br>") : "<i>Waiting for an answer...</i>"}</p>
-            <textarea placeholder="Type your answer here..." id="answer-input-${doc.id}"></textarea>
-            <button onclick="answerQuestion('${doc.id}')">Submit Answer</button>
-        `;
-
-        faqContainer.appendChild(newFaqItem);
-    });
-}
-
-async function answerQuestion(questionId) {
-    const answerInput = document.getElementById(`answer-input-${questionId}`);
-    const answerText = answerInput.value.trim();
+// Function to handle answering a question
+async function answerQuestion(event) {
+    const questionId = event.target.getAttribute("data-id");
+    const answerText = prompt("Enter your answer:");
 
     if (answerText) {
-        const questionRef = doc(db, "questions", questionId);
-
         try {
-            await updateDoc(questionRef, {
-                answers: arrayUnion(answerText),
+            // Update the Firestore document with the answer
+            const questionDoc = doc(db, "questions", questionId);
+            await updateDoc(questionDoc, {
+                answer: answerText,
             });
 
-            console.log("Answer added to question ID:", questionId);
-
-            answerInput.value = "";
-            loadQuestions();
+            // Reload the questions to reflect the new answer
+            fetchQuestions();
         } catch (e) {
             console.error("Error adding answer: ", e);
         }
-    } else {
-        alert("Please enter an answer before submitting.");
     }
 }
 
-loadQuestions();
+// Initialize by fetching existing questions
+fetchQuestions();
