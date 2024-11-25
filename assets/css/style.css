@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,6 +6,8 @@ body {
     background-color: #f0f9f0;
     color: #333;
 }
+
+/* Header Styles */
 header {
     background-color: #006400;
     color: #fff;
@@ -13,35 +16,51 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+
 header .logo {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
 header nav ul {
     list-style: none;
     display: flex;
     gap: 1rem;
 }
+
 header nav ul li a {
     color: #fff;
     text-decoration: none;
 }
+
+/* Hero Section */
 .hero {
     text-align: center;
     padding: 2rem;
     background: #228B22;
     color: #fff;
 }
+
+.logo-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 150px; /* Adjust size as needed */
+    margin-bottom: 1rem;
+}
+
+/* Search Section */
 .search, .about, .contact {
     padding: 2rem;
     text-align: center;
 }
+
 .search input {
     padding: 0.5rem;
     margin-right: 0.5rem;
     width: 60%;
     max-width: 300px;
 }
+
 .search button {
     padding: 0.5rem;
     background-color: #006400;
@@ -49,6 +68,7 @@ header nav ul li a {
     border: none;
     cursor: pointer;
 }
+
 .results {
     margin-top: 1rem;
     text-align: left;
@@ -56,6 +76,7 @@ header nav ul li a {
     margin-left: auto;
     margin-right: auto;
 }
+
 .results div {
     padding: 0.5rem;
     border: 1px solid #ddd;
@@ -64,6 +85,8 @@ header nav ul li a {
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* Footer */
 footer {
     background-color: #004d00;
     color: #fff;
