@@ -1,3 +1,6 @@
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
@@ -10,45 +13,57 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-// Signup form handling
-document.getElementById("signup").addEventListener("submit", (event) => {
+// Sign Up form submission
+const signupForm = document.getElementById("signup");
+signupForm.addEventListener("submit", (event) => {
   event.preventDefault(); // Prevent page refresh
 
+  // Get user input
   const email = document.getElementById("signup-email").value;
   const password = document.getElementById("signup-password").value;
 
-  auth.createUserWithEmailAndPassword(email, password)
+  // Create a new user with email and password
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signup successful
+      // Sign-up successful
+      const user = userCredential.user;
+      console.log("User signed up:", user);
       alert("Sign-up successful! Redirecting to the home page.");
       window.location.href = "home.html"; // Redirect to home page
     })
     .catch((error) => {
-      // Handle signup errors
+      // Handle error
       const errorMessage = error.message;
+      console.error("Sign-up error:", errorMessage);
       alert(`Error: ${errorMessage}`);
     });
 });
 
-// Login form handling
-document.getElementById("login").addEventListener("submit", (event) => {
+// Login form submission
+const loginForm = document.getElementById("login");
+loginForm.addEventListener("submit", (event) => {
   event.preventDefault(); // Prevent page refresh
 
+  // Get user input
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
 
-  auth.signInWithEmailAndPassword(email, password)
+  // Log in the user with email and password
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Login successful
+      const user = userCredential.user;
+      console.log("User logged in:", user);
       alert("Login successful! Redirecting to the home page.");
       window.location.href = "home.html"; // Redirect to home page
     })
     .catch((error) => {
-      // Handle login errors
+      // Handle error
       const errorMessage = error.message;
+      console.error("Login error:", errorMessage);
       alert(`Error: ${errorMessage}`);
     });
 });
