@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import emailjs from 'https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -18,16 +19,37 @@ const db = getFirestore(app);
 
 // Get DOM elements
 const questionInput = document.getElementById("question-input");
-const emailInput = document.getElementById("email-input");
+const emailInput = document.getElementById("email-input");  // Assuming there's an input for the email
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
+
+// EmailJS configuration
+const emailJSServiceID = "service_8bwgvkk"; // Replace with your EmailJS service ID
+const emailJSTemplateID = "template_fy5gkdz"; // Replace with your EmailJS template ID
+const emailJSUserID = "euggqJf1pklcQY6Uo"; // Replace with your EmailJS user ID
+
+// Function to send an email
+const sendEmail = async (toEmail, fromName, message) => {
+    try {
+        const templateParams = {
+            to_name: toEmail,
+            from_name: fromName,
+            message: message,
+        };
+
+        await emailjs.send(emailJSServiceID, emailJSTemplateID, templateParams, emailJSUserID);
+        console.log('Email sent successfully');
+    } catch (error) {
+        console.error('Error sending email:', error);
+    }
+};
 
 // Fetch existing questions from Firestore and display them
 async function fetchQuestions() {
     try {
         const q = query(collection(db, "questions"), orderBy("timestamp"));
         const querySnapshot = await getDocs(q);
-        faqContainer.innerHTML = ''; // Clear the previous list before rendering new data
+        faqContainer.innerHTML = ''; // Clear previous questions
         querySnapshot.forEach((doc) => {
             const questionData = doc.data();
             const newFaqItem = document.createElement("div");
@@ -50,55 +72,62 @@ async function fetchQuestions() {
 // Submit new question to Firestore
 submitButton.addEventListener("click", async () => {
     const questionText = questionInput.value.trim();
-    const email = emailInput.value.trim();
+    const userEmail = emailInput.value.trim(); // Get the email entered by the user
 
-    if (questionText && email) {
+    if (questionText && userEmail) {
         try {
             // Save question and email to Firestore
-            await addDoc(collection(db, "questions"), {
+            const docRef = await addDoc(collection(db, "questions"), {
                 question: questionText,
-                email: email,
+                email: userEmail,
                 timestamp: new Date(),
-                answer: "", // Empty answer initially
+                answer: "",  // Initially no answer
             });
 
             // Clear input fields after submission
             questionInput.value = "";
             emailInput.value = "";
 
-            // Reload the questions from Firestore to reflect the new one
+            // Reload the questions from Firestore
             fetchQuestions();
         } catch (e) {
             console.error("Error adding question: ", e);
         }
     } else {
-        alert("Please enter both a question and your email.");
+        alert("Please enter a question and your email before submitting.");
     }
 });
 
-// Answer a question and update Firestore
+// Add event listener for submitting an answer
 faqContainer.addEventListener("click", async (event) => {
-    if (event.target && event.target.classList.contains("answer-button")) {
-        const docId = event.target.getAttribute("data-doc-id");
-        const answerInput = document.getElementById(`answer-input-${docId}`).value.trim();
+    if (event.target.classList.contains("answer-button")) {
+        const questionDocId = event.target.getAttribute("data-doc-id");
+        const answerInput = document.getElementById(`answer-input-${questionDocId}`).value.trim();
 
         if (answerInput) {
             try {
-                // Update Firestore document with the answer
-                const questionRef = doc(db, "questions", docId);
-                await updateDoc(questionRef, {
+                // Get the question document from Firestore
+                const questionDocRef = doc(db, "questions", questionDocId);
+
+                // Update the answer in Firestore
+                await updateDoc(questionDocRef, {
                     answer: answerInput,
                 });
 
-                // Update the displayed answer on the page
-                const answerElement = document.getElementById(`answer-${docId}`);
-                answerElement.textContent = answerInput;
-                alert("Answer submitted!");
+                // Send an email to the user who asked the question
+                const questionDocSnapshot = await getDoc(questionDocRef);
+                const userEmail = questionDocSnapshot.data().email;
+                const questionText = questionDocSnapshot.data().question;
+
+                sendEmail(userEmail, "Admin", `Your question "${questionText}" has been answered: "${answerInput}"`);
+
+                // Reload questions to display the updated answer
+                fetchQuestions();
             } catch (e) {
                 console.error("Error updating answer: ", e);
             }
         } else {
-            alert("Please enter an answer.");
+            alert("Please enter an answer before submitting.");
         }
     }
 });
