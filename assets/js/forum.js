@@ -1,8 +1,6 @@
-// Import Firebase modules for app initialization, Firestore, and authentication
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp, doc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-// Firebase configuration (same as the one used for sign-up)
 const firebaseConfig = {
   apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
   authDomain: "ecofindr-4fffd.firebaseapp.com",
@@ -13,26 +11,18 @@ const firebaseConfig = {
   measurementId: "G-TG958E6F56"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Firestore
 const db = getFirestore(app);
 
-// Get references to the DOM elements
 const questionInput = document.getElementById("question-input");
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
 
-// Add event listener for the Submit Question button
 submitButton.addEventListener("click", async function() {
-    // Get the user's question from the textarea
     const questionText = questionInput.value.trim();
 
-    // Check if the question is not empty
     if (questionText) {
         try {
-            // Add the question to Firestore
             const docRef = await addDoc(collection(db, "questions"), {
                 question: questionText,
                 answers: [],
@@ -41,49 +31,64 @@ submitButton.addEventListener("click", async function() {
 
             console.log("Question added with ID: ", docRef.id);
 
-            // Clear the input field after submission
             questionInput.value = "";
 
-            // Load updated questions from Firestore
             loadQuestions();
         } catch (e) {
             console.error("Error adding document: ", e);
         }
     } else {
-        // If the input is empty, alert the user
         alert("Please enter a question before submitting.");
     }
 });
 
-// Function to load questions from Firestore
 async function loadQuestions() {
-    // Get a reference to the 'questions' collection
     const q = query(collection(db, "questions"), orderBy("timestamp", "desc"));
     
-    // Get the documents from the collection
     const querySnapshot = await getDocs(q);
     
-    // Clear the existing FAQ items before appending new ones
     faqContainer.innerHTML = "";
     
-    // Loop through the documents and display the questions
     querySnapshot.forEach((doc) => {
         const questionData = doc.data();
         
-        // Create a new FAQ item for each question
         const newFaqItem = document.createElement("div");
         newFaqItem.classList.add("faq-item");
 
-        // Add the question and a placeholder for answers
         newFaqItem.innerHTML = `
             <strong>Q: ${questionData.question}</strong>
-            <p>A: <i>Waiting for an answer...</i></p>
+            <p>A: ${questionData.answers.length > 0 ? questionData.answers.join("<br>") : "<i>Waiting for an answer...</i>"}</p>
+            <textarea placeholder="Type your answer here..." id="answer-input-${doc.id}"></textarea>
+            <button onclick="answerQuestion('${doc.id}')">Submit Answer</button>
         `;
 
-        // Append the new FAQ item to the container
         faqContainer.appendChild(newFaqItem);
     });
 }
 
-// Load questions when the page loads
-window.onload = loadQuestions;
+async function answerQuestion(questionId) {
+    const answerInput = document.getElementById(`answer-input-${questionId}`);
+    const answerText = answerInput.value.trim();
+
+    if (answerText) {
+        const questionRef = doc(db, "questions", questionId);
+
+        try {
+            await updateDoc(questionRef, {
+                answers: arrayUnion(answerText),
+            });
+
+            console.log("Answer added to question ID:", questionId);
+
+            answerInput.value = "";
+
+            loadQuestions();
+        } catch (e) {
+            console.error("Error adding answer: ", e);
+        }
+    } else {
+        alert("Please enter an answer before submitting.");
+    }
+}
+
+loadQuestions();
