@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const keywordCategories = {
-        food: 'food',
         bacon: 'food',
         sausage: 'food',
         turkey: 'food',
