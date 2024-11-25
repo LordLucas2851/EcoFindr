@@ -14,9 +14,8 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 // Signup form handling
-const signupForm = document.getElementById("signup");
-signupForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+document.getElementById("signup").addEventListener("submit", (event) => {
+  event.preventDefault(); // Prevent page refresh
 
   const email = document.getElementById("signup-email").value;
   const password = document.getElementById("signup-password").value;
@@ -35,9 +34,8 @@ signupForm.addEventListener("submit", (event) => {
 });
 
 // Login form handling
-const loginForm = document.getElementById("login");
-loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+document.getElementById("login").addEventListener("submit", (event) => {
+  event.preventDefault(); // Prevent page refresh
 
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
