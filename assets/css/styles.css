@@ -97,6 +97,9 @@ header {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
+    width: 100%; 
+    max-width: 800px;
+    margin: 0 auto; 
 }
 
 .question-form textarea {
