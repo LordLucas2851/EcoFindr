@@ -58,7 +58,7 @@ loginForm.addEventListener("submit", (event) => {
         .then((userCredential) => {
             // Successfully logged in
             console.log("Login Successful:", userCredential.user);
-            window.location.href = "index.html"; // Redirect to the home page
+            window.location.href = "home.html"; // Redirect to the home page
         })
         .catch((error) => {
             // Handle Errors
