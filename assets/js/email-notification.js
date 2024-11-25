@@ -1,37 +1,19 @@
-// Include the EmailJS library (make sure this script is in your HTML file)
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+import emailjs from 'https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js';
 
-<script>
-  // Initialize EmailJS with your Public Key
-  (function() {
-    emailjs.init("euggqJf1pklcQY6Uo"); // Replace with your Public Key
-  })();
-
-  // Function to send an email
-  async function sendEmail(toEmail, question, answer) {
-    const templateParams = {
-      to_name: toEmail,
-      question: question,
-      answer: answer,
-    };
-
+const sendEmail = async (toEmail, fromName, message) => {
     try {
-      const result = await emailjs.send(
-        "service_8bwgvkk", // Your Service ID
-        "template_fy5gkdz", // Your Template ID
-        templateParams
-      );
-      console.log("Email sent successfully:", result.status, result.text);
+        const templateParams = {
+            to_name: toEmail,
+            from_name: fromName,
+            message: message,
+        };
+
+        await emailjs.send("service_8bwgvkk", "template_fy5gkdz", templateParams, "euggqJf1pklcQY6Uo");
+        console.log('Email sent successfully');
     } catch (error) {
-      console.error("Error sending email:", error);
+        console.error('Error sending email:', error);
     }
-  }
+};
 
-  // Example usage: Call this when an answer is added to a question
-  // Replace with actual values from your app
-  const toEmail = "user@example.com"; // The user's email address
-  const question = "How can I reduce plastic waste?";
-  const answer = "Use reusable shopping bags, bottles, and containers.";
-
-  sendEmail(toEmail, question, answer);
-</script>
+// Example usage: Call this when an answer is added to a question
+sendEmail("user@example.com", "Admin", "Your question has been answered.");
