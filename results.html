@@ -4,18 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoFindr - Search Results</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="header">
-        <img src="Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo">
-        <h1>EcoFindr - Eco-Friendly Brand Finder</h1>
-        <p>Your search results for: <span id="search-query"></span></p>
-    </div>
-    <div class="results" id="results">
-        <!-- Results will be inserted here by JavaScript -->
-    </div>
-
-    <script src="results.js"></script>
+    <header>
+        <div class="logo">🌍 EcoFindr</div>
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <img src="assets/images/Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo-image">
+            <h1>Search Results</h1>
+            <p>Here are 5 eco-friendly recommendations for your search.</p>
+        </section>
+        <section id="search" class="search">
+            <h2>Results for: <span id="search-query"></span></h2>
+            <div id="results" class="results"></div>
+        </section>
+        <section id="about" class="about">
+            <h2>About Us</h2>
+            <p>EcoFindr helps you make sustainable choices by connecting you with eco-conscious brands and products.</p>
+        </section>
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <p>Email us at: support@ecofindr.com</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
+    </footer>
+    <script src="assets/js/results.js"></script>
 </body>
 </html>
