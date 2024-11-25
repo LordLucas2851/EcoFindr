@@ -4,6 +4,8 @@ body {
     padding: 0;
     background-color: #f0f9f0;
     color: #333;
+    align-items: center;
+    text-align: center;
 }
 
 header {
