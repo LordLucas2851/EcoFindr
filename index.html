@@ -17,11 +17,28 @@
             <h1>Welcome to EcoFindr</h1>
             <p>Discover eco-friendly brands, food options, clothing, and sustainable household items!</p>
         </section>
-        <section id="search" class="search">
-            <h2>Find Eco-Friendly Options</h2>
-            <p>Enter a keyword or category to find sustainable brands and products.</p>
-            <input type="text" id="search-input" placeholder="e.g., organic food, reusable bags, etc.">
-            <button id="search-button">Search</button>
+        <!-- Login/Signup Section -->
+        <section id="auth" class="auth">
+            <h2>Sign Up / Log In</h2>
+            <div class="form-container">
+                <div id="signup-form">
+                    <h3>Sign Up</h3>
+                    <form id="signup" method="POST">
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                        <input type="password" id="signup-password" placeholder="Enter your password" required>
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+
+                <div id="login-form">
+                    <h3>Log In</h3>
+                    <form id="login" method="POST">
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                        <button type="submit">Log In</button>
+                    </form>
+                </div>
+            </div>
         </section>
         <section id="about" class="about">
             <h2>About Us</h2>
