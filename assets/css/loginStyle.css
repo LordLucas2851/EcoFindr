@@ -44,6 +44,7 @@ header .logo {
     flex-grow: 1;
     background-color: #ffffff;
     padding: 2rem;
+    min-height: 400px; /* Ensure enough space for form */
 }
 
 .form-container {
