@@ -7,17 +7,8 @@ body {
 }
 
 header {
-    background-color: #006400;
-    color: #fff;
-    padding: 1rem;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-}
-
-header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    background-color: #2a4d3d;  
+    height: 50px; 
 }
 
 .hero {
