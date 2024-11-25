@@ -4,11 +4,17 @@ body {
     padding: 0;
     background-color: #f0f9f0;
     color: #333;
+    display: flex;
+    justify-content: center; /* Horizontally centers the page */
+    align-items: center; /* Vertically centers the page */
+    min-height: 100vh; /* Full height of the viewport */
+    flex-direction: column; /* Stack elements vertically */
 }
 
 header {
     background-color: #3c6e47;  
     height: 50px; 
+    width: 100%;
 }
 
 .hero {
@@ -16,6 +22,7 @@ header {
     padding: 2rem;
     background: #228B22;
     color: #fff;
+    width: 100%;
 }
 
 .logo-image {
@@ -25,9 +32,11 @@ header {
     margin-bottom: 1rem;
 }
 
-.search, .about, .contact {
+.search, .about, .contact, .forum-section {
     padding: 2rem;
     text-align: center;
+    width: 100%;
+    max-width: 800px; /* This will make sure the content does not stretch too wide */
 }
 
 .search input {
@@ -86,6 +95,7 @@ header {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
+    margin-top: 20px;
 }
 
 .question-form textarea {
@@ -122,4 +132,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
