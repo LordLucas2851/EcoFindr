@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoShop</title>
+    <title>EcoFindr</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
-        <div class="logo">🌿 EcoShop</div>
+        <div class="logo">🌍 EcoFindr</div>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
+                <li><a href="#search">Search</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -20,27 +20,28 @@
     </header>
     <main>
         <section id="home" class="hero">
-            <h1>Welcome to EcoShop</h1>
-            <p>Your go-to marketplace for sustainable shopping!</p>
-            <button>Shop Now</button>
+            <h1>Welcome to EcoFindr</h1>
+            <p>Discover eco-friendly brands and websites tailored to your needs!</p>
+            <a href="#search" class="btn">Get Started</a>
         </section>
-        <section id="products" class="products">
-            <h2>Featured Products</h2>
-            <div class="product-list">
-                <!-- Product cards will dynamically load here -->
-            </div>
+        <section id="search" class="search">
+            <h2>Find Eco-Friendly Brands</h2>
+            <p>Enter a keyword, category, or product to discover eco-conscious options.</p>
+            <input type="text" id="search-input" placeholder="e.g., clothing, solar panels, etc.">
+            <button id="search-button">Search</button>
+            <div id="results" class="results"></div>
         </section>
         <section id="about" class="about">
             <h2>About Us</h2>
-            <p>At EcoShop, we prioritize eco-friendly practices and sustainable products.</p>
+            <p>EcoFindr connects users with eco-friendly brands, making sustainable shopping simple.</p>
         </section>
         <section id="contact" class="contact">
             <h2>Contact Us</h2>
-            <p>Email us at: support@ecoshop.com</p>
+            <p>Email us at: support@ecofindr.com</p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 EcoShop. All rights reserved.</p>
+        <p>&copy; 2024 EcoFindr. All rights reserved.</p>
     </footer>
     <script src="assets/js/script.js"></script>
 </body>
