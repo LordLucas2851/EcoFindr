@@ -6,28 +6,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchQueryElement.textContent = query;
 
-    // Simulated eco-friendly websites (replace with actual data or API calls)
-    const ecoItems = [
-        { name: 'Whole Foods Market', category: 'organic food', link: 'https://www.wholefoodsmarket.com' },
-        { name: 'Ecover', category: 'cleaning products', link: 'https://www.ecover.com' },
-        { name: 'Allbirds', category: 'clothing', link: 'https://www.allbirds.com' },
-        { name: 'If You Care', category: 'kitchen products', link: 'https://www.ifyoucare.com' },
-        { name: 'Ethique', category: 'personal care', link: 'https://www.ethique.com' },
-        { name: 'Greener Chef', category: 'kitchenware', link: 'https://www.greenerchef.com' },
-        { name: 'Patagonia', category: 'outdoor clothing', link: 'https://www.patagonia.com' },
-        { name: 'Lush', category: 'personal care', link: 'https://www.lush.com' },
-        { name: 'The Honest Company', category: 'baby products', link: 'https://www.honest.com' },
-        { name: 'Seventh Generation', category: 'cleaning products', link: 'https://www.seventhgeneration.com' },
-        // Add more eco-friendly sites here...
-    ];
+    // Define the keyword-to-category mapping and associated eco-friendly websites
+    const ecoRecommendations = {
+        food: [
+            { name: 'Whole Foods Market', category: 'organic food', link: 'https://www.wholefoodsmarket.com' },
+            { name: 'Thrive Market', category: 'organic food', link: 'https://www.thrivemarket.com' },
+            { name: 'Farm Fresh to You', category: 'organic food delivery', link: 'https://www.farmfreshtoyou.com' }
+        ],
+        clothing: [
+            { name: 'Allbirds', category: 'sustainable clothing', link: 'https://www.allbirds.com' },
+            { name: 'Patagonia', category: 'outdoor clothing', link: 'https://www.patagonia.com' },
+            { name: 'Reformation', category: 'eco-friendly fashion', link: 'https://www.thereformation.com' }
+        ],
+        home_appliances: [
+            { name: 'Seventh Generation', category: 'eco-friendly cleaning products', link: 'https://www.seventhgeneration.com' },
+            { name: 'Ecovacs', category: 'robot vacuums', link: 'https://www.ecovacs.com' },
+            { name: 'Nespresso', category: 'coffee maker', link: 'https://www.nespresso.com' }
+        ],
+        electronics: [
+            { name: 'Fairphone', category: 'sustainable electronics', link: 'https://www.fairphone.com' },
+            { name: 'SolarCity', category: 'solar energy', link: 'https://www.solarcity.com' }
+        ],
+        personal_care: [
+            { name: 'Ethique', category: 'personal care', link: 'https://www.ethique.com' },
+            { name: 'Lush', category: 'bath and body', link: 'https://www.lush.com' }
+        ],
+        pets: [
+            { name: 'The Honest Kitchen', category: 'eco-friendly pet food', link: 'https://www.thehonestkitchen.com' }
+        ]
+    };
 
-    // Filter and display recommendations based on the search query
-    const filteredResults = ecoItems.filter(item =>
-        item.name.toLowerCase().includes(query.toLowerCase()) ||
-        item.category.toLowerCase().includes(query.toLowerCase())
-    ).slice(0, 5); // Show only the first 5 recommendations
+    // Additional keywords and categories
+    const keywordCategories = {
+        pants: 'clothing',
+        shirt: 'clothing',
+        shoes: 'clothing',
+        food: 'food',
+        drink: 'food',
+        clothing: 'clothing',
+        clothes: 'clothing',
+        t_shirt: 'clothing',
+        socks: 'clothing',
+        apple: 'food',
+        meat: 'food',
+        beef: 'food',
+        chicken: 'food',
+        pork: 'food',
+        blender: 'home_appliances',
+        microwave: 'home_appliances',
+        stove: 'home_appliances',
+        coffee_maker: 'home_appliances',
+        eco_friendly: 'personal_care',
+        sustainable: 'personal_care'
+    };
 
-    if (filteredResults.length > 0) {
+    // Normalize the search query for better matching (lowercase)
+    const queryLower = query.toLowerCase();
+    let category = '';
+
+    // Determine the category based on the keyword input
+    Object.keys(keywordCategories).forEach(keyword => {
+        if (queryLower.includes(keyword)) {
+            category = keywordCategories[keyword];
+        }
+    });
+
+    if (category && ecoRecommendations[category]) {
+        const filteredResults = ecoRecommendations[category].slice(0, 5); // Show only the first 5 results
         filteredResults.forEach(item => {
             const resultDiv = document.createElement('div');
             resultDiv.innerHTML = `
