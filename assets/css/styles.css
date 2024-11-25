@@ -1,53 +1,84 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
     color: #333;
 }
 
-.header {
-    background-color: #2a7f62;
+header {
+    background-color: #009688;
     color: white;
-    padding: 20px;
+    padding: 20px 0;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.header .logo {
-    width: 100px;
-    margin-bottom: 10px;
+header img {
+    width: 120px;
+    margin-bottom: 15px;
 }
 
-.header h1 {
-    margin: 10px 0;
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: normal;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 0;
 }
 
 .results {
-    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
 }
 
 .results div {
     background-color: white;
     border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 15px;
     border-radius: 8px;
+    margin: 10px;
+    width: 280px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.results div strong {
-    font-size: 1.2em;
-    color: #2a7f62;
+.results div h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #009688;
 }
 
 .results div p {
+    font-size: 1.1em;
     margin: 10px 0;
 }
 
 .results div a {
-    color: #007b5e;
+    color: #00796b;
+    font-weight: bold;
     text-decoration: none;
 }
 
 .results div a:hover {
+    color: #004d40;
     text-decoration: underline;
+}
+
+footer {
+    background-color: #009688;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
 }
