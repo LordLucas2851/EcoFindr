@@ -1,7 +1,6 @@
-// Firebase Authentication Setup (ensure this is included)
 // Import Firebase SDK
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -38,10 +37,12 @@ signupForm.addEventListener("submit", (event) => {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Successfully signed up
+            console.log("Sign Up Successful:", userCredential.user);
             window.location.href = "index.html"; // Redirect to the home page
         })
         .catch((error) => {
             // Handle Errors
+            console.error("Sign Up Error:", error.message);
             alert(error.message);
         });
 });
@@ -56,10 +57,12 @@ loginForm.addEventListener("submit", (event) => {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Successfully logged in
+            console.log("Login Successful:", userCredential.user);
             window.location.href = "index.html"; // Redirect to the home page
         })
         .catch((error) => {
             // Handle Errors
+            console.error("Login Error:", error.message);
             alert(error.message);
         });
 });
