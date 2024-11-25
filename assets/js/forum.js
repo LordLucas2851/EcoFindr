@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-// Initialize Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
     authDomain: "ecofindr-4fffd.firebaseapp.com",
@@ -15,18 +14,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Get DOM elements
 const questionInput = document.getElementById("question-input");
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
 
-// Fetch existing questions and answers from Firestore and display them
 async function fetchQuestions() {
     try {
         const q = query(collection(db, "questions"), orderBy("timestamp"));
         const querySnapshot = await getDocs(q);
 
-        faqContainer.innerHTML = ''; // Clear the existing content
+        faqContainer.innerHTML = ''; 
 
         querySnapshot.forEach((doc) => {
             const questionData = doc.data();
@@ -42,7 +39,6 @@ async function fetchQuestions() {
             faqContainer.appendChild(newFaqItem);
         });
 
-        // Add event listeners to answer buttons
         const answerButtons = document.querySelectorAll('.answer-button');
         answerButtons.forEach(button => {
             button.addEventListener('click', answerQuestion);
@@ -53,7 +49,6 @@ async function fetchQuestions() {
     }
 }
 
-// Submit new question to Firestore
 submitButton.addEventListener("click", async () => {
     const questionText = questionInput.value.trim();
 
@@ -62,11 +57,11 @@ submitButton.addEventListener("click", async () => {
             await addDoc(collection(db, "questions"), {
                 question: questionText,
                 timestamp: new Date(),
-                answer: "" // Initialize with an empty answer
+                answer: "" 
             });
 
-            questionInput.value = ""; // Clear the input field
-            fetchQuestions(); // Reload the questions
+            questionInput.value = ""; 
+            fetchQuestions();
         } catch (e) {
             console.error("Error adding question: ", e);
         }
@@ -75,7 +70,6 @@ submitButton.addEventListener("click", async () => {
     }
 });
 
-// Function to handle answering a question
 async function answerQuestion(event) {
     const questionId = event.target.getAttribute("data-id");
     const answerText = prompt("Enter your answer:");
@@ -85,12 +79,11 @@ async function answerQuestion(event) {
             const questionDoc = doc(db, "questions", questionId);
             await updateDoc(questionDoc, { answer: answerText });
 
-            fetchQuestions(); // Reload the questions to show the new answer
+            fetchQuestions(); 
         } catch (e) {
             console.error("Error adding answer: ", e);
         }
     }
 }
 
-// Initialize by fetching existing questions
 fetchQuestions();
