@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFindr - Sign Up / Login</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="images/Outlook-A logo of.jpg" alt="EcoFindr Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="signup-login.html">Sign Up / Login</a></li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Sign Up or Log In</h1>
+
+        <div class="form-container">
+            <!-- Sign Up Form -->
+            <div id="signup-form">
+                <h2>Sign Up</h2>
+                <form id="signup">
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    <input type="password" id="signup-password" placeholder="Enter your password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form">
+                <h2>Log In</h2>
+                <form id="login">
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 EcoFindr</p>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js"></script>
+    <script src="assets/js/signup-login.js"></script>
+</body>
+</html>
