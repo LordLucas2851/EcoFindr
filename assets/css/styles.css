@@ -37,12 +37,23 @@ header {
     max-width: 300px;
 }
 
-.search button {
-    padding: 0.5rem;
-    background-color: #006400;
-    color: #fff;
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+}
+
+.submit-question, .go-home-button {
+    padding: 10px 20px;
+    background-color: #3c6e47;
+    color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-question:hover, .go-home-button:hover {
+    background-color: #228B22;
 }
 
 .results {
