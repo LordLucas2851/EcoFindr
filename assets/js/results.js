@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredResults.forEach(item => {
             const resultDiv = document.createElement('div');
             resultDiv.innerHTML = `
-                <strong>${item.name}</strong> - ${item.category} 
+                <strong>${item.name}</strong> 
                 <p>${item.description}</p> <!-- This will show the description -->
                 <a href="${item.link}" target="_blank">Visit</a>
             `;
