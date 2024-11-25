@@ -20,6 +20,7 @@ const faqContainer = document.getElementById("faq-container");
 
 submitButton.addEventListener("click", async function() {
     const questionText = questionInput.value.trim();
+    console.log("Submit button clicked, question:", questionText); // Log the question text
 
     if (questionText) {
         try {
@@ -32,7 +33,6 @@ submitButton.addEventListener("click", async function() {
             console.log("Question added with ID: ", docRef.id);
 
             questionInput.value = "";
-
             loadQuestions();
         } catch (e) {
             console.error("Error adding document: ", e);
@@ -81,7 +81,6 @@ async function answerQuestion(questionId) {
             console.log("Answer added to question ID:", questionId);
 
             answerInput.value = "";
-
             loadQuestions();
         } catch (e) {
             console.error("Error adding answer: ", e);
