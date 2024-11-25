@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const query = searchInput.value.trim();
 
         if (query) {
-            // Redirect to results.html and pass the search query in the URL
             window.location.href = `results.html?query=${encodeURIComponent(query)}`;
         } else {
             alert('Please enter a search term.');
