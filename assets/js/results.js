@@ -4,12 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchQueryElement = document.getElementById('search-query');
     const resultsDiv = document.getElementById('results');
 
-    // If there's no query, don't display results.
-    if (!query) {
-        resultsDiv.innerHTML = '<p>No query found. Please try again.</p>';
-        return;
-    }
-
     searchQueryElement.textContent = query;
 
     // Define the keyword-to-category mapping and associated eco-friendly websites
@@ -54,33 +48,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: 'Reformation creates sustainable fashion with a focus on minimizing waste and reducing environmental impact.'
             }
         ],
-        home_appliances: [
-            { 
-                name: 'Seventh Generation', 
-                category: 'eco-friendly cleaning products', 
-                link: 'https://www.seventhgeneration.com', 
-                description: 'Seventh Generation offers eco-friendly cleaning products made from plant-based ingredients, free from toxic chemicals.'
-            },
-            { 
-                name: 'Ecovacs', 
-                category: 'robot vacuums', 
-                link: 'https://www.ecovacs.com', 
-                description: 'Ecovacs provides energy-efficient robot vacuums designed to reduce household cleaning time and energy usage.'
-            },
-            { 
-                name: 'Nespresso', 
-                category: 'coffee maker', 
-                link: 'https://www.nespresso.com', 
-                description: 'Nespresso creates premium coffee makers and coffee pods that focus on sustainability and environmentally friendly practices.'
-            }
-        ]
+        // More categories here...
     };
 
     // Additional keywords and categories
     const keywordCategories = {
+        pants: 'clothing',
+        shirt: 'clothing',
+        shoes: 'clothing',
         food: 'food',
+        drink: 'food',
         clothing: 'clothing',
-        appliances: 'home_appliances'
+        clothes: 'clothing',
+        t_shirt: 'clothing',
+        socks: 'clothing',
+        apple: 'food',
+        meat: 'food',
+        beef: 'food',
+        chicken: 'food',
+        pork: 'food',
+        blender: 'home_appliances',
+        microwave: 'home_appliances',
+        stove: 'home_appliances',
+        coffee_maker: 'home_appliances',
+        eco_friendly: 'personal_care',
+        sustainable: 'personal_care'
     };
 
     // Normalize the search query for better matching (lowercase)
@@ -109,8 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsDiv.innerHTML = '<p>No results found. Try a different keyword.</p>';
     }
 
-    // "Start a New Search" button click event
-    document.getElementById('new-search-button').addEventListener('click', () => {
-        window.location.href = 'home.html'; // Redirect to home page for new search
+    // Add event listener for the "Go Back to Home" button
+    const goBackButton = document.getElementById('go-back-button');
+    goBackButton.addEventListener('click', () => {
+        window.location.href = 'index.html';  // Adjust the URL if your homepage has a different file name
     });
 });
