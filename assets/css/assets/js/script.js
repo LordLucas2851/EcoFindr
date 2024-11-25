@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('EcoFindr is ready to help you find eco-friendly options.');
+    console.log('EcoFindr is ready to help you find sustainable choices.');
 
-    // Sample data of eco-friendly brands
-    const ecoBrands = [
-        { name: 'Patagonia', category: 'clothing', link: 'https://www.patagonia.com' },
-        { name: 'Allbirds', category: 'footwear', link: 'https://www.allbirds.com' },
-        { name: 'Tesla', category: 'vehicles', link: 'https://www.tesla.com' },
-        { name: 'SunPower', category: 'solar panels', link: 'https://www.sunpower.com' },
-        { name: 'Ecosia', category: 'search engine', link: 'https://www.ecosia.org' },
+    // Sample database of eco-friendly brands/products
+    const ecoItems = [
+        { name: 'Whole Foods Market', category: 'organic food', link: 'https://www.wholefoodsmarket.com' },
+        { name: 'Ecover', category: 'cleaning products', link: 'https://www.ecover.com' },
+        { name: 'Allbirds', category: 'clothing', link: 'https://www.allbirds.com' },
+        { name: 'If You Care', category: 'kitchen products', link: 'https://www.ifyoucare.com' },
+        { name: 'Reusable Bag Co.', category: 'reusable bags', link: 'https://www.reusablebagco.com' },
+        { name: 'Ethique', category: 'personal care', link: 'https://www.ethique.com' },
+        { name: 'Greener Chef', category: 'kitchenware', link: 'https://www.greenerchef.com' },
     ];
 
     const searchButton = document.getElementById('search-button');
@@ -23,19 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const results = ecoBrands.filter(brand =>
-            brand.name.toLowerCase().includes(query) ||
-            brand.category.toLowerCase().includes(query)
+        const results = ecoItems.filter(item =>
+            item.name.toLowerCase().includes(query) ||
+            item.category.toLowerCase().includes(query)
         );
 
         if (results.length === 0) {
             resultsDiv.innerHTML = '<p>No results found. Try a different keyword.</p>';
         } else {
-            results.forEach(brand => {
+            results.forEach(item => {
                 const resultDiv = document.createElement('div');
                 resultDiv.innerHTML = `
-                    <strong>${brand.name}</strong> - ${brand.category} 
-                    <a href="${brand.link}" target="_blank">Visit</a>
+                    <strong>${item.name}</strong> - ${item.category} 
+                    <a href="${item.link}" target="_blank">Visit</a>
                 `;
                 resultsDiv.appendChild(resultDiv);
             });
