@@ -1,5 +1,7 @@
-import { initializeApp } from "firebase/app";
+// Firebase Authentication Setup (ensure this is included)
+// Import Firebase SDK
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from "firebase/app";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -16,38 +18,48 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Handle sign-up
-document.getElementById('signup').addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent form submission
+// Select the forms and input fields
+const signupForm = document.getElementById("signup");
+const loginForm = document.getElementById("login");
 
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
+const signupEmail = document.getElementById("signup-email");
+const signupPassword = document.getElementById("signup-password");
 
+const loginEmail = document.getElementById("login-email");
+const loginPassword = document.getElementById("login-password");
+
+// Handle sign-up form submission
+signupForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent page reload
+    const email = signupEmail.value;
+    const password = signupPassword.value;
+
+    // Sign up the user
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed up successfully
-            const user = userCredential.user;
-            window.location.href = "index.html"; // Redirect to the home page after sign-up
+            // Successfully signed up
+            window.location.href = "index.html"; // Redirect to the home page
         })
         .catch((error) => {
-            console.error(error.message);
+            // Handle Errors
+            alert(error.message);
         });
 });
 
-// Handle log-in
-document.getElementById('login').addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent form submission
+// Handle login form submission
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent page reload
+    const email = loginEmail.value;
+    const password = loginPassword.value;
 
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-
+    // Sign in the user
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Logged in successfully
-            const user = userCredential.user;
-            window.location.href = "index.html"; // Redirect to the home page after login
+            // Successfully logged in
+            window.location.href = "index.html"; // Redirect to the home page
         })
         .catch((error) => {
-            console.error(error.message);
+            // Handle Errors
+            alert(error.message);
         });
 });
