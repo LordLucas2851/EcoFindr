@@ -15,7 +15,7 @@ body {
 header {
     background-color: #3c6e47;  
     height: 50px; 
-    width: 100%; /* Ensure the header spans the full width */
+    width: 100%; 
 }
 
 .hero {
@@ -23,8 +23,8 @@ header {
     padding: 2rem;
     background: #228B22;
     color: #fff;
-    width: 100%; /* Ensure the green background spans full width */
-    margin-bottom: 2rem; /* Add some space after the hero section */
+    width: 100%; 
+    margin-bottom: 2rem; 
 }
 
 .logo-image {
@@ -38,8 +38,8 @@ header {
     padding: 2rem;
     text-align: center;
     width: 100%;
-    max-width: 800px; /* Maximum width for each section */
-    margin: 0 auto; /* Centers the content */
+    max-width: 800px; 
+    margin: 0 auto; 
 }
 
 .search input {
@@ -111,7 +111,7 @@ header {
     border-radius: 8px;
     width: 100%;
     max-width: 800px;
-    margin: -20px auto 20px auto; /* Adjusted margin to move it up */
+    margin: -20px auto 20px auto;
 }
 
 .question-form textarea {
@@ -148,5 +148,5 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem;
-    width: 100%;
+    width: 100%; 
 }
