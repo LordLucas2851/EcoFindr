@@ -78,7 +78,7 @@ header .logo {
 /* Go Back to Home Button */
 #go-back {
     text-align: center;
-    margin-top: 1rem; /* Reduced margin-top to move the button up */
+    margin-top: 0.5rem; /* Reduced margin-top to move the button up */
 }
 
 #go-back-button {
