@@ -47,6 +47,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: 'Reformation creates sustainable fashion with a focus on minimizing waste and reducing environmental impact.'
             }
         ],
+        home_appliances: [
+            { 
+                name: 'EcoLife Appliances', 
+                category: 'energy-efficient appliances', 
+                link: 'https://www.ecolifeappliances.com', 
+                description: 'EcoLife Appliances offers a wide range of energy-efficient and environmentally-friendly home appliances.'
+            },
+            { 
+                name: 'Green Living Appliance Store', 
+                category: 'sustainable home appliances', 
+                link: 'https://www.greenlivingappliances.com', 
+                description: 'Green Living offers sustainable, eco-friendly home appliances designed to reduce energy consumption and environmental impact.'
+            },
+            { 
+                name: 'Energy Star', 
+                category: 'energy-saving appliances', 
+                link: 'https://www.energystar.gov', 
+                description: 'Energy Star provides a range of energy-saving home appliances certified to meet environmental and efficiency standards.'
+            }
+        ],
     };
 
     const keywordCategories = {
