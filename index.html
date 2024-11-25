@@ -3,38 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFindr</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>EcoFindr - Find Eco-Friendly Brands</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="logo">🌍 EcoFindr</div>
+        <img src="Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo">
+        <h1>EcoFindr</h1>
     </header>
-    <main>
-        <section id="home" class="hero">
-            <!-- Add the logo image -->
-            <img src="assets/images/Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo-image">
-            <h1>Welcome to EcoFindr</h1>
-            <p>Discover eco-friendly brands, food options, clothing, and sustainable household items!</p>
-        </section>
-        <section id="search" class="search">
-            <h2>Find Eco-Friendly Options</h2>
-            <p>Enter a keyword or category to find sustainable brands and products.</p>
-            <input type="text" id="search-input" placeholder="e.g., organic food, reusable bags, etc.">
-            <button id="search-button">Search</button>
-        </section>
-        <section id="about" class="about">
-            <h2>About Us</h2>
-            <p>EcoFindr helps you make sustainable choices by connecting you with eco-conscious brands and products.</p>
-        </section>
-        <section id="contact" class="contact">
-            <h2>Contact Us</h2>
-            <p>Email us at: support@ecofindr.com</p>
-        </section>
-    </main>
+    
+    <div class="hero">
+        <img src="Outlook-A logo of.jpg" alt="EcoFindr Logo" class="logo-image">
+        <h2>Find Eco-Friendly Brands and Products</h2>
+        <p>Discover sustainable products and eco-conscious brands across various categories</p>
+    </div>
+
+    <div class="search">
+        <h2>What are you looking for?</h2>
+        <input type="text" id="search-input" placeholder="e.g., clothing, food, appliances">
+        <button onclick="search()">Search</button>
+    </div>
+
     <footer>
         <p>&copy; 2024 EcoFindr. All rights reserved.</p>
     </footer>
-    <script src="assets/js/script.js"></script>
+
+    <script>
+        function search() {
+            var query = document.getElementById('search-input').value;
+            if (query) {
+                window.location.href = 'results.html?query=' + query;
+            } else {
+                alert('Please enter a search term.');
+            }
+        }
+    </script>
 </body>
 </html>
