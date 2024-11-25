@@ -111,6 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // "Start a New Search" button click event
     document.getElementById('new-search-button').addEventListener('click', () => {
-        window.location.href = 'index.html'; // Redirect to home page for new search
+        window.location.href = 'home.html'; // Redirect to home page for new search
     });
 });
