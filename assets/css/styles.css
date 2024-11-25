@@ -25,7 +25,7 @@ header {
     margin-bottom: 1rem;
 }
 
-.search, .about, .contact {
+.search, .about, .contact, .forum-section {
     padding: 2rem;
     text-align: center;
 }
