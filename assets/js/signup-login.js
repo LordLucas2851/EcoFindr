@@ -1,27 +1,24 @@
-// Import the necessary Firebase modules
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
-    authDomain: "ecofindr-4fffd.firebaseapp.com",
-    projectId: "ecofindr-4fffd",
-    storageBucket: "ecofindr-4fffd.firebasestorage.app",
-    messagingSenderId: "64553820107",
-    appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
-    measurementId: "G-TG958E6F56"
+  apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
+  authDomain: "ecofindr-4fffd.firebaseapp.com",
+  projectId: "ecofindr-4fffd",
+  storageBucket: "ecofindr-4fffd.firebasestorage.app",
+  messagingSenderId: "64553820107",
+  appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
+  measurementId: "G-TG958E6F56"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
-// Handle signup form submission
+// Handle sign-up
 document.getElementById('signup').addEventListener('submit', (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent form submission
 
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
@@ -30,18 +27,16 @@ document.getElementById('signup').addEventListener('submit', (event) => {
         .then((userCredential) => {
             // Signed up successfully
             const user = userCredential.user;
-            console.log('User signed up:', user);
-            window.location.href = 'index.html';  // Redirect to home page
+            window.location.href = "index.html"; // Redirect to the home page after sign-up
         })
         .catch((error) => {
-            const errorMessage = error.message;
-            alert('Sign Up Error: ' + errorMessage);
+            console.error(error.message);
         });
 });
 
-// Handle login form submission
+// Handle log-in
 document.getElementById('login').addEventListener('submit', (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent form submission
 
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
@@ -50,11 +45,9 @@ document.getElementById('login').addEventListener('submit', (event) => {
         .then((userCredential) => {
             // Logged in successfully
             const user = userCredential.user;
-            console.log('User logged in:', user);
-            window.location.href = 'index.html';  // Redirect to home page
+            window.location.href = "index.html"; // Redirect to the home page after login
         })
         .catch((error) => {
-            const errorMessage = error.message;
-            alert('Login Error: ' + errorMessage);
+            console.error(error.message);
         });
 });
