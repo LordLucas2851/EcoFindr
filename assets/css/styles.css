@@ -4,18 +4,11 @@ body {
     padding: 0;
     background-color: #f0f9f0;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
-    text-align: center;
 }
 
 header {
     background-color: #3c6e47;  
     height: 50px; 
-    width: 100%; 
 }
 
 .hero {
@@ -23,8 +16,6 @@ header {
     padding: 2rem;
     background: #228B22;
     color: #fff;
-    width: 100%; 
-    margin-bottom: 2rem; 
 }
 
 .logo-image {
@@ -37,9 +28,6 @@ header {
 .search, .about, .contact, .forum-section {
     padding: 2rem;
     text-align: center;
-    width: 100%;
-    max-width: 800px; 
-    margin: 0 auto; 
 }
 
 .search input {
@@ -109,9 +97,6 @@ header {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
-    width: 100%;
-    max-width: 800px;
-    margin: -20px auto 20px auto;
 }
 
 .question-form textarea {
@@ -148,5 +133,4 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem;
-    width: 100%; 
 }
