@@ -20,21 +20,23 @@ const questionInput = document.getElementById("question-input");
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
 
-// Fetch existing questions from Firestore and display them
+// Fetch existing questions and answers from Firestore and display them
 async function fetchQuestions() {
     try {
         const q = query(collection(db, "questions"), orderBy("timestamp"));
         const querySnapshot = await getDocs(q);
 
-        faqContainer.innerHTML = ''; // Clear the existing content before displaying new data
+        faqContainer.innerHTML = ''; // Clear the existing content
 
         querySnapshot.forEach((doc) => {
             const questionData = doc.data();
             const newFaqItem = document.createElement("div");
             newFaqItem.classList.add("faq-item");
+
+            const answerText = questionData.answer || "<i>Waiting for an answer...</i>";
             newFaqItem.innerHTML = `
                 <strong>Q: ${questionData.question}</strong>
-                <p>A: <i>Waiting for an answer...</i></p>
+                <p>A: ${answerText}</p>
                 <button class="answer-button" data-id="${doc.id}">Answer</button>
             `;
             faqContainer.appendChild(newFaqItem);
@@ -57,17 +59,14 @@ submitButton.addEventListener("click", async () => {
 
     if (questionText) {
         try {
-            // Save question to Firestore
             await addDoc(collection(db, "questions"), {
                 question: questionText,
                 timestamp: new Date(),
+                answer: "" // Initialize with an empty answer
             });
 
-            // Clear input field after submission
-            questionInput.value = "";
-
-            // Reload the questions from Firestore to reflect the new one
-            fetchQuestions();
+            questionInput.value = ""; // Clear the input field
+            fetchQuestions(); // Reload the questions
         } catch (e) {
             console.error("Error adding question: ", e);
         }
@@ -83,14 +82,10 @@ async function answerQuestion(event) {
 
     if (answerText) {
         try {
-            // Update the Firestore document with the answer
             const questionDoc = doc(db, "questions", questionId);
-            await updateDoc(questionDoc, {
-                answer: answerText,
-            });
+            await updateDoc(questionDoc, { answer: answerText });
 
-            // Reload the questions to reflect the new answer
-            fetchQuestions();
+            fetchQuestions(); // Reload the questions to show the new answer
         } catch (e) {
             console.error("Error adding answer: ", e);
         }
