@@ -13,12 +13,8 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// Reference to the form elements
-const signupForm = document.getElementById('signup');
-const loginForm = document.getElementById('login');
-
 // Handle signup form submission
-signupForm.addEventListener('submit', (event) => {
+document.getElementById('signup').addEventListener('submit', (event) => {
     event.preventDefault();
     
     const email = document.getElementById('signup-email').value;
@@ -37,7 +33,7 @@ signupForm.addEventListener('submit', (event) => {
 });
 
 // Handle login form submission
-loginForm.addEventListener('submit', (event) => {
+document.getElementById('login').addEventListener('submit', (event) => {
     event.preventDefault();
 
     const email = document.getElementById('login-email').value;
