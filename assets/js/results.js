@@ -104,6 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener for the "Go Back to Home" button
     const goBackButton = document.getElementById('go-back-button');
     goBackButton.addEventListener('click', () => {
-        window.location.href = 'index.html';  // Adjust the URL if your homepage has a different file name
+        window.location.href = 'home.html';  // Adjust the URL if your homepage has a different file name
     });
 });
