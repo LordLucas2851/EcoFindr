@@ -1,95 +1,30 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f9f0;
-    color: #333;
-}
-
-/* Header Styles */
-header {
-    background-color: #006400;
-    color: #fff;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-}
-
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-/* Hero Section */
-.hero {
-    text-align: center;
+/* Results Page */
+.results-page {
     padding: 2rem;
-    background: #228B22;
-    color: #fff;
+    text-align: center;
 }
 
-.logo-image {
-    display: block;
-    margin: 0 auto;
-    max-width: 150px; /* Adjust size as needed */
+.results-page #user-query {
+    font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
-/* Search Section */
-.search, .about, .contact {
-    padding: 2rem;
-    text-align: center;
-}
-
-.search input {
-    padding: 0.5rem;
-    margin-right: 0.5rem;
-    width: 60%;
-    max-width: 300px;
-}
-
-.search button {
-    padding: 0.5rem;
-    background-color: #006400;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.results {
-    margin-top: 1rem;
-    text-align: left;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.results div {
-    padding: 0.5rem;
+.result-item {
+    padding: 1rem;
     border: 1px solid #ddd;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
     border-radius: 5px;
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
 
-/* Footer */
-footer {
-    background-color: #004d00;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
+.result-item a {
+    color: #006400;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.result-item a:hover {
+    text-decoration: underline;
 }
