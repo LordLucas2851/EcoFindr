@@ -5,16 +5,16 @@ body {
     padding: 0;
     background-color: #f0f9f0;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Header Styles */
 header {
     background-color: #006400;
     color: #fff;
     padding: 1rem;
-    display: flex;
-    justify-content: center; /* Center the logo */
-    align-items: center;
+    text-align: center;
 }
 
 header .logo {
@@ -22,7 +22,6 @@ header .logo {
     font-weight: bold;
 }
 
-/* Hero Section */
 .hero {
     text-align: center;
     padding: 2rem;
@@ -33,46 +32,59 @@ header .logo {
 .logo-image {
     display: block;
     margin: 0 auto;
-    max-width: 150px; /* Adjust size as needed */
+    max-width: 150px;
     margin-bottom: 1rem;
 }
 
-/* Search Section */
-.search, .about, .contact {
+/* Auth Section */
+.auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #ffffff;
     padding: 2rem;
-    text-align: center;
 }
 
-.search input {
-    padding: 0.5rem;
-    margin-right: 0.5rem;
-    width: 60%;
-    max-width: 300px;
-}
-
-.search button {
-    padding: 0.5rem;
-    background-color: #006400;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.results {
-    margin-top: 1rem;
-    text-align: left;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.results div {
-    padding: 0.5rem;
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
     border: 1px solid #ddd;
-    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.form-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #006400;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.form-container button:hover {
+    background-color: #004d00;
 }
 
 /* Footer */
@@ -81,4 +93,5 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem;
+    margin-top: auto;
 }
