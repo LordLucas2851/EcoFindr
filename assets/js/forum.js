@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, collection, addDoc, query, getDocs, orderBy } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -27,13 +27,18 @@ async function fetchQuestions() {
     try {
         const q = query(collection(db, "questions"), orderBy("timestamp"));
         const querySnapshot = await getDocs(q);
+        faqContainer.innerHTML = ''; // Clear the previous list before rendering new data
         querySnapshot.forEach((doc) => {
             const questionData = doc.data();
             const newFaqItem = document.createElement("div");
             newFaqItem.classList.add("faq-item");
+
+            // Add the question and an input field for an answer
             newFaqItem.innerHTML = `
                 <strong>Q: ${questionData.question}</strong>
-                <p>A: ${questionData.answer || "Waiting for an answer..."}</p>
+                <p>A: <span id="answer-${doc.id}">${questionData.answer || "Waiting for an answer..."}</span></p>
+                <textarea id="answer-input-${doc.id}" placeholder="Your answer here..."></textarea>
+                <button class="answer-button" data-doc-id="${doc.id}">Submit Answer</button>
             `;
             faqContainer.appendChild(newFaqItem);
         });
@@ -68,6 +73,33 @@ submitButton.addEventListener("click", async () => {
         }
     } else {
         alert("Please enter both a question and your email.");
+    }
+});
+
+// Answer a question and update Firestore
+faqContainer.addEventListener("click", async (event) => {
+    if (event.target && event.target.classList.contains("answer-button")) {
+        const docId = event.target.getAttribute("data-doc-id");
+        const answerInput = document.getElementById(`answer-input-${docId}`).value.trim();
+
+        if (answerInput) {
+            try {
+                // Update Firestore document with the answer
+                const questionRef = doc(db, "questions", docId);
+                await updateDoc(questionRef, {
+                    answer: answerInput,
+                });
+
+                // Update the displayed answer on the page
+                const answerElement = document.getElementById(`answer-${docId}`);
+                answerElement.textContent = answerInput;
+                alert("Answer submitted!");
+            } catch (e) {
+                console.error("Error updating answer: ", e);
+            }
+        } else {
+            alert("Please enter an answer.");
+        }
     }
 });
 
