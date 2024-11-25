@@ -11,21 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
         food: [
             { 
                 name: 'Whole Foods Market', 
-                category: 'organic food', 
+                category: 'Whole Foods Market offers a wide selection of organic, healthy foods, and eco-friendly products.',
                 link: 'https://www.wholefoodsmarket.com',
-                description: 'Whole Foods Market offers a wide selection of organic, healthy foods, and eco-friendly products.'
             },
             { 
                 name: 'Thrive Market', 
-                category: 'organic food', 
+                category: 'Thrive Market is an online marketplace offering organic, non-GMO, and sustainable food options at wholesale prices.', 
                 link: 'https://www.thrivemarket.com', 
-                description: 'Thrive Market is an online marketplace offering organic, non-GMO, and sustainable food options at wholesale prices.'
             },
             { 
                 name: 'Farm Fresh to You', 
-                category: 'organic food delivery', 
+                category: 'Farm Fresh to You delivers fresh, organic produce directly to your door from local farms.', 
                 link: 'https://www.farmfreshtoyou.com', 
-                description: 'Farm Fresh to You delivers fresh, organic produce directly to your door from local farms.'
             }
         ],
         clothing: [
