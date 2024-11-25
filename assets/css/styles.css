@@ -1,84 +1,84 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
+    background-color: #f0f9f0;
     color: #333;
 }
 
+/* Header Styles */
 header {
-    background-color: #009688;
-    color: white;
-    padding: 20px 0;
+    background-color: #006400;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    background: #228B22;
+    color: #fff;
 }
 
-header img {
-    width: 120px;
-    margin-bottom: 15px;
+.logo-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 150px; /* Adjust size as needed */
+    margin-bottom: 1rem;
 }
 
-header h1 {
-    font-size: 2.5em;
-    margin: 0;
-    font-weight: normal;
+/* Search Section */
+.search, .about, .contact {
+    padding: 2rem;
+    text-align: center;
 }
 
-header p {
-    font-size: 1.2em;
-    margin: 0;
+.search input {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    width: 60%;
+    max-width: 300px;
+}
+
+.search button {
+    padding: 0.5rem;
+    background-color: #006400;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }
 
 .results {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
+    margin-top: 1rem;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .results div {
-    background-color: white;
+    padding: 0.5rem;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    margin: 10px;
-    width: 280px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.results div h3 {
-    margin: 0;
-    font-size: 1.5em;
-    color: #009688;
-}
-
-.results div p {
-    font-size: 1.1em;
-    margin: 10px 0;
-}
-
-.results div a {
-    color: #00796b;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.results div a:hover {
-    color: #004d40;
-    text-decoration: underline;
-}
-
+/* Footer */
 footer {
-    background-color: #009688;
-    color: white;
+    background-color: #004d00;
+    color: #fff;
     text-align: center;
-    padding: 15px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-footer p {
-    margin: 0;
+    padding: 1rem;
 }
