@@ -141,13 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Check if category matches and display results
     if (category && ecoRecommendations[category]) {
         const filteredResults = ecoRecommendations[category].slice(0, 5); // Show only the first 5 results
         filteredResults.forEach(item => {
             const resultDiv = document.createElement('div');
             resultDiv.innerHTML = `
                 <strong>${item.name}</strong> - ${item.category} 
-                <p>${item.description}</p>
+                <p>${item.description}</p> <!-- This will show the description -->
                 <a href="${item.link}" target="_blank">Visit</a>
             `;
             resultsDiv.appendChild(resultDiv);
