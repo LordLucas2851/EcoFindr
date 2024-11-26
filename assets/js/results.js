@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchQueryElement.textContent = query;
 
+    //Categories for Reccomendations
     const ecoRecommendations = {
         food: [
             { 
@@ -69,7 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
     };
 
+    //Possible Keywords (Can be updated)
     const keywordCategories = {
+        //Food
         bacon: 'food',
         sausage: 'food',
         turkey: 'food',
@@ -149,6 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
         applejuice: 'food',
         orangejuice: 'food',
         lemonade: 'food',
+        
+        //Clothing
         tshirts: 'clothing',
         pants: 'clothing',
         socks: 'clothing',
@@ -229,6 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
         tracksuits: 'clothing',
         bloomers: 'clothing',
         rompers: 'clothing',
+
+        //Appliances
         fridge: 'home_appliances',
         microwave: 'home_appliances',
         oven: 'home_appliances',
@@ -319,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const queryLower = query.toLowerCase();
     let category = '';
 
+    //Checks keyword to see if match and display correct websites
     Object.keys(keywordCategories).forEach(keyword => {
         if (queryLower.includes(keyword)) {
             category = keywordCategories[keyword];
@@ -340,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsDiv.innerHTML = '<p>No results found. Try a different keyword.</p>';
     }
 
+    //Go back to home screen button
     const goBackButton = document.getElementById('go-back-button');
     goBackButton.addEventListener('click', () => {
         window.location.href = 'home.html';  
