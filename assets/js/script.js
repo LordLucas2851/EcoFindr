@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('search-button');
     const searchInput = document.getElementById('search-input');
 
+    //Search Button
     searchButton.addEventListener('click', () => {
         const query = searchInput.value.trim();
 
