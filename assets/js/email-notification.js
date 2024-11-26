@@ -3,6 +3,10 @@ import emailjs from 'https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.m
 //Function to send an email
 export const sendEmail = async (toEmail, fromName, message) => {
     try {
+        if (!toEmail || !fromName || !message) {
+            throw new Error('All fields are required.');
+        }
+
         const templateParams = {
             to_name: toEmail,
             from_name: fromName,
