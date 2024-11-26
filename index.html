@@ -6,6 +6,8 @@
     <title>EcoFindr</title>
     <link rel="stylesheet" href="assets/css/loginStyle.css">
     <script type="module">
+
+        //FireBase Confiq
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
       import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
@@ -24,6 +26,7 @@
       const analytics = getAnalytics(app);
       const auth = getAuth(app);
 
+        //SignUp 
       document.getElementById("signup").addEventListener("submit", (event) => {
         event.preventDefault(); 
         const email = document.getElementById("signup-email").value;
@@ -40,6 +43,7 @@
           });
       });
 
+        //Login
       document.getElementById("login").addEventListener("submit", (event) => {
         event.preventDefault(); 
         const email = document.getElementById("login-email").value;
