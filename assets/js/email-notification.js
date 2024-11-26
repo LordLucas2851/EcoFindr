@@ -1,6 +1,6 @@
 import emailjs from 'https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js';
 
-// Function to send an email
+//Function to send an email
 export const sendEmail = async (toEmail, fromName, message) => {
     try {
         const templateParams = {
@@ -9,7 +9,6 @@ export const sendEmail = async (toEmail, fromName, message) => {
             message: message,
         };
 
-        // Send email using EmailJS service
         await emailjs.send("service_8bwgvkk", "template_fy5gkdz", templateParams, "euggqJf1pklcQY6Uo");
         console.log('Email sent successfully');
     } catch (error) {
