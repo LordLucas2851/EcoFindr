@@ -1,15 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { sendEmail } from './email-notification.js';
 
 //Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
-  authDomain: "ecofindr-4fffd.firebaseapp.com",
-  projectId: "ecofindr-4fffd",
-  storageBucket: "ecofindr-4fffd.firebasestorage.app",
-  messagingSenderId: "64553820107",
-  appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
-  measurementId: "G-TG958E6F56"
+    apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
+    authDomain: "ecofindr-4fffd.firebaseapp.com",
+    projectId: "ecofindr-4fffd",
+    storageBucket: "ecofindr-4fffd.firebasestorage.app",
+    messagingSenderId: "64553820107",
+    appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
+    measurementId: "G-TG958E6F56"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -70,7 +71,7 @@ submitButton.addEventListener("click", async () => {
     }
 });
 
-//Answer a question and then update the collection in Firebase
+//Answer a question and send email notification
 faqContainer.addEventListener("click", async (event) => {
     if (event.target && event.target.classList.contains("answer-button")) {
         const docId = event.target.getAttribute("data-doc-id");
@@ -79,20 +80,41 @@ faqContainer.addEventListener("click", async (event) => {
         if (answerInput) {
             try {
                 const questionRef = doc(db, "questions", docId);
-                await updateDoc(questionRef, {
-                    answer: answerInput,
-                });
+                const questionSnapshot = await getDoc(questionRef);
 
-                const answerElement = document.getElementById(`answer-${docId}`);
-                answerElement.textContent = answerInput;
-                alert("Answer submitted!");
+                if (questionSnapshot.exists()) {
+                    const questionData = questionSnapshot.data();
+
+                    await updateDoc(questionRef, {
+                        answer: answerInput,
+                    });
+
+                    const answerElement = document.getElementById(`answer-${docId}`);
+                    answerElement.textContent = answerInput;
+
+                    //Send email notification
+                    const userEmail = questionData.email;
+                    const questionText = questionData.question;
+                    const message = `Hello,\n\nYour question has been answered:\n\nQuestion: "${questionText}"\nAnswer: "${answerInput}"\n\nThank you for using EcoFindr!`;
+
+                    try {
+                        await sendEmail(userEmail, "EcoFindr Support", message);
+                        alert("Answer submitted and email notification sent!");
+                    } catch (emailError) {
+                        console.error("Error sending email:", emailError);
+                        alert("Answer submitted, but failed to send email notification.");
+                    }
+                } else {
+                    alert("Question not found!");
+                }
             } catch (e) {
-                console.error("Error updating answer: ", e);
+                console.error("Error updating answer or fetching question: ", e);
+                alert("An error occurred while submitting the answer.");
             }
         } else {
             alert("Please enter an answer.");
         }
     }
 });
-// Initialize by fetching existing questions
+
 fetchQuestions();
