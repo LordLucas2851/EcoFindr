@@ -20,80 +20,101 @@ const emailInput = document.getElementById("email-input");
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
 
-// Grab questions from Firebase Database
-async function fetchQuestions() {
-  try {
-    const q = query(collection(db, "questions"), orderBy("timestamp"));
-    const querySnapshot = await getDocs(q);
-    faqContainer.innerHTML = ""; // Clear the container first
-    querySnapshot.forEach((doc) => {
-      const questionData = doc.data();
-      const newFaqItem = document.createElement("div");
-      newFaqItem.classList.add("faq-item");
+// Function to send email
+async function sendEmail(toEmail, question, answer) {
+    try {
+        const templateParams = {
+            to_email: toEmail,
+            question: question,
+            answer: answer,
+        };
 
-      // Use proper backticks for template literals
-      newFaqItem.innerHTML = `
-        <strong>Q: ${questionData.question}</strong>
-        <p>A: <span id="answer-${doc.id}">${questionData.answer || "Waiting for an answer..."}</span></p>
-        <textarea id="answer-input-${doc.id}" placeholder="Your answer here..."></textarea>
-        <button class="answer-button" data-doc-id="${doc.id}">Submit Answer</button>
-      `;
-      faqContainer.appendChild(newFaqItem);
-    });
-  } catch (e) {
-    console.error("Error fetching questions: ", e);
-  }
+        await emailjs.send("service_8bwgvkk", "template_fy5gkdz", templateParams);
+        console.log("Email sent successfully");
+    } catch (error) {
+        console.error("Error sending email:", error);
+    }
+}
+
+// Fetch questions from Firebase
+async function fetchQuestions() {
+    try {
+        const q = query(collection(db, "questions"), orderBy("timestamp"));
+        const querySnapshot = await getDocs(q);
+        faqContainer.innerHTML = ""; 
+        querySnapshot.forEach((doc) => {
+            const questionData = doc.data();
+            const newFaqItem = document.createElement("div");
+            newFaqItem.classList.add("faq-item");
+
+            newFaqItem.innerHTML = `
+                <strong>Q: ${questionData.question}</strong>
+                <p>A: <span id="answer-${doc.id}">${questionData.answer || "Waiting for an answer..."}</span></p>
+                <textarea id="answer-input-${doc.id}" placeholder="Your answer here..."></textarea>
+                <button class="answer-button" data-doc-id="${doc.id}" data-email="${questionData.email}" data-question="${questionData.question}">Submit Answer</button>
+            `;
+            faqContainer.appendChild(newFaqItem);
+        });
+    } catch (e) {
+        console.error("Error fetching questions: ", e);
+    }
 }
 
 // Add new question to Firebase
 submitButton.addEventListener("click", async () => {
-  const questionText = questionInput.value.trim();
-  const email = emailInput.value.trim();
+    const questionText = questionInput.value.trim();
+    const email = emailInput.value.trim();
 
-  if (questionText && email) {
-    try {
-      await addDoc(collection(db, "questions"), {
-        question: questionText,
-        email: email,
-        timestamp: new Date(),
-        answer: "", // Initialize with an empty answer
-      });
+    if (questionText && email) {
+        try {
+            await addDoc(collection(db, "questions"), {
+                question: questionText,
+                email: email,
+                timestamp: new Date(),
+                answer: "", 
+            });
 
-      questionInput.value = "";
-      emailInput.value = "";
+            questionInput.value = "";
+            emailInput.value = "";
 
-      fetchQuestions(); // Refresh the list of questions
-    } catch (e) {
-      console.error("Error adding question: ", e);
+            fetchQuestions();
+        } catch (e) {
+            console.error("Error adding question: ", e);
+        }
+    } else {
+        alert("Please enter both a question and your email.");
     }
-  } else {
-    alert("Please enter both a question and your email.");
-  }
 });
 
-// Answer a question and then update the collection in Firebase
+// Handle answer submission
 faqContainer.addEventListener("click", async (event) => {
-  if (event.target && event.target.classList.contains("answer-button")) {
-    const docId = event.target.getAttribute("data-doc-id");
-    const answerInput = document.getElementById(`answer-input-${docId}`).value.trim();
+    if (event.target && event.target.classList.contains("answer-button")) {
+        const docId = event.target.getAttribute("data-doc-id");
+        const toEmail = event.target.getAttribute("data-email");
+        const question = event.target.getAttribute("data-question");
+        const answerInput = document.getElementById(`answer-input-${docId}`).value.trim();
 
-    if (answerInput) {
-      try {
-        const questionRef = doc(db, "questions", docId);
-        await updateDoc(questionRef, {
-          answer: answerInput,
-        });
+        if (answerInput) {
+            try {
+                const questionRef = doc(db, "questions", docId);
+                await updateDoc(questionRef, {
+                    answer: answerInput,
+                });
 
-        const answerElement = document.getElementById(`answer-${docId}`);
-        answerElement.textContent = answerInput;
-        alert("Answer submitted!");
-      } catch (e) {
-        console.error("Error updating answer: ", e);
-      }
-    } else {
-      alert("Please enter an answer.");
+                const answerElement = document.getElementById(`answer-${docId}`);
+                answerElement.textContent = answerInput;
+
+                // Send email notification
+                sendEmail(toEmail, question, answerInput);
+
+                alert("Answer submitted!");
+            } catch (e) {
+                console.error("Error updating answer: ", e);
+            }
+        } else {
+            alert("Please enter an answer.");
+        }
     }
-  }
 });
 
 // Initialize by fetching existing questions
