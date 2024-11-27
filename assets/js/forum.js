@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-// Firebase config
+//Firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
     authDomain: "ecofindr-4fffd.firebaseapp.com",
@@ -20,7 +20,7 @@ const emailInput = document.getElementById("email-input");
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
 
-// Grab questions from Firebase Database
+//Grab questions from Firebase Database
 async function fetchQuestions() {
     try {
         const q = query(collection(db, "questions"), orderBy("timestamp"));
@@ -44,7 +44,7 @@ async function fetchQuestions() {
     }
 }
 
-// Add new question to Firebase
+//Add new question to Firebase
 submitButton.addEventListener("click", async () => {
     const questionText = questionInput.value.trim();
     const email = emailInput.value.trim();
@@ -70,7 +70,7 @@ submitButton.addEventListener("click", async () => {
     }
 });
 
-// Answer a question, update Firebase, and send email
+//Answer a question, update Firebase, and send email
 faqContainer.addEventListener("click", async (event) => {
     if (event.target && event.target.classList.contains("answer-button")) {
         const docId = event.target.getAttribute("data-doc-id");
@@ -85,11 +85,9 @@ faqContainer.addEventListener("click", async (event) => {
                     answer: answerInput,
                 });
 
-                // Update the displayed answer
                 const answerElement = document.getElementById(`answer-${docId}`);
                 answerElement.textContent = answerInput;
 
-                // Send email notification
                 const templateParams = {
                     to_name: userEmail,
                     from_name: "EcoFindr Support",
@@ -116,5 +114,4 @@ faqContainer.addEventListener("click", async (event) => {
     }
 });
 
-// Initialize by fetching existing questions
 fetchQuestions();
