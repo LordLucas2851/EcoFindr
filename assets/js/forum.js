@@ -1,16 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-import { sendEmail } from './email-notification.js';
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 //Firebase config
 const firebaseConfig = {
-    apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
-    authDomain: "ecofindr-4fffd.firebaseapp.com",
-    projectId: "ecofindr-4fffd",
-    storageBucket: "ecofindr-4fffd.firebasestorage.app",
-    messagingSenderId: "64553820107",
-    appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
-    measurementId: "G-TG958E6F56"
+  apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
+  authDomain: "ecofindr-4fffd.firebaseapp.com",
+  projectId: "ecofindr-4fffd",
+  storageBucket: "ecofindr-4fffd.firebasestorage.app",
+  messagingSenderId: "64553820107",
+  appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
+  measurementId: "G-TG958E6F56"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -32,12 +31,12 @@ async function fetchQuestions() {
             const newFaqItem = document.createElement("div");
             newFaqItem.classList.add("faq-item");
 
-            newFaqItem.innerHTML = `
+            newFaqItem.innerHTML = 
                 <strong>Q: ${questionData.question}</strong>
                 <p>A: <span id="answer-${doc.id}">${questionData.answer || "Waiting for an answer..."}</span></p>
                 <textarea id="answer-input-${doc.id}" placeholder="Your answer here..."></textarea>
                 <button class="answer-button" data-doc-id="${doc.id}">Submit Answer</button>
-            `;
+            ;
             faqContainer.appendChild(newFaqItem);
         });
     } catch (e) {
@@ -71,50 +70,29 @@ submitButton.addEventListener("click", async () => {
     }
 });
 
-//Answer a question and send email notification
+//Answer a question and then update the collection in Firebase
 faqContainer.addEventListener("click", async (event) => {
     if (event.target && event.target.classList.contains("answer-button")) {
         const docId = event.target.getAttribute("data-doc-id");
-        const answerInput = document.getElementById(`answer-input-${docId}`).value.trim();
+        const answerInput = document.getElementById(answer-input-${docId}).value.trim();
 
         if (answerInput) {
             try {
                 const questionRef = doc(db, "questions", docId);
-                const questionSnapshot = await getDoc(questionRef);
+                await updateDoc(questionRef, {
+                    answer: answerInput,
+                });
 
-                if (questionSnapshot.exists()) {
-                    const questionData = questionSnapshot.data();
-
-                    await updateDoc(questionRef, {
-                        answer: answerInput,
-                    });
-
-                    const answerElement = document.getElementById(`answer-${docId}`);
-                    answerElement.textContent = answerInput;
-
-                    //Send email notification
-                    const userEmail = questionData.email;
-                    const questionText = questionData.question;
-                    const message = `Hello,\n\nYour question has been answered:\n\nQuestion: "${questionText}"\nAnswer: "${answerInput}"\n\nThank you for using EcoFindr!`;
-
-                    try {
-                        await sendEmail(userEmail, "EcoFindr Support", message);
-                        alert("Answer submitted and email notification sent!");
-                    } catch (emailError) {
-                        console.error("Error sending email:", emailError);
-                        alert("Answer submitted, but failed to send email notification.");
-                    }
-                } else {
-                    alert("Question not found!");
-                }
+                const answerElement = document.getElementById(answer-${docId});
+                answerElement.textContent = answerInput;
+                alert("Answer submitted!");
             } catch (e) {
-                console.error("Error updating answer or fetching question: ", e);
-                alert("An error occurred while submitting the answer.");
+                console.error("Error updating answer: ", e);
             }
         } else {
             alert("Please enter an answer.");
         }
     }
 });
-
+// Initialize by fetching existing questions
 fetchQuestions();
