@@ -3,13 +3,13 @@ import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, updateD
 
 // Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
-  authDomain: "ecofindr-4fffd.firebaseapp.com",
-  projectId: "ecofindr-4fffd",
-  storageBucket: "ecofindr-4fffd.firebasestorage.app",
-  messagingSenderId: "64553820107",
-  appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
-  measurementId: "G-TG958E6F56",
+    apiKey: "AIzaSyDMj9JRGUagjR0cQefUljiUOxe_nh74-XA",
+    authDomain: "ecofindr-4fffd.firebaseapp.com",
+    projectId: "ecofindr-4fffd",
+    storageBucket: "ecofindr-4fffd.firebasestorage.app",
+    messagingSenderId: "64553820107",
+    appId: "1:64553820107:web:d58342f35b5ccc92ef204e",
+    measurementId: "G-TG958E6F56"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -20,28 +20,17 @@ const emailInput = document.getElementById("email-input");
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
 
-// Function to send email
-async function sendEmail(toEmail, question, answer) {
-    try {
-        const templateParams = {
-            to_email: toEmail,
-            question: question,
-            answer: answer,
-        };
+// Initialize EmailJS
+(function () {
+    emailjs.init("euggqJf1pklcQY6Uo");
+})();
 
-        await emailjs.send("service_8bwgvkk", "template_fy5gkdz", templateParams);
-        console.log("Email sent successfully");
-    } catch (error) {
-        console.error("Error sending email:", error);
-    }
-}
-
-// Fetch questions from Firebase
+// Grab questions from Firebase Database
 async function fetchQuestions() {
     try {
         const q = query(collection(db, "questions"), orderBy("timestamp"));
         const querySnapshot = await getDocs(q);
-        faqContainer.innerHTML = ""; 
+        faqContainer.innerHTML = "";
         querySnapshot.forEach((doc) => {
             const questionData = doc.data();
             const newFaqItem = document.createElement("div");
@@ -71,7 +60,7 @@ submitButton.addEventListener("click", async () => {
                 question: questionText,
                 email: email,
                 timestamp: new Date(),
-                answer: "", 
+                answer: "",
             });
 
             questionInput.value = "";
@@ -86,12 +75,12 @@ submitButton.addEventListener("click", async () => {
     }
 });
 
-// Handle answer submission
+// Answer a question, update Firebase, and send email
 faqContainer.addEventListener("click", async (event) => {
     if (event.target && event.target.classList.contains("answer-button")) {
         const docId = event.target.getAttribute("data-doc-id");
-        const toEmail = event.target.getAttribute("data-email");
-        const question = event.target.getAttribute("data-question");
+        const userEmail = event.target.getAttribute("data-email");
+        const userQuestion = event.target.getAttribute("data-question");
         const answerInput = document.getElementById(`answer-input-${docId}`).value.trim();
 
         if (answerInput) {
@@ -101,11 +90,26 @@ faqContainer.addEventListener("click", async (event) => {
                     answer: answerInput,
                 });
 
+                // Update the displayed answer
                 const answerElement = document.getElementById(`answer-${docId}`);
                 answerElement.textContent = answerInput;
 
                 // Send email notification
-                sendEmail(toEmail, question, answerInput);
+                const templateParams = {
+                    to_name: userEmail,
+                    from_name: "EcoFindr Support",
+                    question: userQuestion,
+                    answer: answerInput,
+                };
+
+                emailjs
+                    .send("service_8bwgvkk", "template_fy5gkdz", templateParams)
+                    .then(() => {
+                        console.log("Email sent successfully");
+                    })
+                    .catch((error) => {
+                        console.error("Error sending email:", error);
+                    });
 
                 alert("Answer submitted!");
             } catch (e) {
