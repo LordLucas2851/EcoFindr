@@ -20,11 +20,6 @@ const emailInput = document.getElementById("email-input");
 const submitButton = document.getElementById("submit-question");
 const faqContainer = document.getElementById("faq-container");
 
-// Initialize EmailJS
-(function () {
-    emailjs.init("euggqJf1pklcQY6Uo");
-})();
-
 // Grab questions from Firebase Database
 async function fetchQuestions() {
     try {
